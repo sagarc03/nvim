@@ -32,7 +32,7 @@ set smartindent
 set autoindent
 set laststatus=2
 set number
-set cursorline 
+set cursorline
 " tell vim what the background color looks like
 set background=dark
 
@@ -50,3 +50,6 @@ set incsearch
 set autoread							" Auto read files changed externaly
 
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
+let g:loaded_python_provider = 0
+let g:python3_host_prog = '/Users/schavan/.pyenv/versions/py3nvim/bin/python'

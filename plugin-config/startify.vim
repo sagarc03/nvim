@@ -14,7 +14,7 @@ let g:startify_session_persistence = 1
 let g:startify_padding_left = 5
 let g:startify_enable_special = 0
 
-let g:startify_bookmarks = [ '~/.zshrc' ]
+let g:startify_bookmarks = [ '~/.zshrc', '~/.config/nvim/init.vim' ]
 
 function! StartifyEntryFormat()
     return 'WebDevIconsGetFileTypeSymbol(absolute_path) ." ". entry_path'
