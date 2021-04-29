@@ -52,4 +52,4 @@ set autoread							" Auto read files changed externaly
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 let g:loaded_python_provider = 0
-let g:python3_host_prog = '/Users/schavan/.pyenv/versions/py3nvim/bin/python'
+let g:python3_host_prog = '~/.pyenv/versions/py3nvim/bin/python'

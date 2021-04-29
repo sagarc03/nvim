@@ -28,8 +28,8 @@
       ]
     }
   },
-  "python.linting.enabled": true,
-  "python.linting.pylintEnabled": "true",
+  "python.formatting.provider": "black",
   "python.linting.mypyEnabled": true,
-  "python.formatting.provider": "black"
+  "python.linting.pylintEnabled": true,
+  "python.analysis.typeCheckingMode": "off"
 }
