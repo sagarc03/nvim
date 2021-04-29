@@ -4,10 +4,23 @@ nnoremap <SPACE> <Nop>
 let mapleader="\<space>"
 
 " Navigations
-nnoremap <C-j> :wincmd j<cr>
-nnoremap <C-k> :wincmd k<cr>
-nnoremap <C-h> :wincmd h<cr>
-nnoremap <C-l> :wincmd l<cr>
+function! WinMove(key)
+    let t:curwin = winnr()
+    exec "wincmd ".a:key
+    if (t:curwin == winnr())
+        if (match(a:key,'[jk]'))
+            wincmd v
+        else
+            wincmd s
+        endif
+        exec "wincmd ".a:key
+    endif
+endfunction
+
+nnoremap <silent> <C-h> :call WinMove('h')<CR>
+nnoremap <silent> <C-j> :call WinMove('j')<CR>
+nnoremap <silent> <C-k> :call WinMove('k')<CR>
+nnoremap <silent> <C-l> :call WinMove('l')<CR>
 
 nnoremap <leader>o o<esc>
 nnoremap <leader>O O<esc>
@@ -15,3 +28,5 @@ nnoremap <leader>, :noh<cr>
 nnoremap <leader>bp :bp<cr>
 nnoremap <leader>bn :bn<cr>
 nnoremap <leader>ls :!ls<cr>
+
+tnoremap <Esc> <C-\><C-n>

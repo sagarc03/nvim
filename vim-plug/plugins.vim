@@ -8,6 +8,25 @@ endif
 
 call plug#begin('~/.config/nvim/autoload/plugged')
 
+" Experimental
+Plug 'jiangmiao/auto-pairs'
+Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
+Plug 'wsdjeg/vim-todo'
+
+Plug 'vimwiki/vimwiki'
+Plug 'powerman/vim-plugin-AnsiEsc'
+Plug 'majutsushi/tagbar'
+Plug 'farseer90718/vim-taskwarrior'
+Plug 'tools-life/taskwiki'
+
+Plug 'petobens/poet-v'
+
+"" GitHub 
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'pwntester/octo.nvim'
+
 " Themes
 Plug 'morhetz/gruvbox'
 Plug 'ueaner/molokai'
@@ -50,7 +69,7 @@ Plug 'ryanoasis/vim-devicons'
 
 "" Intellisense
 Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': { -> coc#util#install()}}
-"
+
 "" Status Line
 Plug 'vim-airline/vim-airline'
 

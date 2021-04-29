@@ -26,6 +26,7 @@ source $HOME/.config/nvim/plugin-config/git-messenger.vim
 source $HOME/.config/nvim/plugin-config/bye.vim
 source $HOME/.config/nvim/plugin-config/fzf.vim
 source $HOME/.config/nvim/plugin-config/easy-motion.vim
+source $HOME/.config/nvim/plugin-config/poet-v.vim
 " source $HOME/.config/nvim/plugin-config/polyglot.vim
 " source $HOME/.config/nvim/plugin-config/vim-go.vim
 " source $HOME/.config/nvim/plugin-config/ale.vim
