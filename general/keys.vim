@@ -28,5 +28,3 @@ nnoremap <leader>, :noh<cr>
 nnoremap <leader>bp :bp<cr>
 nnoremap <leader>bn :bn<cr>
 nnoremap <leader>ls :!ls<cr>
-
-tnoremap <Esc> <C-\><C-n>

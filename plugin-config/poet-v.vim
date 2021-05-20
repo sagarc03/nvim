@@ -1,1 +1,1 @@
-let g:poetv_auto_activate = 1
+let poetv_auto_activate = 1

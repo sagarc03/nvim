@@ -20,6 +20,9 @@ Plug 'farseer90718/vim-taskwarrior'
 Plug 'tools-life/taskwiki'
 
 Plug 'petobens/poet-v'
+Plug 'caenrique/nvim-toggle-terminal'
+
+Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
 
 "" GitHub 
 Plug 'nvim-lua/popup.nvim'
@@ -32,6 +35,7 @@ Plug 'morhetz/gruvbox'
 Plug 'ueaner/molokai'
 Plug 'joshdick/onedark.vim'
 Plug 'ghifarit53/tokyonight-vim'
+Plug 'arcticicestudio/nord-vim'
 
 " NerdTree
 Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }

@@ -11,9 +11,11 @@ source $HOME/.config/nvim/vim-plug/plugins.vim
 " source $HOME/.config/nvim/themes/onedark.vim
 " source $HOME/.config/nvim/themes/gruvbox.vim
 " source $HOME/.config/nvim/themes/molokai.vim
-source $HOME/.config/nvim/themes/tokyo.vim
+" source $HOME/.config/nvim/themes/tokyo.vim
+source $HOME/.config/nvim/themes/nord.vim 
 
 " Plugins Config
+source $HOME/.config/nvim/plugin-config/terminal.vim
 source $HOME/.config/nvim/plugin-config/which.vim
 source $HOME/.config/nvim/plugin-config/startify.vim
 source $HOME/.config/nvim/plugin-config/nerdtree.vim
