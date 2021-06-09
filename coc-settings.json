@@ -20,5 +20,6 @@
   "python.linting.mypyEnabled": true,
   "python.linting.pylintEnabled": true,
   "python.analysis.typeCheckingMode": "off",
-  "python.formatting.provider": "black"
+  "python.formatting.provider": "black",
+  "clangd.path": "/usr/local/opt/llvm/bin/clangd"
 }
