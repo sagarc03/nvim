@@ -7,6 +7,7 @@ require("general")
 require("nerdtreeconfig")
 require("telescopeconfig")
 require("navigation")
+-- require("gal")
 
 vim.cmd([[colorscheme onedark]])
 
@@ -26,3 +27,13 @@ require('telescope').setup {
 -- To get fzf loaded and working with telescope, you need to call
 -- load_extension, somewhere after setup function:
 require('telescope').load_extension('fzf')
+
+require'nvim-treesitter.configs'.setup {
+  highlight = {
+    enable = true
+  },
+}
+
+vim.o.foldmethod = "expr"
+vim.o.foldexpr = "nvim_treesitter#foldexpr()"
+

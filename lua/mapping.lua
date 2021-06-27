@@ -1,3 +1,4 @@
+require("keybinding")
 local g = vim.g
 
 local key_mapper = function(mode, key, result, opts)

@@ -26,6 +26,7 @@ return packer.startup(function()
     use 'arcticicestudio/nord-vim'
 
     use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
+
     -- use {
     --      "glepnir/galaxyline.nvim", 
     --      branch = "main", 
@@ -33,16 +34,20 @@ return packer.startup(function()
     --      }
 
     -- LSP and similar functions
-       use {
+    use {
         "neovim/nvim-lspconfig",
         requires = {
             "kabouzeid/nvim-lspinstall",
             "onsails/lspkind-nvim",
             "mfussenegger/nvim-lint",
-            "ojroques/nvim-lspfuzzy",
-            "junegunn/fzf",
-            "junegunn/fzf.vim",
+            "glepnir/lspsaga.nvim",
         }
+    }
+    use {
+        "ahmedkhalf/lsp-rooter.nvim",
+        config = function()
+            require("lsp-rooter").setup {}
+        end
     }
     use "hrsh7th/nvim-compe"
     use "sbdchd/neoformat"
@@ -89,5 +94,11 @@ return packer.startup(function()
     -- Better Comments
     use 'tpope/vim-commentary'
     use 'mhinz/vim-startify'
-
+    use "kyazdani42/nvim-web-devicons"
+    use {
+        "folke/which-key.nvim",
+        config = function()
+            require("which-key").setup {}
+        end
+    }
 end)
