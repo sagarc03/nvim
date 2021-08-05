@@ -1,4 +1,4 @@
-require("keybinding")
+require("keybindings")
 local g = vim.g
 
 local key_mapper = function(mode, key, result, opts)
@@ -36,9 +36,6 @@ key_mapper("n", "<C-k>", ":lua WinMove('k')<CR>", opts)
 key_mapper("n", "<C-l>", ":lua WinMove('l')<CR>", opts)
 
 -- Other
-key_mapper("n", "<leader>o", "o<ESC>", opts)
-key_mapper("n", "<leader>O", "O<ESC>", opts)
-key_mapper("n", "<leader>,", ":noh<CR>", opts)
 key_mapper("n", "<leader>bn", ":bn<CR>", opts)
 key_mapper("n", "<leader>bp", ":bp<CR>", opts)
 key_mapper("n", "<leader>ls", ":!ls<CR>", opts)

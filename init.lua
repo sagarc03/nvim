@@ -4,10 +4,10 @@ require("nvimcompe")
 require("neoformatconfig")
 require("mapping")
 require("general")
-require("nerdtreeconfig")
+require("nvimtree")
 require("telescopeconfig")
 require("navigation")
--- require("gal")
+require("galaxystatusline")
 
 vim.cmd([[colorscheme onedark]])
 
@@ -33,7 +33,4 @@ require'nvim-treesitter.configs'.setup {
     enable = true
   },
 }
-
-vim.o.foldmethod = "expr"
-vim.o.foldexpr = "nvim_treesitter#foldexpr()"
 

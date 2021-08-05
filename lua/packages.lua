@@ -27,11 +27,12 @@ return packer.startup(function()
 
     use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
 
-    -- use {
-    --      "glepnir/galaxyline.nvim", 
-    --      branch = "main", 
-    --      requires = {"kyazdani42/nvim-web-devicons", opt = true}
-    --      }
+    use {
+         "glepnir/galaxyline.nvim",
+         branch = "main",
+         config= function() end,
+         requires = {"kyazdani42/nvim-web-devicons", opt = true}
+         }
 
     -- LSP and similar functions
     use {
@@ -41,6 +42,7 @@ return packer.startup(function()
             "onsails/lspkind-nvim",
             "mfussenegger/nvim-lint",
             "glepnir/lspsaga.nvim",
+            "nvim-lua/lsp-status.nvim",
         }
     }
     use {
@@ -62,11 +64,10 @@ return packer.startup(function()
     use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
     use {
-        'preservim/nerdtree',
-        cmd = 'NERDTreeToggle',
+        'kyazdani42/nvim-tree.lua',
         requires = {
-            'Xuyuanp/nerdtree-git-plugin',
-            'tiagofumo/vim-nerdtree-syntax-highlight'}
+            'kyazdani42/nvim-web-devicons',
+            }
     }
 
 
@@ -76,15 +77,24 @@ return packer.startup(function()
 
     use {'petobens/poet-v', ft = "python"}
     use 'caenrique/nvim-toggle-terminal'
-    use 'vim-airline/vim-airline'
 
     use {"tpope/vim-fugitive",
         requires = {
-            use "lewis6991/gitsigns.nvim",
             use "junegunn/gv.vim",
             use "rhysd/git-messenger.vim"
         }
     }
+
+    use {
+        'lewis6991/gitsigns.nvim',
+        requires = {
+            'nvim-lua/plenary.nvim'
+        },
+        config = function()
+            require('gitsigns').setup()
+        end
+    }
+
     -- Text Navigation and Jumping
     use 'unblevable/quick-scope'
     use 'easymotion/vim-easymotion'
@@ -101,4 +111,10 @@ return packer.startup(function()
             require("which-key").setup {}
         end
     }
+    -- use {
+    --     "projekt0n/github-nvim-theme",
+    --     config = function()
+    --         require("github-theme").setup()
+    --     end
+    -- }
 end)

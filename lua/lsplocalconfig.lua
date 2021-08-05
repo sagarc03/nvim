@@ -1,10 +1,12 @@
 local nvim_lsp = require('lspconfig')
 local lspinstall = require('lspinstall')
 local saga = require("lspsaga")
+local lsp_status = require('lsp-status')
+lsp_status.register_progress()
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
-local on_attach = function(_, bufnr)
+local on_attach = function(client, bufnr)
 
     local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
     local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
@@ -43,6 +45,7 @@ local on_attach = function(_, bufnr)
     buf_set_keymap('n', '<leader>ot', [[<cmd>lua require'lspsaga.floaterm'.open_float_terminal()<CR>]], opts)
     buf_set_keymap('t', '<leader>ct', [[<C-\><C-n>:lua require'lspsaga.floaterm'.close_float_terminal()<CR>]], opts)
     vim.api.nvim_set_keymap('t', '<leader>ct', [[<C-\><C-n>:lua require'lspsaga.floaterm'.close_float_terminal()<CR>]], opts)
+    lsp_status.on_attach(client, bufnr)
 
 -- nnoremap <silent><leader>clf :Lspsaga lsp_finder<CR>
 -- nnoremap <silent><leader>cca :Lspsaga code_action<CR>
@@ -144,20 +147,31 @@ nvim_lsp.pyright.setup({
     --     config.cmd_env = { PYTHONPATH = get_python_path() }
     --     return params, config
     -- end
+  capabilities = lsp_status.capabilities
 })
 
 
 nvim_lsp.latex.setup{
-    on_attach = on_attach
+    on_attach = on_attach,
+    capabilities = lsp_status.capabilities
 }
 
 nvim_lsp.go.setup{
-    on_attach = on_attach
+    on_attach = on_attach,
+    capabilities = lsp_status.capabilities
 }
 
 nvim_lsp.tsserver.setup{
-    on_attach = on_attach
+    on_attach = on_attach,
+    capabilities = lsp_status.capabilities
 }
+
+
+nvim_lsp.rust.setup{
+    on_attach = on_attach,
+    capabilities = lsp_status.capabilities
+}
+
 
 
 
@@ -166,4 +180,5 @@ nvim_lsp.efm.setup{
     --     config.cmd_env = { PYTHONPATH = get_python_path() }
     --     return params, config
     -- end
+    capabilities = lsp_status.capabilities
 }
