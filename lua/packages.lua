@@ -34,9 +34,9 @@ return packer.startup(
         use {
             "glepnir/galaxyline.nvim",
             branch = "main",
-            config = function()
-            end,
-            requires = {"kyazdani42/nvim-web-devicons", opt = true}
+            requires = {
+		    "kyazdani42/nvim-web-devicons", opt = true
+	    }
         }
 
         -- LSP and similar functions
@@ -64,8 +64,8 @@ return packer.startup(
         use {
             "nvim-telescope/telescope.nvim",
             requires = {
-                {"nvim-lua/popup.nvim"},
-                {"nvim-lua/plenary.nvim"}
+                "nvim-lua/popup.nvim",
+                "nvim-lua/plenary.nvim"
             }
         }
         use {"nvim-telescope/telescope-fzf-native.nvim", run = "make"}
@@ -76,8 +76,12 @@ return packer.startup(
                 "kyazdani42/nvim-web-devicons"
             }
         }
-
-        use "akinsho/nvim-bufferline.lua"
+        use {
+            'akinsho/nvim-bufferline.lua', 
+            requires = {
+                'kyazdani42/nvim-web-devicons'
+            }
+        }
         use "windwp/nvim-autopairs"
         use "alvan/vim-closetag"
 
@@ -87,8 +91,8 @@ return packer.startup(
         use {
             "tpope/vim-fugitive",
             requires = {
-                use "junegunn/gv.vim",
-                use "rhysd/git-messenger.vim"
+                "junegunn/gv.vim",
+                "rhysd/git-messenger.vim"
             }
         }
 
@@ -120,11 +124,5 @@ return packer.startup(
                 require("which-key").setup {}
             end
         }
-        -- use {
-        --     "projekt0n/github-nvim-theme",
-        --     config = function()
-        --         require("github-theme").setup()
-        --     end
-        -- }
     end
 )

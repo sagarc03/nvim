@@ -8,6 +8,7 @@ require("telescopeconfig")
 require("navigation")
 require("galaxystatusline")
 require("dashboard")
+require("bufferlineconfig")
 
 vim.cmd([[colorscheme one]])
 
