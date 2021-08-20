@@ -89,14 +89,6 @@ return packer.startup(
         use "caenrique/nvim-toggle-terminal"
 
         use {
-            "tpope/vim-fugitive",
-            requires = {
-                "junegunn/gv.vim",
-                "rhysd/git-messenger.vim"
-            }
-        }
-
-        use {
             "lewis6991/gitsigns.nvim",
             requires = {
                 "nvim-lua/plenary.nvim"
