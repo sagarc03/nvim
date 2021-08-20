@@ -17,4 +17,4 @@ g.neoformat_enabled_css = {"prettier"}
 g.neoformat_enabled_javascript = {"prettier"}
 g.neoformat_enabled_typescript = {"prettier"}
 g.neoformat_enabled_markdown = {"prettier"}
-g.neoformat_enabled_lua = {"luaformatter"}
+g.neoformat_enabled_lua = {"luafmt"}
