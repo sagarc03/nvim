@@ -38,3 +38,8 @@ o.termguicolors = true
 
 g.loaded_python_provider = 0
 g.python3_host_prog = '~/.pyenv/versions/py3nvim/bin/python'
+g["coq_settings"] = {
+    keymap = {
+        jump_to_mark= "<C-n>"
+    }
+}
