@@ -28,7 +28,7 @@ return packer.startup(
         use "joshdick/onedark.vim"
         use "ghifarit53/tokyonight-vim"
         use "arcticicestudio/nord-vim"
-
+        use "rakr/vim-one"
         use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
 
         use {

@@ -8,7 +8,7 @@ require("telescopeconfig")
 require("navigation")
 require("galaxystatusline")
 
-vim.cmd([[colorscheme onedark]])
+vim.cmd([[colorscheme one]])
 
 -- Auto Activate poetry virtual env
 vim.g.poetv_auto_activate = "1"
