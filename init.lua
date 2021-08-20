@@ -7,6 +7,7 @@ require("nvimtree")
 require("telescopeconfig")
 require("navigation")
 require("galaxystatusline")
+require("dashboard")
 
 vim.cmd([[colorscheme one]])
 

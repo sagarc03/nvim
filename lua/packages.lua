@@ -110,7 +110,9 @@ return packer.startup(
         use "tpope/vim-surround"
         -- Better Comments
         use "tpope/vim-commentary"
-        use "mhinz/vim-startify"
+        -- use "mhinz/vim-startify"
+        --clap
+        use "glepnir/dashboard-nvim"
         use "kyazdani42/nvim-web-devicons"
         use {
             "folke/which-key.nvim",
