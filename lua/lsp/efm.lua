@@ -1,5 +1,6 @@
 local eslint = {
     lintCommand = "eslint_d -f unix --stdin --stdin-filename ${INPUT}",
+    prefix = "eslint",
     lintStdin = true,
     lintFormats = {"%f:%l:%c: %m"},
     lintIgnoreExitCode = true,
@@ -8,7 +9,8 @@ local eslint = {
 }
 
 local pylint = {
-    lintCommand = "pylint --output-format=text --score=no --msg-template '{path}:{line}:{column}:{C}:[pylint] {msg} [{symbol}] [{msg_id}]' ${INPUT}",
+    lintCommand = "pylint --output-format=text --score=no --msg-template '{path}:{line}:{column}:{C}:{msg} [{symbol}] [{msg_id}]' ${INPUT}",
+    prefix = "pylint",
     lintIgnoreExitCode = true,
     lintStdin = true,
     lintFormats = {"%f:%l:%c:%t:%m"},
@@ -17,6 +19,7 @@ local pylint = {
 }
 
 local mypy = {
+    prefix = "mypy",
     lintCommand = "mypy --show-column-numbers",
     lintIgnoreExitCode = true,
     lintStdin = true,
