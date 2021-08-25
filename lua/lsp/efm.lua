@@ -8,7 +8,7 @@ local eslint = {
 }
 
 local pylint = {
-    lintCommand = "pylint --output-format=text --score=no --msg-template '{path}:{line}:{column}:{C}:{msg} [{symbol}] [{msg_id}]' ${INPUT}",
+    lintCommand = "pylint --output-format=text --score=no --msg-template '{path}:{line}:{column}:{C}:[pylint] {msg} [{symbol}] [{msg_id}]' ${INPUT}",
     lintIgnoreExitCode = true,
     lintStdin = true,
     lintFormats = {"%f:%l:%c:%t:%m"},
