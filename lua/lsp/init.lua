@@ -51,16 +51,38 @@ local on_attach = function(client, bufnr)
     vim.cmd [[COQnow -s]]
 end
 
-vim.lsp.handlers["textDocument/publishDiagnostics"] =
-    vim.lsp.with(
-    vim.lsp.diagnostic.on_publish_diagnostics,
-    {
+vim.lsp.handlers["textDocument/publishDiagnostics"] = function(_, _, params, client_id, _)
+    local config = {
         underline = true,
         virtual_text = false,
         signs = true,
         update_in_insert = false
     }
-)
+    local uri = params.uri
+    local bufnr = vim.uri_to_bufnr(uri)
+
+    if not bufnr then
+        return
+    end
+
+    local diagnostics = params.diagnostics
+
+    for i, v in ipairs(diagnostics) do
+        if v.source == nil or v.source == "" then
+            diagnostics[i].message = string.format("%s", v.message)
+        else
+            diagnostics[i].message = string.format("[%s] %s", v.source, v.message)
+        end
+    end
+
+    vim.lsp.diagnostic.save(diagnostics, bufnr, client_id)
+
+    if not vim.api.nvim_buf_is_loaded(bufnr) then
+        return
+    end
+
+    vim.lsp.diagnostic.display(diagnostics, bufnr, client_id, config)
+end
 
 local servers = lspinstall.installed_servers()
 
