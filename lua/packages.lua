@@ -35,8 +35,9 @@ return packer.startup(
             "glepnir/galaxyline.nvim",
             branch = "main",
             requires = {
-		    "kyazdani42/nvim-web-devicons", opt = true
-	    }
+                "kyazdani42/nvim-web-devicons",
+                opt = true
+            }
         }
 
         -- LSP and similar functions
@@ -45,7 +46,6 @@ return packer.startup(
             requires = {
                 "kabouzeid/nvim-lspinstall",
                 "onsails/lspkind-nvim",
-                "mfussenegger/nvim-lint",
                 "glepnir/lspsaga.nvim",
                 "nvim-lua/lsp-status.nvim"
             }
@@ -71,22 +71,25 @@ return packer.startup(
         use {"nvim-telescope/telescope-fzf-native.nvim", run = "make"}
 
         use {
-            "kyazdani42/nvim-tree.lua",
+            "ms-jpq/chadtree",
+            branch = "chad",
+            run = "python3 -m chadtree deps",
             requires = {
-                "kyazdani42/nvim-web-devicons"
+                "kyazdani42/nvim-web-devicons",
+                "adelarsq/vim-devicons-emoji",
+                "tiagofumo/vim-nerdtree-syntax-highlight"
             }
         }
         use {
-            'akinsho/nvim-bufferline.lua', 
+            "akinsho/nvim-bufferline.lua",
             requires = {
-                'kyazdani42/nvim-web-devicons'
+                "kyazdani42/nvim-web-devicons"
             }
         }
         use "windwp/nvim-autopairs"
         use "alvan/vim-closetag"
 
         use {"petobens/poet-v", ft = "python"}
-        use "caenrique/nvim-toggle-terminal"
 
         use {
             "lewis6991/gitsigns.nvim",

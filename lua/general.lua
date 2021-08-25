@@ -1,8 +1,7 @@
 local o = vim.o
 local g = vim.g
 
-
-o.syntax = 'on'
+o.syntax = "on"
 o.hidden = true
 o.wrap = false
 
@@ -33,13 +32,12 @@ o.showtabline = 2
 -- Vim compe
 vim.o.completeopt = "menuone,noselect"
 
-
 o.termguicolors = true
 
 g.loaded_python_provider = 0
-g.python3_host_prog = '~/.pyenv/versions/py3nvim/bin/python'
+g.python3_host_prog = "/home/sagar/.pyenv/versions/py3nvim/bin/python"
 g["coq_settings"] = {
     keymap = {
-        jump_to_mark= "<C-n>"
+        jump_to_mark = "<C-n>"
     }
 }
