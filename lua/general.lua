@@ -7,6 +7,7 @@ o.wrap = false
 
 -- Clipboard
 vim.cmd("set clipboard+=unnamedplus")
+vim.cmd("set signcolumn=auto:2")
 
 -- Line numbers
 o.number = true
