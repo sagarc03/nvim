@@ -22,6 +22,10 @@ end
 -- Leader
 g.mapleader = " "
 
+key_mapper("i", "jk", "<ESC>", {silent = true})
+key_mapper("i", "kj", "<ESC>", {silent = true})
+key_mapper("i", "jj", "<ESC>", {silent = true})
+
 -- Navigation
 key_mapper("n", "<C-h>", ":lua WinMove('h')<CR>", opts)
 key_mapper("n", "<C-j>", ":lua WinMove('j')<CR>", opts)
@@ -36,6 +40,7 @@ key_mapper("n", "<leader>ls", ":!ls<CR>", opts)
 key_mapper("n", "<C-z>", ":ToggleTerminal<CR>", opts)
 key_mapper("t", "<C-z>", [[<C-\><C-n>:ToggleTerminal<CR>]], opts)
 key_mapper("t", "<C-z>", [[<C-\><C-n>:ToggleTerminal<CR>]], opts)
+
 local temp_opts = opts
 temp_opts["expr"] = true
 key_mapper("t", "<ESC>", [[(&filetype == "fzf" ? "ESC" : "<C-\><C-n>" )]], temp_opts)
