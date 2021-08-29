@@ -32,8 +32,7 @@ return packer.startup(
         use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
 
         use {
-            "glepnir/galaxyline.nvim",
-            branch = "main",
+            "hoob3rt/lualine.nvim",
             requires = {
                 "kyazdani42/nvim-web-devicons",
                 opt = true
