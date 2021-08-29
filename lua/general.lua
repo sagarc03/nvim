@@ -39,6 +39,7 @@ g.loaded_python_provider = 0
 g.python3_host_prog = "/home/sagar/.pyenv/versions/py3nvim/bin/python"
 g["coq_settings"] = {
     keymap = {
+        recommended = true,
         jump_to_mark = "<C-n>"
     }
 }

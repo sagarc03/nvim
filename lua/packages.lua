@@ -23,12 +23,8 @@ return packer.startup(
         use "wbthomason/packer.nvim"
 
         -- Themes
-        use "morhetz/gruvbox"
-        use "ueaner/molokai"
-        use "joshdick/onedark.vim"
-        use "ghifarit53/tokyonight-vim"
-        use "arcticicestudio/nord-vim"
-        use "rakr/vim-one"
+        use "navarasu/onedark.nvim"
+
         use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
 
         use {
@@ -106,9 +102,10 @@ return packer.startup(
 
         -- Surround
         use "tpope/vim-surround"
+
         -- Better Comments
         use "tpope/vim-commentary"
-        -- use "mhinz/vim-startify"
+
         --clap
         use "glepnir/dashboard-nvim"
         use "kyazdani42/nvim-web-devicons"
