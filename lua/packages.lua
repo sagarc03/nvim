@@ -22,7 +22,7 @@ return packer.startup(function()
 	use("wbthomason/packer.nvim")
 
 	-- Themes
-	use("navarasu/onedark.nvim")
+	use("Pocco81/Catppuccino.nvim")
 
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 
@@ -101,7 +101,7 @@ return packer.startup(function()
 		as = "hop",
 		config = function()
 			-- you can configure Hop the way you like here; see :h hop-config
-			require("hop").setup() -- {keys = "etovxqpdygfblzhckisuran"}
+			require("hop").setup({ keys = "etovxqpdygfblzhckisuran" })
 		end,
 	})
 
