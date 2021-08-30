@@ -1,4 +1,5 @@
 require("lsp.formatting")
+require("lsp.python")
 
 local nvim_lsp = require("lspconfig")
 local lspinstall = require("lspinstall")
@@ -112,3 +113,13 @@ nvim_lsp.efm.setup({
 	init_options = { documentFormatting = true, codeAction = true },
 	settings = { languages = languages, log_level = 1, log_file = "~/efm.log" },
 })
+
+local python = require("lsp.python")
+
+nvim_lsp.python.setup(coq.lsp_ensure_capabilities({
+	on_attach = on_attach,
+	capabilities = lsp_status.capabilities,
+	before_init = function(_, config)
+		python.set_poetry_virtual_env()
+	end,
+}))
