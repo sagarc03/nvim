@@ -81,6 +81,7 @@ return packer.startup(
                 "kyazdani42/nvim-web-devicons"
             }
         }
+
         use "windwp/nvim-autopairs"
         use "alvan/vim-closetag"
 
@@ -108,7 +109,7 @@ return packer.startup(
             end
         }
         -- Better Comments
-        use "tpope/vim-commentary"
+        use "b3nj5m1n/kommentary"
 
         --clap
         use "glepnir/dashboard-nvim"
