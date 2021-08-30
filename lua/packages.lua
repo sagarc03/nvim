@@ -115,5 +115,6 @@ return packer.startup(
                 require("which-key").setup {}
             end
         }
+        use "akinsho/toggleterm.nvim"
     end
 )
