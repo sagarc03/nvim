@@ -35,7 +35,6 @@ key_mapper("n", "<C-l>", ":lua WinMove('l')<CR>", opts)
 -- Other
 key_mapper("n", "<leader>bn", ":bn<CR>", opts)
 key_mapper("n", "<leader>bp", ":bp<CR>", opts)
-key_mapper("n", "<leader>ls", ":!ls<CR>", opts)
 
 key_mapper("n", "<C-z>", ":ToggleTerminal<CR>", opts)
 key_mapper("t", "<C-z>", [[<C-\><C-n>:ToggleTerminal<CR>]], opts)
