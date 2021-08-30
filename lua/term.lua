@@ -33,7 +33,12 @@ local lazygit =
         close_on_exit = true, -- close the terminal window when the process exits
         -- function to run on opening the terminal
         on_open = function(term)
-            vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", {noremap = true, silent = true})
+            local opts = {noremap = true, silent = true}
+            vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", opts)
+            vim.api.nvim_buf_set_keymap(term.bufnr, "t", "<C-h>", [[<C-\><C-n><C-W>h]], opts)
+            vim.api.nvim_buf_set_keymap(term.bufnr "t", "<C-j>", [[<C-\><C-n><C-W>j]], opts)
+            vim.api.nvim_buf_set_keymap(term.bufnr, "t", "<C-k>", [[<C-\><C-n><C-W>k]], opts)
+            vim.api.nvim_buf_set_keymap(term.bufnr, "t", "<C-l>", [[<C-\><C-n><C-W>l]], opts)
         end
     }
 )
