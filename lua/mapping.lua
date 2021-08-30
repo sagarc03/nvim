@@ -6,19 +6,6 @@ end
 
 local opts = {noremap = true, silent = true}
 
-function WinMove(key)
-    local curwind = vim.api.nvim_win_get_number(vim.api.nvim_get_current_win())
-    vim.cmd("wincmd " .. key)
-    if curwind == vim.api.nvim_win_get_number(vim.api.nvim_get_current_win()) then
-        if key == "j" or key == "k" then
-            vim.cmd("wincmd s")
-        else
-            vim.cmd("wincmd v")
-        end
-        vim.cmd("wincmd " .. key)
-    end
-end
-
 -- Leader
 g.mapleader = " "
 
@@ -27,10 +14,11 @@ key_mapper("i", "kj", "<ESC>", {silent = true})
 key_mapper("i", "jj", "<ESC>", {silent = true})
 
 -- Navigation
-key_mapper("n", "<C-h>", ":lua WinMove('h')<CR>", opts)
-key_mapper("n", "<C-j>", ":lua WinMove('j')<CR>", opts)
-key_mapper("n", "<C-k>", ":lua WinMove('k')<CR>", opts)
-key_mapper("n", "<C-l>", ":lua WinMove('l')<CR>", opts)
+--
+key_mapper("n", "<C-h>", ":FocusSplitLeft<CR>", opts)
+key_mapper("n", "<C-j>", ":FocusSplitDown<CR>", opts)
+key_mapper("n", "<C-k>", ":FocusSplitUp<CR>", opts)
+key_mapper("n", "<C-l>", ":FocusSplitRight<CR>", opts)
 
 -- Other
 key_mapper("n", "<leader>bn", ":bn<CR>", opts)

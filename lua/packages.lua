@@ -127,5 +127,6 @@ return packer.startup(
         }
 
         use "akinsho/toggleterm.nvim"
+        use "beauwilliams/focus.nvim"
     end
 )
