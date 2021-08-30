@@ -1,7 +1,7 @@
-local hop = require "hop"
-local opts = {noremap = true, silent = true}
+local hop = require("hop")
+local opts = { noremap = true, silent = true }
 
-hop.setup({keys = "etovxqpdygfblzhckisuran"})
+hop.setup({ keys = "etovxqpdygfblzhckisuran" })
 
 -- place this in one of your configuration file(s)
 vim.api.nvim_set_keymap("n", "$", "<cmd>lua require'hop'.hint_words()<cr>", opts)

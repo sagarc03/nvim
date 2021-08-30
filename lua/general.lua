@@ -36,10 +36,10 @@ vim.o.completeopt = "menuone,noselect"
 o.termguicolors = true
 
 g.loaded_python_provider = 0
-g.python3_host_prog = "/home/sagar/.pyenv/versions/py3nvim/bin/python"
+g.python3_host_prog = vim.env.HOME .. "/.pyenv/versions/py3nvim/bin/python"
 g["coq_settings"] = {
-    keymap = {
-        recommended = true,
-        jump_to_mark = "<C-n>"
-    }
+	keymap = {
+		recommended = true,
+		jump_to_mark = "<C-n>",
+	},
 }
