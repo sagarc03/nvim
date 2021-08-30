@@ -101,8 +101,12 @@ return packer.startup(
         use "easymotion/vim-easymotion"
 
         -- Surround
-        use "tpope/vim-surround"
-
+        use {
+            "blackCauldron7/surround.nvim",
+            config = function()
+                require "surround".setup {}
+            end
+        }
         -- Better Comments
         use "tpope/vim-commentary"
 
@@ -115,6 +119,7 @@ return packer.startup(
                 require("which-key").setup {}
             end
         }
+
         use "akinsho/toggleterm.nvim"
     end
 )
