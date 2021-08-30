@@ -21,8 +21,6 @@ key_mapper("n", "<C-j>", "<CMD>FocusSplitDown %<CR>", opts)
 key_mapper("n", "<C-k>", "<CMD>FocusSplitUp %<CR>", opts)
 key_mapper("n", "<C-l>", "<CMD>FocusSplitRight %<CR>", opts)
 
-require("focus").winhighlight = true
-
 -- Insert Mode
 key_mapper("i", "<C-h>", "<ESC><CMD>FocusSplitLeft<CR>", opts)
 key_mapper("i", "<C-j>", "<ESC><CMD>FocusSplitDown<CR>", opts)
