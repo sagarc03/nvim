@@ -45,12 +45,9 @@ return packer.startup(
                 "nvim-lua/lsp-status.nvim"
             }
         }
-        use {
-            "ahmedkhalf/lsp-rooter.nvim",
-            config = function()
-                require("lsp-rooter").setup {}
-            end
-        }
+        -- Lua
+        use "ahmedkhalf/project.nvim"
+
         use {"ms-jpq/coq_nvim", branch = "coq"}
         use {"ms-jpq/coq.artifacts", branch = "artifacts"}
         use "sbdchd/neoformat"
@@ -99,7 +96,6 @@ return packer.startup(
 
         -- Text Navigation and Jumping
         use "unblevable/quick-scope"
-        use "easymotion/vim-easymotion"
 
         use {
             "phaazon/hop.nvim",
@@ -108,6 +104,7 @@ return packer.startup(
                 -- you can configure Hop the way you like here; see :h hop-config
                 require "hop".setup() -- {keys = "etovxqpdygfblzhckisuran"}
             end
+        }
 
         -- Surround
         use {
