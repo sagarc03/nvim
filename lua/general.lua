@@ -9,6 +9,9 @@ o.wrap = false
 vim.cmd("set clipboard+=unnamedplus")
 vim.cmd("set signcolumn=auto:2")
 
+vim.cmd("set foldmethod=expr")
+vim.cmd("set foldexpr=nvim_treesitter#foldexpr()")
+
 -- Line numbers
 o.number = true
 o.relativenumber = true

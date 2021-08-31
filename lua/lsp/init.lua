@@ -106,20 +106,22 @@ nvim_lsp.lua.setup(coq.lsp_ensure_capabilities({
 }))
 
 local languages = require("lsp.efm")
+-- local python = require("lsp.python")
 
 nvim_lsp.efm.setup({
 	root_dir = nvim_lsp.util.root_pattern("yarn.lock", "package.json", ".git", "pyproject.toml"),
 	filetypes = vim.tbl_keys(languages),
 	init_options = { documentFormatting = true, codeAction = true },
 	settings = { languages = languages, log_level = 1, log_file = "~/efm.log" },
+	--[[ before_init = function(_, _)
+		python.set_poetry_virtual_env()
+	end, ]]
 })
-
-local python = require("lsp.python")
 
 nvim_lsp.python.setup(coq.lsp_ensure_capabilities({
 	on_attach = on_attach,
 	capabilities = lsp_status.capabilities,
-	before_init = function(_, config)
+	--[[ before_init = function(_, _)
 		python.set_poetry_virtual_env()
-	end,
+	end, ]]
 }))
