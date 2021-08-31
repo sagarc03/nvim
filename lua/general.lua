@@ -33,9 +33,6 @@ o.autoindent = true
 --Top tab line
 o.showtabline = 2
 
--- Vim compe
-vim.o.completeopt = "menuone,noselect"
-
 o.termguicolors = true
 
 g.loaded_python_provider = 0

@@ -1,5 +1,6 @@
 require("lsp.formatting")
 require("lsp.python")
+require("lsp.extra")
 
 local nvim_lsp = require("lspconfig")
 local lspinstall = require("lspinstall")

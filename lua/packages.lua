@@ -39,18 +39,21 @@ return packer.startup(function()
 		"neovim/nvim-lspconfig",
 		requires = {
 			"kabouzeid/nvim-lspinstall",
-			"onsails/lspkind-nvim",
-			"glepnir/lspsaga.nvim",
-			"nvim-lua/lsp-status.nvim",
 		},
 	})
-	-- Lua
-	use("ahmedkhalf/project.nvim")
-
+	use("onsails/lspkind-nvim")
+	use("glepnir/lspsaga.nvim")
+	use("nvim-lua/lsp-status.nvim")
+	use({
+		"folke/trouble.nvim",
+		requires = "kyazdani42/nvim-web-devicons",
+	})
 	use({ "ms-jpq/coq_nvim", branch = "coq" })
 	use({ "ms-jpq/coq.artifacts", branch = "artifacts" })
 	use("sbdchd/neoformat")
-	use("editorconfig/editorconfig-vim")
+
+	-- Lua
+	use("ahmedkhalf/project.nvim")
 
 	use({
 		"nvim-telescope/telescope.nvim",
@@ -59,6 +62,7 @@ return packer.startup(function()
 			"nvim-lua/plenary.nvim",
 		},
 	})
+
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 
 	use({
@@ -67,7 +71,6 @@ return packer.startup(function()
 		run = "python3 -m chadtree deps",
 		requires = {
 			"kyazdani42/nvim-web-devicons",
-			"adelarsq/vim-devicons-emoji",
 			"tiagofumo/vim-nerdtree-syntax-highlight",
 		},
 	})
@@ -115,15 +118,7 @@ return packer.startup(function()
 	-- Better Comments
 	use("b3nj5m1n/kommentary")
 
-	--clap
 	use("glepnir/dashboard-nvim")
-	use("kyazdani42/nvim-web-devicons")
-	use({
-		"folke/which-key.nvim",
-		config = function()
-			require("which-key").setup({})
-		end,
-	})
 
 	use("akinsho/toggleterm.nvim")
 	use("sagarc03/focus.nvim")

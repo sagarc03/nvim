@@ -1,23 +1,24 @@
+vim.g.mapleader = " "
+
 require("packages")
+require("statusline")
 require("lsp")
+require("root")
+require("telescopeconfig")
+require("bufferlineconfig")
 require("mapping")
 require("general")
 require("ctree")
-require("telescopeconfig")
-require("statusline")
 require("dashboard")
 require("term")
 require("scope")
-require("root")
-require("bufferlineconfig")
 
 vim.cmd([[colorscheme catppuccino]])
 -- vim.cmd([[set background=dark]])
-
+--
 -- Auto Activate poetry virtual env
 vim.g.poetv_auto_activate = "1"
--- To get fzf loaded and working with telescope, you need to call
--- load_extension, somewhere after setup function:
+
 require("nvim-treesitter.configs").setup({
 	ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
 	ignore_install = { "" }, -- List of parsers to ignore installing
@@ -46,15 +47,7 @@ catppuccino.setup({
 	},
 	integrations = {
 		treesitter = true,
-		native_lsp = {
-			enabled = true,
-			styles = {
-				errors = "italic",
-				hints = "italic",
-				warnings = "italic",
-				information = "italic",
-			},
-		},
+		lsp_trouble = false,
 		lsp_saga = true,
 		gitsigns = true,
 		telescope = true,

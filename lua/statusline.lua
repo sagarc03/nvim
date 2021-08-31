@@ -1,3 +1,10 @@
+local function line_progress()
+	local winid = vim.g.statusline_winid
+	local current_line = vim.api.nvim_win_get_cursor(winid)[1]
+	local total_line = vim.api.nvim_buf_line_count(vim.fn.winbufnr(winid))
+	return tostring(math.ceil((current_line / total_line) * 100)) .. "%%"
+end
+
 require("lualine").setup({
 	options = {
 		icons_enabled = true,
@@ -11,7 +18,7 @@ require("lualine").setup({
 		lualine_b = { "branch" },
 		lualine_c = { "diff", "filename" },
 		lualine_x = { require("lsp-status").status, "filetype" },
-		lualine_y = { "progress" },
+		lualine_y = { line_progress },
 		lualine_z = { "location" },
 	},
 	inactive_sections = {
