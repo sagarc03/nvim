@@ -11,6 +11,7 @@ vim.cmd("set signcolumn=auto:2")
 
 vim.cmd("set foldmethod=expr")
 vim.cmd("set foldexpr=nvim_treesitter#foldexpr()")
+vim.cmd("set foldlevelstart=99")
 
 -- Line numbers
 o.number = true

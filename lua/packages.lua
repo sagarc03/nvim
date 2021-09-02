@@ -50,6 +50,8 @@ return packer.startup(function()
 	})
 	use({ "ms-jpq/coq_nvim", branch = "coq" })
 	use({ "ms-jpq/coq.artifacts", branch = "artifacts" })
+
+	use({ "fatih/vim-go", run = ":GoInstallBinaries" })
 	use("sbdchd/neoformat")
 
 	-- Lua
@@ -121,5 +123,5 @@ return packer.startup(function()
 	use("glepnir/dashboard-nvim")
 
 	use("akinsho/toggleterm.nvim")
-	use("sagarc03/focus.nvim")
+	use("beauwilliams/focus.nvim")
 end)
