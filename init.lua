@@ -12,6 +12,7 @@ require("ctree")
 require("dashboard")
 require("term")
 require("scope")
+require("git")
 
 vim.cmd([[colorscheme catppuccino]])
 -- vim.cmd([[set background=dark]])
