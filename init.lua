@@ -20,6 +20,13 @@ vim.cmd([[colorscheme catppuccino]])
 vim.g.poetv_auto_activate = "1"
 
 require("nvim-treesitter.configs").setup({
+	rainbow = {
+		enable = true,
+		extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
+		max_file_lines = nil, -- Do not enable for files with more than n lines, int
+		-- colors = {}, -- table of hex strings
+		-- termcolors = {} -- table of colour name strings
+	},
 	ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
 	ignore_install = { "" }, -- List of parsers to ignore installing
 	highlight = {

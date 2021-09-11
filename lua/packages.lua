@@ -124,4 +124,5 @@ return packer.startup(function()
 
 	use("akinsho/toggleterm.nvim")
 	use("beauwilliams/focus.nvim")
+	use("p00f/nvim-ts-rainbow")
 end)
