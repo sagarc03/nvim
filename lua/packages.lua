@@ -25,7 +25,7 @@ return packer.startup(function()
 	use("Pocco81/Catppuccino.nvim")
 
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
-
+	use("nvim-treesitter/nvim-treesitter-refactor")
 	use({
 		"hoob3rt/lualine.nvim",
 		requires = {
@@ -42,12 +42,14 @@ return packer.startup(function()
 		},
 	})
 	use("onsails/lspkind-nvim")
-	use("glepnir/lspsaga.nvim")
 	use("nvim-lua/lsp-status.nvim")
 	use({
 		"folke/trouble.nvim",
 		requires = "kyazdani42/nvim-web-devicons",
 	})
+	use("ray-x/lsp_signature.nvim")
+	use({ "ray-x/navigator.lua", requires = { "ray-x/guihua.lua", run = "cd lua/fzy && make" } })
+
 	use({ "ms-jpq/coq_nvim", branch = "coq" })
 	use({ "ms-jpq/coq.artifacts", branch = "artifacts" })
 
