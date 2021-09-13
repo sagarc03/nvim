@@ -111,12 +111,7 @@ return packer.startup(function()
 	})
 
 	-- Surround
-	use({
-		"blackCauldron7/surround.nvim",
-		config = function()
-			require("surround").setup({})
-		end,
-	})
+	use("blackCauldron7/surround.nvim")
 	-- Better Comments
 	use("b3nj5m1n/kommentary")
 
@@ -124,6 +119,7 @@ return packer.startup(function()
 
 	use("akinsho/toggleterm.nvim")
 	use("beauwilliams/focus.nvim")
+
 	use("p00f/nvim-ts-rainbow")
 	use("sindrets/diffview.nvim")
 end)
