@@ -41,14 +41,6 @@ local on_attach = function(client, bufnr)
 	buf_set_keymap("n", "[e", [[<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()<CR>]], opts)
 	buf_set_keymap("n", "]e", [[<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()<CR>]], opts)
 
-	buf_set_keymap("n", "<leader>ot", [[<cmd>lua require'lspsaga.floaterm'.open_float_terminal()<CR>]], opts)
-	buf_set_keymap("t", "<leader>ct", [[<C-\><C-n>:lua require'lspsaga.floaterm'.close_float_terminal()<CR>]], opts)
-	-- vim.api.nvim_set_keymap(
-	--     "t",
-	--     "<leader>ct",
-	--     [[<C-\><C-n>:lua require'lspsaga.floaterm'.close_float_terminal()<CR>]],
-	--     opts
-	-- )
 	lsp_status.on_attach(client)
 	vim.cmd([[COQnow -s]])
 end
