@@ -12,6 +12,7 @@ key_mapper("i", "jj", "<ESC>", { silent = true })
 
 -- Navigation
 --
+require("focus").setup()
 -- Normal Mode
 key_mapper("n", "<C-h>", "<CMD>FocusSplitLeft %<CR>", opts)
 key_mapper("n", "<C-j>", "<CMD>FocusSplitDown %<CR>", opts)
