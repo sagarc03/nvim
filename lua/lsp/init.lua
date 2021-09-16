@@ -1,3 +1,17 @@
+--                    ___           ___                              ___
+--                   /\__\         /\  \                            /\  \
+--                  /:/ _/_       /::\  \              ___          \:\  \       ___           ___
+--                 /:/ /\  \     /:/\:\__\            /\__\          \:\  \     /\__\         /\__\
+--  ___     ___   /:/ /::\  \   /:/ /:/  /           /:/__/      _____\:\  \   /:/__/        /:/  /
+-- /\  \   /\__\ /:/_/:/\:\__\ /:/_/:/  /           /::\  \     /::::::::\__\ /::\  \       /:/__/
+-- \:\  \ /:/  / \:\/:/ /:/  / \:\/:/  /            \/\:\  \__  \:\~~\~~\/__/ \/\:\  \__   /::\  \
+--  \:\  /:/  /   \::/ /:/  /   \::/__/              ~~\:\/\__\  \:\  \        ~~\:\/\__\ /:/\:\  \
+--   \:\/:/  /     \/_/:/  /     \:\  \                 \::/  /   \:\  \          \::/  / \/__\:\  \
+--    \::/  /        /:/  /       \:\__\                /:/  /     \:\__\         /:/  /       \:\__\
+--     \/__/         \/__/         \/__/                \/__/       \/__/         \/__/         \/__/
+--
+--
+--
 require("lsp.formatting")
 require("lsp.extra")
 require("lspinstall").setup()
@@ -6,6 +20,10 @@ local lspconfig = require("lspconfig")
 local languages = require("lsp.efm")
 vim.g["coq_settings"] = { auto_start = "shut-up" }
 require("coq")
+require("coq_3p")({
+	{ src = "nvimlua", short_name = "nLUA", conf_only = true },
+	{ src = "figlet", short_name = "BIG" },
+})
 
 require("navigator").setup({
 	keymaps = {
