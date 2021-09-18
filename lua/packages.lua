@@ -54,7 +54,6 @@ return packer.startup(function()
 	use({ "ms-jpq/coq.artifacts", branch = "artifacts" })
 	use({ "ms-jpq/coq.thirdparty", branch = "3p" })
 
-	use({ "fatih/vim-go", run = ":GoInstallBinaries" })
 	use("sbdchd/neoformat")
 
 	-- Lua

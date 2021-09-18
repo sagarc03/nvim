@@ -35,7 +35,7 @@ require("navigator").setup({
 	lspinstall = true, -- set to true if you would like use the lsp installed by lspinstall
 	lsp = {
 		efm = {
-			root_dir = lspconfig.util.root_pattern("yarn.lock", "package.json", ".git", "pyproject.toml"),
+			root_dir = lspconfig.util.root_pattern("yarn.lock", "package.json", ".git", "pyproject.toml", "go.mod"),
 			filetypes = vim.tbl_keys(languages),
 			init_options = { documentFormatting = true, codeAction = true },
 			settings = { languages = languages, log_level = 1, log_file = "~/efm.log" },
