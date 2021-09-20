@@ -1,4 +1,3 @@
---                    ___           ___                              ___
 --                   /\__\         /\  \                            /\  \
 --                  /:/ _/_       /::\  \              ___          \:\  \       ___           ___
 --                 /:/ /\  \     /:/\:\__\            /\__\          \:\  \     /\__\         /\__\
@@ -26,6 +25,7 @@ require("coq_3p")({
 })
 
 require("navigator").setup({
+	format_on_save = false,
 	keymaps = {
 		{ mode = "i", key = "<M-s>", func = "signature_help()" },
 		{ key = "<c-s>", func = "signature_help()" },
@@ -35,9 +35,9 @@ require("navigator").setup({
 	lspinstall = true, -- set to true if you would like use the lsp installed by lspinstall
 	lsp = {
 		efm = {
-			root_dir = lspconfig.util.root_pattern("yarn.lock", "package.json", ".git", "pyproject.toml", "go.mod"),
+			root_dir = lspconfig.util.root_pattern("yarn.lock", "package.json", ".git", "pyproject.toml"),
 			filetypes = vim.tbl_keys(languages),
-			init_options = { documentFormatting = true, codeAction = true },
+			init_options = { documentFormatting = false, codeAction = false },
 			settings = { languages = languages, log_level = 1, log_file = "~/efm.log" },
 		},
 		lua = {

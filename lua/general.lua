@@ -1,7 +1,6 @@
 local o = vim.o
 local g = vim.g
 
-o.syntax = "on"
 o.hidden = true
 o.wrap = false
 

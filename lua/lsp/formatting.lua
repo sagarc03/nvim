@@ -15,7 +15,7 @@ g.neoformat_enabled_go = { "gofmt", "goimports" }
 
 vim.cmd([[
 augroup fmt
-    autocmd!
-    autocmd BufWritePre * undojoin | Neoformat
+autocmd!
+autocmd BufWritePre * undojoin | Neoformat
 augroup END
 ]])

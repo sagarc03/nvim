@@ -26,13 +26,6 @@ local mypy = {
 	lintFormats = { "%f:%l:%c: %trror:%m", "%f:%l:%c: %tarning:%m", "%f:%l:%c: %tote:%m" },
 }
 
-local staticcheck = {
-	prefix = "staticcheck",
-	lintCommand = "staticcheck ${INPUT}",
-	lintFormats = {
-		"%f:%l:%c: %m",
-	},
-}
 return {
 	python = { pylint, mypy },
 	javascript = { eslint },
@@ -41,5 +34,4 @@ return {
 	typescript = { eslint },
 	["typescript.tsx"] = { eslint },
 	typescriptreact = { eslint },
-	["go"] = { staticcheck },
 }

@@ -1,5 +1,6 @@
 vim.g.mapleader = " "
 
+require("general")
 require("packages")
 require("statusline")
 require("lsp")
@@ -7,7 +8,6 @@ require("root")
 require("telescopeconfig")
 require("bufferlineconfig")
 require("mapping")
-require("general")
 require("ctree")
 require("dashboard")
 require("term")
