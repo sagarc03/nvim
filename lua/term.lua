@@ -19,26 +19,3 @@ require("toggleterm").setup({
 	close_on_exit = true, -- close the terminal window when the process exits
 	shell = vim.o.shell, -- change the default shell
 })
-
-local Terminal = require("toggleterm.terminal").Terminal
-local lazygit = Terminal:new({
-	cmd = "lazygit",
-	dir = "git_dir",
-	direction = "float",
-	hidden = true,
-	float_opts = {
-		border = "double",
-	},
-	close_on_exit = true, -- close the terminal window when the process exits
-	-- function to run on opening the terminal
-	on_open = function(term)
-		local opts = { noremap = true, silent = true }
-		vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", opts)
-	end,
-})
-
-function LazyGitToggle()
-	lazygit:toggle()
-end
-
-vim.api.nvim_set_keymap("n", "<leader>g", "<cmd>lua LazyGitToggle()<CR>", { noremap = true, silent = true })
