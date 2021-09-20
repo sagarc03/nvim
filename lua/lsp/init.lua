@@ -17,7 +17,8 @@ require("lspinstall").setup()
 require("lsp-status").register_progress()
 local lspconfig = require("lspconfig")
 local languages = require("lsp.efm")
-vim.g["coq_settings"] = { auto_start = "shut-up" }
+vim.g["coq_settings"] = { auto_start = "shut-up", keymap = { jump_to_mark = "<C-n>" } }
+
 require("coq")
 require("coq_3p")({
 	{ src = "nvimlua", short_name = "nLUA", conf_only = true },
