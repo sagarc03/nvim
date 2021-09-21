@@ -8,9 +8,13 @@ o.wrap = false
 vim.cmd("set clipboard+=unnamedplus")
 vim.cmd("set signcolumn=auto:2")
 
-vim.cmd("set foldmethod=expr")
-vim.cmd("set foldexpr=nvim_treesitter#foldexpr()")
-vim.cmd("set foldlevelstart=99")
+-- fold settings
+vim.wo.foldmethod = "expr"
+vim.wo.foldexpr = "nvim_treesitter#foldexpr()"
+vim.wo.foldtext = [[substitute(getline(v:foldstart),'\\t',repeat('\ ',&tabstop),'g').'...'.trim(getline(v:foldend)) ]]
+vim.wo.fillchars = "fold:\\"
+vim.wo.foldnestmax = 3
+vim.wo.foldminlines = 1
 
 -- Line numbers
 o.number = true
