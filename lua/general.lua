@@ -47,3 +47,5 @@ g["coq_settings"] = {
 		jump_to_mark = "<C-n>",
 	},
 }
+
+vim.cmd([[au BufWinEnter * checktime]])
