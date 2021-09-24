@@ -41,14 +41,16 @@ return packer.startup(function()
 			"kabouzeid/nvim-lspinstall",
 		},
 	})
-	use("onsails/lspkind-nvim")
 	use("nvim-lua/lsp-status.nvim")
 	use({
 		"folke/trouble.nvim",
 		requires = "kyazdani42/nvim-web-devicons",
 	})
 	use("ray-x/lsp_signature.nvim")
-	use({ "ray-x/navigator.lua", requires = { "ray-x/guihua.lua", run = "cd lua/fzy && make" } })
+	use({
+		"ray-x/navigator.lua",
+		requires = { "ray-x/guihua.lua", run = "cd lua/fzy && make" },
+	})
 
 	use({ "ms-jpq/coq_nvim", branch = "coq" })
 	use({ "ms-jpq/coq.artifacts", branch = "artifacts" })

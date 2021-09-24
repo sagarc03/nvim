@@ -14,6 +14,7 @@
 require("lsp.formatting")
 require("lsp.extra")
 require("lspinstall").setup()
+require("lsp_signature").setup()
 require("lsp-status").register_progress()
 local lspconfig = require("lspconfig")
 local languages = require("lsp.efm")
@@ -26,7 +27,6 @@ require("coq_3p")({
 })
 
 require("navigator").setup({
-	format_on_save = false,
 	keymaps = {
 		{ mode = "i", key = "<M-s>", func = "signature_help()" },
 		{ key = "<c-s>", func = "signature_help()" },
@@ -35,11 +35,12 @@ require("navigator").setup({
 	},
 	lspinstall = true, -- set to true if you would like use the lsp installed by lspinstall
 	lsp = {
+		format_on_save = false,
 		efm = {
 			root_dir = lspconfig.util.root_pattern("yarn.lock", "package.json", ".git", "pyproject.toml"),
 			filetypes = vim.tbl_keys(languages),
 			init_options = { documentFormatting = false, codeAction = false },
-			settings = { languages = languages, log_level = 1, log_file = "~/efm.log" },
+			settings = { languages = languages },
 		},
 		lua = {
 			settings = {

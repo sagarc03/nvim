@@ -20,10 +20,10 @@ require("focus").setup({
 -- Default[filetypes]: none
 -- Default[buftypes]: 'nofile', 'prompt', 'help'
 -- Normal Mode
-key_mapper("n", "<C-h>", "<CMD>FocusSplitLeft %<CR>", opts)
-key_mapper("n", "<C-j>", "<CMD>FocusSplitDown %<CR>", opts)
-key_mapper("n", "<C-k>", "<CMD>FocusSplitUp %<CR>", opts)
-key_mapper("n", "<C-l>", "<CMD>FocusSplitRight %<CR>", opts)
+key_mapper("n", "<C-h>", "<CMD>FocusSplitLeft<CR>", opts)
+key_mapper("n", "<C-j>", "<CMD>FocusSplitDown<CR>", opts)
+key_mapper("n", "<C-k>", "<CMD>FocusSplitUp<CR>", opts)
+key_mapper("n", "<C-l>", "<CMD>FocusSplitRight<CR>", opts)
 
 -- Insert Mode
 key_mapper("i", "<C-h>", "<ESC><CMD>FocusSplitLeft<CR>", opts)
