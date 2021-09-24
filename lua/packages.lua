@@ -22,7 +22,8 @@ return packer.startup(function()
 	use("wbthomason/packer.nvim")
 
 	-- Themes
-	use("Pocco81/Catppuccino.nvim")
+	-- use("Pocco81/Catppuccino.nvim")
+	use("folke/tokyonight.nvim")
 
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 	use("nvim-treesitter/nvim-treesitter-refactor")

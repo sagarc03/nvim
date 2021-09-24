@@ -14,8 +14,10 @@ require("term")
 require("scope")
 require("git")
 
-vim.cmd([[colorscheme catppuccino]])
--- vim.cmd([[set background=dark]])
+-- Theme
+vim.g.tokyonight_italic_functions = true
+vim.g.tokyonight_sidebars = { "terminal", "packer", "CHADTree" }
+vim.cmd([[colorscheme tokyonight]])
 --
 -- Auto Activate poetry virtual env
 vim.g.poetv_auto_activate = "1"
@@ -41,7 +43,7 @@ require("nvim-treesitter.configs").setup({
 	},
 })
 
-local catppuccino = require("catppuccino")
+--[[ local catppuccino = require("catppuccino")
 catppuccino.setup({
 	colorscheme = "dark_catppuccino",
 	transparency = false,
@@ -66,6 +68,6 @@ catppuccino.setup({
 		bufferline = true,
 		markdown = true,
 	},
-})
+}) ]]
 
 require("surround").setup({ mappings_style = "sandwich" })
