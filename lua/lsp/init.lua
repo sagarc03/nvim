@@ -16,6 +16,7 @@ require("lsp.extra")
 require("lspinstall").setup()
 require("lsp_signature").setup()
 require("lsp-status").register_progress()
+require("spellsitter").setup()
 local lspconfig = require("lspconfig")
 local languages = require("lsp.efm")
 vim.g["coq_settings"] = { auto_start = "shut-up", keymap = { jump_to_mark = "<C-n>" } }

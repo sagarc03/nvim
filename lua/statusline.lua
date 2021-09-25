@@ -5,6 +5,11 @@ local function line_progress()
 	return tostring(math.ceil((current_line / total_line) * 100)) .. "%%"
 end
 
+local gps = require("nvim-gps")
+gps.setup({
+	separator = " > ",
+})
+
 require("lualine").setup({
 	options = {
 		icons_enabled = true,
@@ -16,7 +21,7 @@ require("lualine").setup({
 	sections = {
 		lualine_a = { "mode" },
 		lualine_b = { "branch" },
-		lualine_c = { "diff", "filename" },
+		lualine_c = { "diff", "filename", { gps.get_location, condition = gps.is_available } },
 		lualine_x = { require("lsp-status").status, "filetype" },
 		lualine_y = { line_progress },
 		lualine_z = { "location" },

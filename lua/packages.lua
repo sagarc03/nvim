@@ -128,4 +128,9 @@ return packer.startup(function()
 
 	use("p00f/nvim-ts-rainbow")
 	use("sindrets/diffview.nvim")
+	use({
+		-- Optional but recommended
+		-- 'nvim-treesitter/nvim-treesitter',
+		"lewis6991/spellsitter.nvim",
+	})
 end)
