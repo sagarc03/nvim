@@ -34,6 +34,7 @@ return packer.startup(function()
 			opt = true,
 		},
 	})
+	use("SmiteshP/nvim-gps")
 
 	-- LSP and similar functions
 	use({
