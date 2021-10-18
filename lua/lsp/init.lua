@@ -13,19 +13,13 @@
 --
 require("lsp.formatting")
 require("lsp.extra")
+require("lsp.completion")
 require("lspinstall").setup()
 require("lsp_signature").setup()
 require("lsp-status").register_progress()
 require("spellsitter").setup()
 local lspconfig = require("lspconfig")
 local languages = require("lsp.efm")
-vim.g["coq_settings"] = { auto_start = "shut-up", keymap = { jump_to_mark = "<C-n>" } }
-
-require("coq")
-require("coq_3p")({
-	{ src = "nvimlua", short_name = "nLUA", conf_only = true },
-	{ src = "figlet", short_name = "BIG" },
-})
 
 require("navigator").setup({
 	keymaps = {

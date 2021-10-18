@@ -4,9 +4,11 @@ vim.api.nvim_set_keymap("n", "<leader>fp", ":Telescope projects<CR>", opts)
 vim.api.nvim_set_keymap("n", "<leader>fg", ":Telescope live_grep<CR>", opts)
 vim.api.nvim_set_keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)
 vim.api.nvim_set_keymap("n", "<leader>ft", ":Telescope treesitter<CR>", opts)
+vim.api.nvim_set_keymap("n", "<leader>fd", ":Telescope dash search<CR>", opts)
 
 require("telescope").load_extension("fzf")
 require("telescope").load_extension("projects")
+require("telescope").load_extension("emoji")
 
 require("telescope").setup({
 	defaults = {

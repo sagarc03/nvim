@@ -54,9 +54,17 @@ return packer.startup(function()
 		requires = { "ray-x/guihua.lua", run = "cd lua/fzy && make" },
 	})
 
-	use({ "ms-jpq/coq_nvim", branch = "coq" })
-	use({ "ms-jpq/coq.artifacts", branch = "artifacts" })
-	use({ "ms-jpq/coq.thirdparty", branch = "3p" })
+	use({
+		"hrsh7th/nvim-cmp",
+		requires = {
+			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-buffer",
+			"hrsh7th/cmp-path",
+			"hrsh7th/cmp-emoji",
+		},
+	})
+
+	use({ "L3MON4D3/LuaSnip", requires = { "saadparwaiz1/cmp_luasnip", "rafamadriz/friendly-snippets" } })
 
 	use("sbdchd/neoformat")
 
@@ -68,18 +76,17 @@ return packer.startup(function()
 		requires = {
 			"nvim-lua/popup.nvim",
 			"nvim-lua/plenary.nvim",
+			"xiyaowong/telescope-emoji.nvim",
 		},
 	})
 
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 
+	use({ "mrjones2014/dash.nvim", requires = { "nvim-telescope/telescope.nvim" } })
 	use({
-		"ms-jpq/chadtree",
-		branch = "chad",
-		run = "python3 -m chadtree deps",
+		"kyazdani42/nvim-tree.lua",
 		requires = {
 			"kyazdani42/nvim-web-devicons",
-			"tiagofumo/vim-nerdtree-syntax-highlight",
 		},
 	})
 	use({

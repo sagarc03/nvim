@@ -41,11 +41,5 @@ o.termguicolors = true
 
 g.loaded_python_provider = 0
 g.python3_host_prog = vim.env.HOME .. "/.pyenv/versions/py3nvim/bin/python"
-g["coq_settings"] = {
-	keymap = {
-		recommended = true,
-		jump_to_mark = "<C-n>",
-	},
-}
 
 vim.cmd([[au BufWinEnter * checktime]])
