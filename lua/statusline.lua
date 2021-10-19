@@ -13,7 +13,7 @@ gps.setup({
 require("lualine").setup({
 	options = {
 		icons_enabled = true,
-		theme = "tokyonight",
+		theme = "nightfly",
 		component_separators = { "", "" },
 		section_separators = { "", "" },
 		disabled_filetypes = { "dashboard" },

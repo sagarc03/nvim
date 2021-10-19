@@ -79,6 +79,7 @@ return packer.startup(function()
 			"nvim-lua/popup.nvim",
 			"nvim-lua/plenary.nvim",
 			"xiyaowong/telescope-emoji.nvim",
+			"edolphin-ydf/goimpl.nvim",
 		},
 	})
 
@@ -97,7 +98,6 @@ return packer.startup(function()
 			"kyazdani42/nvim-web-devicons",
 		},
 	})
-
 	use("windwp/nvim-autopairs")
 	use("alvan/vim-closetag")
 
@@ -142,4 +142,7 @@ return packer.startup(function()
 		-- 'nvim-treesitter/nvim-treesitter',
 		"lewis6991/spellsitter.nvim",
 	})
+
+	-- Language Specific
+	use({ "ray-x/go.nvim" })
 end)
