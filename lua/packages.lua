@@ -23,7 +23,9 @@ return packer.startup(function()
 
 	-- Themes
 	-- use("Pocco81/Catppuccino.nvim")
-	use("folke/tokyonight.nvim")
+	-- use("folke/tokyonight.nvim")
+	-- use("jacoborus/tender.vim")
+	use("bluz71/vim-nightfly-guicolors")
 
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 	use("nvim-treesitter/nvim-treesitter-refactor")

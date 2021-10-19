@@ -15,10 +15,12 @@ require("scope")
 require("git")
 
 -- Theme
-vim.g.tokyonight_italic_functions = true
-vim.g.tokyonight_sidebars = { "terminal", "packer", "CHADTree" }
-vim.cmd([[colorscheme tokyonight]])
---
+-- vim.g.tokyonight_italic_functions = true
+-- vim.g.tokyonight_sidebars = { "terminal", "packer", "CHADTree" }
+-- vim.cmd([[colorscheme tokyonight]])
+-- vim.cmd([[colorscheme tender]])
+vim.cmd([[colorscheme nightfly]])
+
 -- Auto Activate poetry virtual env
 vim.g.poetv_auto_activate = "1"
 
