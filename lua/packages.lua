@@ -30,7 +30,7 @@ return packer.startup(function()
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 	use("nvim-treesitter/nvim-treesitter-refactor")
 	use({
-		"hoob3rt/lualine.nvim",
+		"nvim-lualine/lualine.nvim",
 		requires = {
 			"kyazdani42/nvim-web-devicons",
 			opt = true,
