@@ -16,7 +16,7 @@ require("lualine").setup({
 		lualine_a = { "mode" },
 		lualine_b = { "branch" },
 		lualine_c = { "diff", "filename", { gps.get_location, condition = gps.is_available } },
-		lualine_x = { require("lsp-status").status, "filetype" },
+		lualine_x = { { "require('lsp-status').status()", condition = #vim.lsp.buf_get_clients() > 0 }, "filetype" },
 		lualine_y = { "progress" },
 		lualine_z = { "location" },
 	},

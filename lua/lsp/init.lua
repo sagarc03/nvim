@@ -16,10 +16,12 @@ require("lsp.extra")
 require("lsp.completion")
 require("lspinstall").setup()
 require("lsp_signature").setup()
-require("lsp-status").register_progress()
 require("spellsitter").setup()
+local lsp_status = require("lsp-status")
 local lspconfig = require("lspconfig")
 local languages = require("lsp.efm")
+
+lsp_status.register_progress()
 
 require("navigator").setup({
 	keymaps = {
@@ -29,6 +31,10 @@ require("navigator").setup({
 		{ key = "<Space>cf", func = "range_formatting()", mode = "v" },
 	},
 	lspinstall = true, -- set to true if you would like use the lsp installed by lspinstall
+	on_attach = function(client, _)
+		lsp_status.on_attach(client)
+	end,
+
 	lsp = {
 		format_on_save = false,
 		efm = {
