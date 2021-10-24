@@ -14,14 +14,23 @@
 require("lsp.formatting")
 require("lsp.extra")
 require("lsp.completion")
-require("lspinstall").setup()
 require("lsp_signature").setup()
 require("spellsitter").setup()
 local lsp_status = require("lsp-status")
 local lspconfig = require("lspconfig")
 local languages = require("lsp.efm")
+local lsp_installer_servers = require("nvim-lsp-installer.servers")
 
 lsp_status.register_progress()
+
+for _, server_name in pairs({ "sumneko_lua", "efm", "pyright", "gopls", "tsserver" }) do
+	local ok, server = lsp_installer_servers.get_server(server_name)
+	if ok then
+		if not server:is_installed() then
+			server:install()
+		end
+	end
+end
 
 require("navigator").setup({
 	keymaps = {
@@ -30,7 +39,7 @@ require("navigator").setup({
 		{ key = "<Space>cf", func = "formatting()", mode = "n" },
 		{ key = "<Space>cf", func = "range_formatting()", mode = "v" },
 	},
-	lspinstall = true, -- set to true if you would like use the lsp installed by lspinstall
+	lsp_installer = true, -- set to true if you would like use the lsp installed by lspinstall
 	on_attach = function(client, _)
 		lsp_status.on_attach(client)
 	end,

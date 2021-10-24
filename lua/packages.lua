@@ -42,7 +42,7 @@ return packer.startup(function()
 	use({
 		"neovim/nvim-lspconfig",
 		requires = {
-			"kabouzeid/nvim-lspinstall",
+			"williamboman/nvim-lsp-installer",
 		},
 	})
 	use("nvim-lua/lsp-status.nvim")
@@ -85,7 +85,7 @@ return packer.startup(function()
 
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 
-	use({ "mrjones2014/dash.nvim", requires = { "nvim-telescope/telescope.nvim" } })
+	use({ "mrjones2014/dash.nvim", requires = { "nvim-telescope/telescope.nvim" }, run = "make install" })
 	use({
 		"kyazdani42/nvim-tree.lua",
 		requires = {
