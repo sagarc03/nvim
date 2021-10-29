@@ -23,7 +23,7 @@ local lsp_installer_servers = require("nvim-lsp-installer.servers")
 
 lsp_status.register_progress()
 
-for _, server_name in pairs({ "sumneko_lua", "efm", "pyright", "gopls", "tsserver" }) do
+for _, server_name in pairs({ "sumneko_lua", "efm", "pyright", "gopls", "tsserver", "sqls" }) do
 	local ok, server = lsp_installer_servers.get_server(server_name)
 	if ok then
 		if not server:is_installed() then
