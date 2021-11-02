@@ -50,6 +50,11 @@ return packer.startup(function()
 		"folke/trouble.nvim",
 		requires = "kyazdani42/nvim-web-devicons",
 	})
+	use({
+		"folke/todo-comments.nvim",
+		requires = "nvim-lua/plenary.nvim",
+	})
+
 	use("ray-x/lsp_signature.nvim")
 	use({
 		"ray-x/navigator.lua",
@@ -124,6 +129,7 @@ return packer.startup(function()
 			require("hop").setup({ keys = "etovxqpdygfblzhckisuran" })
 		end,
 	})
+	use({ "phaazon/hop.nvim", as = "hop" })
 
 	-- Surround
 	use("blackCauldron7/surround.nvim")
@@ -137,12 +143,11 @@ return packer.startup(function()
 
 	use("p00f/nvim-ts-rainbow")
 	use("sindrets/diffview.nvim")
-	use({
-		-- Optional but recommended
-		-- 'nvim-treesitter/nvim-treesitter',
-		"lewis6991/spellsitter.nvim",
-	})
+	use({ "lewis6991/spellsitter.nvim" })
 
 	-- Language Specific
 	use({ "ray-x/go.nvim" })
+
+	use({ "sidebar-nvim/sidebar.nvim" })
+
 end)
