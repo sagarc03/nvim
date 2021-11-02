@@ -1,5 +1,3 @@
-vim.g["nvim_tree_ignore"] = { ".git", "node_modules", ".cache" }
-
 -- following options are the default
 require("nvim-tree").setup({
 	-- disables netrw completely
@@ -71,4 +69,5 @@ require("nvim-tree").setup({
 			list = {},
 		},
 	},
+	nvim_tree_ignore = { ".git", "node_modules", ".cache" },
 })
