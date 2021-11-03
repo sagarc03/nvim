@@ -25,7 +25,8 @@ return packer.startup(function()
 	-- use("Pocco81/Catppuccino.nvim")
 	-- use("folke/tokyonight.nvim")
 	-- use("jacoborus/tender.vim")
-	use("bluz71/vim-nightfly-guicolors")
+	-- use("bluz71/vim-nightfly-guicolors")
+	use("rmehri01/onenord.nvim")
 
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 	use("nvim-treesitter/nvim-treesitter-refactor")
@@ -121,14 +122,6 @@ return packer.startup(function()
 	-- Text Navigation and Jumping
 	use("unblevable/quick-scope")
 
-	use({
-		"phaazon/hop.nvim",
-		as = "hop",
-		config = function()
-			-- you can configure Hop the way you like here; see :h hop-config
-			require("hop").setup({ keys = "etovxqpdygfblzhckisuran" })
-		end,
-	})
 	use({ "phaazon/hop.nvim", as = "hop" })
 
 	-- Surround
@@ -150,4 +143,11 @@ return packer.startup(function()
 
 	use({ "sidebar-nvim/sidebar.nvim" })
 
+	-- Experimental
+	use({
+		"kristijanhusak/orgmode.nvim",
+		branch = "tree-sitter",
+	})
+
+	-- Lua
 end)
