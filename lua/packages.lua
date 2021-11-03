@@ -91,7 +91,13 @@ return packer.startup(function()
 
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 
-	use({ "mrjones2014/dash.nvim", requires = { "nvim-telescope/telescope.nvim" }, run = "make install" })
+	--[[ use({
+		"mrjones2014/dash.nvim",
+		requires = { "nvim-telescope/telescope.nvim" },
+		run = "make install",
+		disable = not vim.fn.has("macunix"),
+	}) ]]
+
 	use({
 		"kyazdani42/nvim-tree.lua",
 		requires = {
@@ -140,7 +146,6 @@ return packer.startup(function()
 
 	-- Language Specific
 	use({ "ray-x/go.nvim" })
-
 	use({ "sidebar-nvim/sidebar.nvim" })
 
 	-- Experimental
@@ -150,4 +155,5 @@ return packer.startup(function()
 	})
 
 	-- Lua
+	use({ "gelguy/wilder.nvim", run = ":UpdateRemotePlugins" })
 end)
