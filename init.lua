@@ -137,3 +137,4 @@ call wilder#set_option('pipeline', [
       \   ),
       \ ])
 ]])
+-- vim.cmd([[call wilder#set_option('renderer', wilder#popupmenu_renderer({'highlighter': wilder#basic_highlighter()}))]])
