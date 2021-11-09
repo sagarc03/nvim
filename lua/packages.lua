@@ -148,11 +148,8 @@ return packer.startup(function()
 	use({ "ray-x/go.nvim" })
 	use({ "sidebar-nvim/sidebar.nvim" })
 
-	-- Experimental
-	use({
-		"kristijanhusak/orgmode.nvim",
-		branch = "tree-sitter",
-	})
+	-- ORG MODE
+	use({ "kristijanhusak/orgmode.nvim" })
 
 	-- Lua
 	use({ "gelguy/wilder.nvim", run = ":UpdateRemotePlugins" })
