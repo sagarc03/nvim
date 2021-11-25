@@ -101,8 +101,8 @@ catppuccino.setup({
 	},
 }) ]]
 
+require('Comment').setup()
 require("surround").setup({ mappings_style = "sandwich" })
--- TODO: Something
 require("sidebar-nvim").setup({
 	disable_default_keybindings = 0,
 	bindings = nil,
