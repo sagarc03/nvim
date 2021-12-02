@@ -44,7 +44,7 @@ require("telescope").setup({
 			preview_cutoff = 120,
 		},
 		file_sorter = require("telescope.sorters").get_fuzzy_file,
-		file_ignore_patterns = {},
+		file_ignore_patterns = { "node_modules" },
 		generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
 		path_display = { "absolute" },
 		winblend = 0,
@@ -59,6 +59,7 @@ require("telescope").setup({
 		-- Developer configurations: Not meant for general override
 		buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
 	},
+
 	extensions = {
 		fzf = {
 			fuzzy = true, -- false will only do exact matching
