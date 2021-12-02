@@ -133,7 +133,7 @@ return packer.startup(function()
 	-- Surround
 	use("blackCauldron7/surround.nvim")
 	-- Better Comments
-    use("numToStr/Comment.nvim")
+	use("numToStr/Comment.nvim")
 
 	use("glepnir/dashboard-nvim")
 
