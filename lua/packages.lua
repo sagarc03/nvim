@@ -133,7 +133,7 @@ return packer.startup(function()
 	-- Surround
 	use("blackCauldron7/surround.nvim")
 	-- Better Comments
-    use("numToStr/Comment.nvim")
+	use("numToStr/Comment.nvim")
 
 	use("glepnir/dashboard-nvim")
 
@@ -142,7 +142,6 @@ return packer.startup(function()
 
 	use("p00f/nvim-ts-rainbow")
 	use("sindrets/diffview.nvim")
-	use({ "lewis6991/spellsitter.nvim" })
 
 	-- Language Specific
 	use({ "ray-x/go.nvim" })
