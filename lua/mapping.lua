@@ -13,7 +13,8 @@ key_mapper("i", "jj", "<ESC>", { silent = true })
 -- Navigation
 --
 require("focus").setup({
-	excluded_filetypes = { "toggleterm", "SidebarNvim" },
+	excluded_filetypes = { "toggleterm", "SidebarNvim", "DiffviewFiles" },
+	excluded_bufftypes = { "help", "nofile", "prompt" },
 })
 -- Prevents focus automatically resizing windows based on configured excluded filetypes or buftypes
 -- Query filetypes using :lua print(vim.bo.ft) or buftypes using :lua print(vim.bo.buftype)
