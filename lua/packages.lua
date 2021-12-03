@@ -1,3 +1,4 @@
+-- TODO: Clean up packages that are no longer there
 local install_path = "~/.local/share/nvim/site/pack/packer/start/packer.nvim"
 
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
@@ -22,11 +23,7 @@ return packer.startup(function()
 	use("wbthomason/packer.nvim")
 
 	-- Themes
-	-- use("Pocco81/Catppuccino.nvim")
-	-- use("folke/tokyonight.nvim")
-	-- use("jacoborus/tender.vim")
-	-- use("bluz71/vim-nightfly-guicolors")
-	use("rmehri01/onenord.nvim")
+	use("shaunsingh/moonlight.nvim")
 
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 	use("nvim-treesitter/nvim-treesitter-refactor")
