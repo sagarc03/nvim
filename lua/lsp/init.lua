@@ -15,8 +15,10 @@ require("lsp.formatting")
 require("lsp.extra")
 require("lsp.completion")
 require("lsp_signature").setup()
+
 local lsp_status = require("lsp-status")
 local lspconfig = require("lspconfig")
+
 local languages = require("lsp.efm")
 local lsp_installer_servers = require("nvim-lsp-installer.servers")
 
@@ -39,10 +41,9 @@ require("navigator").setup({
 		{ key = "<Space>cf", func = "range_formatting()", mode = "v" },
 	},
 	lsp_installer = true, -- set to true if you would like use the lsp installed by lspinstall
-	on_attach = function(client, _)
-		lsp_status.on_attach(client)
+	on_attach = function(...)
+		lsp_status.on_attach(...)
 	end,
-
 	lsp = {
 		format_on_save = false,
 		efm = {

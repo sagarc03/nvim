@@ -87,7 +87,6 @@ return packer.startup(function()
 	})
 
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
-
 	--[[ use({
 		"mrjones2014/dash.nvim",
 		requires = { "nvim-telescope/telescope.nvim" },
