@@ -26,8 +26,26 @@ local mypy = {
 	lintFormats = { "%f:%l:%c: %trror:%m", "%f:%l:%c: %tarning:%m", "%f:%l:%c: %tote:%m" },
 }
 
+local black = {
+	prefix = "black",
+	formatCommand = "black --quiet -",
+	formatStdin = true,
+}
+
+local isort = {
+	prefix = "isort",
+	formatCommand = "isort --quiet -",
+	formatStdin = true,
+}
+
+local stylua = {
+	prefix = "stylua",
+	formatCommand = "stylua -",
+	formatStdin = true,}
+
 return {
-	python = { pylint, mypy },
+	lua = { stylua },
+	python = { pylint, mypy, black, isort },
 	javascript = { eslint },
 	javascriptreact = { eslint },
 	["javascript.jsx"] = { eslint },

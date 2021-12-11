@@ -24,7 +24,7 @@ local lsp_installer_servers = require("nvim-lsp-installer.servers")
 
 lsp_status.register_progress()
 
-for _, server_name in pairs({ "sumneko_lua", "efm", "pyright", "gopls", "tsserver", "sqls" }) do
+for _, server_name in pairs({ "sumneko_lua", "efm", "pyright", "gopls", "tsserver" }) do
 	local ok, server = lsp_installer_servers.get_server(server_name)
 	if ok then
 		if not server:is_installed() then
@@ -34,32 +34,26 @@ for _, server_name in pairs({ "sumneko_lua", "efm", "pyright", "gopls", "tsserve
 end
 
 require("navigator").setup({
-	keymaps = {
-		{ mode = "i", key = "<M-s>", func = "signature_help()" },
-		{ key = "<c-s>", func = "signature_help()" },
-		{ key = "<Space>cf", func = "formatting()", mode = "n" },
-		{ key = "<Space>cf", func = "range_formatting()", mode = "v" },
-	},
 	lsp_installer = true, -- set to true if you would like use the lsp installed by lspinstall
-	on_attach = function(...)
-		lsp_status.on_attach(...)
+	on_attach = function(client, bufnr)
+		lsp_status.on_attach(client, bufnr)
+		if client.resolved_capabilities.document_formatting then
+			vim.cmd([[augroup Format]])
+			vim.cmd([[autocmd! * <buffer>]])
+			vim.cmd([[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()]])
+			vim.cmd([[augroup END]])
+		end
 	end,
 	lsp = {
 		format_on_save = false,
 		efm = {
+			on_attach = function(client, _)
+				client.resolved_capabilities.document_formatting = true
+			end,
+			init_options = { documenFormatting = true, codeAction = true, document_formatting = true },
 			root_dir = lspconfig.util.root_pattern("yarn.lock", "package.json", ".git", "pyproject.toml"),
 			filetypes = vim.tbl_keys(languages),
-			init_options = { documentFormatting = false, codeAction = false },
-			settings = { languages = languages },
-		},
-		lua = {
-			settings = {
-				Lua = {
-					diagnostics = {
-						globals = { "vim", "exepath" },
-					},
-				},
-			},
+			settings = { log_level = 1, log_file = "~/efm.log", languages = languages },
 		},
 	},
 })
