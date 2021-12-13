@@ -23,7 +23,7 @@ return packer.startup(function()
 	use("wbthomason/packer.nvim")
 
 	-- Themes
-	use("shaunsingh/moonlight.nvim")
+	use("ray-x/aurora")
 
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 	use("nvim-treesitter/nvim-treesitter-refactor")
