@@ -30,10 +30,10 @@ require("sidebar-nvim").setup({
 	side = "right",
 	initial_width = 20,
 	update_interval = 1000,
-	sections = { "git-status", "lsp-diagnostics", "todos" },
+	sections = { "git-status", "lsp-diagnostics", "todos", "containers" },
 	section_separator = "-----",
 	containers = {
-		attach_shell = "/bin/sh",
+		attach_shell = "/bin/zsh",
 		show_all = true,
 		interval = 5000,
 	},
