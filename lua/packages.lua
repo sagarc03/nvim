@@ -1,4 +1,3 @@
--- TODO: Clean up packages that are no longer there
 local install_path = "~/.local/share/nvim/site/pack/packer/start/packer.nvim"
 
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
@@ -34,15 +33,9 @@ return packer.startup(function()
 			opt = true,
 		},
 	})
-	use("SmiteshP/nvim-gps")
 
 	-- LSP and similar functions
-	use({
-		"neovim/nvim-lspconfig",
-		requires = {
-			"williamboman/nvim-lsp-installer",
-		},
-	})
+	use({ "neovim/nvim-lspconfig" })
 	use("nvim-lua/lsp-status.nvim")
 	use({
 		"folke/trouble.nvim",
@@ -140,9 +133,6 @@ return packer.startup(function()
 	-- Language Specific
 	use({ "ray-x/go.nvim" })
 	use({ "sidebar-nvim/sidebar.nvim" })
-
-	-- ORG MODE
-	use({ "kristijanhusak/orgmode.nvim" })
 
 	-- Lua
 	use({ "gelguy/wilder.nvim", run = ":UpdateRemotePlugins" })
