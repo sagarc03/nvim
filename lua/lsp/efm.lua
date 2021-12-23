@@ -41,7 +41,20 @@ local isort = {
 local stylua = {
 	prefix = "stylua",
 	formatCommand = "stylua -",
-	formatStdin = true,}
+	formatStdin = true,
+}
+
+local json_prettier = {
+	prefix = "prettier",
+	formatCommand = "prettier ${--tab-width:tabWidth} --parser json",
+	formatStdin = true,
+}
+
+local json_jq = {
+	prefix = "jq",
+	lintCommand = "jq .",
+	lintStdin = true,
+}
 
 return {
 	lua = { stylua },
@@ -52,4 +65,5 @@ return {
 	typescript = { eslint },
 	["typescript.tsx"] = { eslint },
 	typescriptreact = { eslint },
+	json = { json_prettier, json_jq },
 }

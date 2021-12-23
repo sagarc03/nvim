@@ -23,6 +23,7 @@ return packer.startup(function()
 
 	-- Themes
 	use("ray-x/aurora")
+	use("rebelot/kanagawa.nvim")
 
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 	use("nvim-treesitter/nvim-treesitter-refactor")
@@ -78,12 +79,6 @@ return packer.startup(function()
 	})
 
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
-	--[[ use({
-		"mrjones2014/dash.nvim",
-		requires = { "nvim-telescope/telescope.nvim" },
-		run = "make install",
-		disable = not vim.fn.has("macunix"),
-	}) ]]
 
 	use({
 		"kyazdani42/nvim-tree.lua",
@@ -107,9 +102,6 @@ return packer.startup(function()
 		requires = {
 			"nvim-lua/plenary.nvim",
 		},
-		config = function()
-			require("gitsigns").setup()
-		end,
 	})
 
 	-- Text Navigation and Jumping
@@ -119,10 +111,9 @@ return packer.startup(function()
 
 	-- Surround
 	use("blackCauldron7/surround.nvim")
+
 	-- Better Comments
 	use("numToStr/Comment.nvim")
-
-	use("glepnir/dashboard-nvim")
 
 	use("akinsho/toggleterm.nvim")
 	use("beauwilliams/focus.nvim")
@@ -132,8 +123,16 @@ return packer.startup(function()
 
 	-- Language Specific
 	use({ "ray-x/go.nvim" })
-	use({ "sidebar-nvim/sidebar.nvim" })
 
 	-- Lua
 	use({ "gelguy/wilder.nvim", run = ":UpdateRemotePlugins" })
+	use({
+		"ray-x/sad.nvim",
+		requires = { "ray-x/guihua.lua", run = "cd lua/fzy && make" },
+	})
+	use({
+		"startup-nvim/startup.nvim",
+		requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
+		config = function() end,
+	})
 end)

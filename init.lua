@@ -16,26 +16,33 @@ require("git")
 require("wilder")
 
 -- Theme
-vim.cmd([[colorscheme aurora]])
+require("kanagawa").setup({
+	undercurl = true, -- enable undercurls
+	commentStyle = "italic",
+	functionStyle = "bold",
+	keywordStyle = "italic",
+	statementStyle = "bold",
+	typeStyle = "NONE",
+	variablebuiltinStyle = "italic",
+	specialReturn = true, -- special highlight for the return keyword
+	specialException = true, -- special highlight for exception handling keywords
+	transparent = false, -- do not set background color
+	colors = {},
+	overrides = {},
+})
+
+-- setup must be called before loading
+vim.cmd("colorscheme kanagawa")
+vim.cmd("colorscheme kanagawa")
 
 -- Auto Activate poetry virtual env
 vim.g.poetv_auto_activate = "1"
 
 require("Comment").setup()
+require("gitsigns").setup()
 require("surround").setup({ mappings_style = "sandwich" })
-require("sidebar-nvim").setup({
-	disable_default_keybindings = 0,
-	bindings = nil,
-	open = false,
-	side = "right",
-	initial_width = 20,
-	update_interval = 1000,
-	sections = { "git-status", "lsp-diagnostics", "todos", "containers" },
-	section_separator = "-----",
-	containers = {
-		attach_shell = "/bin/zsh",
-		show_all = true,
-		interval = 5000,
-	},
-	todos = { ignored_paths = { "~" } },
+require("sad").setup({
+	diff = "delta", -- you can use `diff`, `diff-so-fancy`
+	ls_file = "fd", -- also git ls_file
+	exact = true, -- exact match
 })
