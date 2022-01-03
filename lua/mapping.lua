@@ -4,22 +4,20 @@ end
 
 local opts = { noremap = true, silent = true }
 
--- Leader
-
 key_mapper("i", "jk", "<ESC>", { silent = true })
 key_mapper("i", "kj", "<ESC>", { silent = true })
 key_mapper("i", "jj", "<ESC>", { silent = true })
 
 -- Navigation
---
-require("focus").setup({
-	excluded_filetypes = { "toggleterm", "SidebarNvim", "DiffviewFiles" },
-	excluded_bufftypes = { "help", "nofile", "prompt" },
-})
 -- Prevents focus automatically resizing windows based on configured excluded filetypes or buftypes
 -- Query filetypes using :lua print(vim.bo.ft) or buftypes using :lua print(vim.bo.buftype)
 -- Default[filetypes]: none
 -- Default[buftypes]: 'nofile', 'prompt', 'help'
+require("focus").setup({
+	excluded_filetypes = { "toggleterm", "SidebarNvim", "DiffviewFiles" },
+	excluded_bufftypes = { "help", "nofile", "prompt" },
+})
+
 -- Normal Mode
 key_mapper("n", "<C-h>", "<CMD>FocusSplitLeft<CR>", opts)
 key_mapper("n", "<C-j>", "<CMD>FocusSplitDown<CR>", opts)
@@ -31,14 +29,6 @@ key_mapper("i", "<C-h>", "<ESC><CMD>FocusSplitLeft<CR>", opts)
 key_mapper("i", "<C-j>", "<ESC><CMD>FocusSplitDown<CR>", opts)
 key_mapper("i", "<C-k>", "<ESC><CMD>FocusSplitUp<CR>", opts)
 key_mapper("i", "<C-l>", "<ESC><CMD>FocusSplitRight<CR>", opts)
-
--- Other
-key_mapper("n", "<leader>bn", ":bn<CR>", opts)
-key_mapper("n", "<leader>bp", ":bp<CR>", opts)
-
-key_mapper("n", "<C-z>", ":ToggleTerminal<CR>", opts)
-key_mapper("t", "<C-z>", [[<C-\><C-n>:ToggleTerminal<CR>]], opts)
-key_mapper("t", "<C-z>", [[<C-\><C-n>:ToggleTerminal<CR>]], opts)
 
 -- Terminal Mode
 local temp_opts = opts

@@ -86,12 +86,6 @@ return packer.startup(function()
 			"kyazdani42/nvim-web-devicons",
 		},
 	})
-	use({
-		"akinsho/nvim-bufferline.lua",
-		requires = {
-			"kyazdani42/nvim-web-devicons",
-		},
-	})
 	use("windwp/nvim-autopairs")
 	use("alvan/vim-closetag")
 
@@ -134,5 +128,10 @@ return packer.startup(function()
 		"startup-nvim/startup.nvim",
 		requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
 		config = function() end,
+	})
+
+	use({
+		"romgrk/barbar.nvim",
+		requires = { "kyazdani42/nvim-web-devicons" },
 	})
 end)
