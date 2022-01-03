@@ -1,4 +1,5 @@
 vim.g.mapleader = " "
+
 require("general")
 require("treesitter")
 require("packages")
@@ -14,6 +15,8 @@ require("term")
 require("scope")
 require("git")
 require("wilder")
+
+vim.notify = require("notify")
 
 -- Theme
 require("kanagawa").setup({
@@ -32,7 +35,6 @@ require("kanagawa").setup({
 })
 
 -- setup must be called before loading
-vim.cmd("colorscheme kanagawa")
 vim.cmd("colorscheme kanagawa")
 
 -- Auto Activate poetry virtual env

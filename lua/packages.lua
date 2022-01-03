@@ -134,4 +134,5 @@ return packer.startup(function()
 		"romgrk/barbar.nvim",
 		requires = { "kyazdani42/nvim-web-devicons" },
 	})
+	use({ "rcarriga/nvim-notify" })
 end)
