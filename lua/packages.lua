@@ -135,4 +135,5 @@ return packer.startup(function()
 		requires = { "kyazdani42/nvim-web-devicons" },
 	})
 	use({ "rcarriga/nvim-notify" })
+	use({ "michaelb/sniprun", run = "bash ./install.sh" })
 end)
