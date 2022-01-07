@@ -50,6 +50,12 @@ local json_prettier = {
 	formatStdin = true,
 }
 
+local html_prettier = {
+	prefix = "prettier",
+	formatCommand = "prettier --parser html",
+	formatStdin = true,
+}
+
 local json_jq = {
 	prefix = "jq",
 	lintCommand = "jq .",
@@ -66,4 +72,5 @@ return {
 	["typescript.tsx"] = { eslint, js_prettier },
 	typescriptreact = { eslint, js_prettier },
 	json = { json_prettier, json_jq },
+	html = { html_prettier },
 }

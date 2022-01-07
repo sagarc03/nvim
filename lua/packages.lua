@@ -63,7 +63,12 @@ return packer.startup(function()
 		},
 	})
 
-	use({ "L3MON4D3/LuaSnip", requires = { "saadparwaiz1/cmp_luasnip", "rafamadriz/friendly-snippets" } })
+	use({
+		"L3MON4D3/LuaSnip",
+		requires = { "saadparwaiz1/cmp_luasnip" },
+	})
+	use({ "honza/vim-snippets" })
+	use({ "rafamadriz/friendly-snippets" })
 
 	-- Lua
 	use("ahmedkhalf/project.nvim")
