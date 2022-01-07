@@ -1,12 +1,12 @@
 local eslint = {
 	prefix = "eslint",
-	lintCommand = "eslint_d -f unix --stdin --stdin-filename ${INPUT}",
+	lintCommand = "eslint -f unix --stdin --stdin-filename ${INPUT}",
 	lintStdin = true,
-	lintFormats = { "%f:%l:%c: %m" },
+	lintFormats = { "%f(%l,%c): %tarning %m", "%f(%l,%c): %rror %m" },
 	lintIgnoreExitCode = true,
-	formatCommand = "eslint_d --fix-to-stdout --stdin --stdin-filename=${INPUT}",
-	formatStdin = true,
 }
+
+local js_prettier = { formatCommand = "prettier --stdin-filepath ${INPUT}", formatStdin = true }
 
 local pylint = {
 	prefix = "pylint",
@@ -59,11 +59,11 @@ local json_jq = {
 return {
 	lua = { stylua },
 	python = { pylint, mypy, black, isort },
-	javascript = { eslint },
-	javascriptreact = { eslint },
-	["javascript.jsx"] = { eslint },
-	typescript = { eslint },
-	["typescript.tsx"] = { eslint },
-	typescriptreact = { eslint },
+	javascript = { eslint, js_prettier },
+	javascriptreact = { eslint, js_prettier },
+	["javascript.jsx"] = { eslint, js_prettier },
+	typescript = { eslint, js_prettier },
+	["typescript.tsx"] = { eslint, js_prettier },
+	typescriptreact = { eslint, js_prettier },
 	json = { json_prettier, json_jq },
 }

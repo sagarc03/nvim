@@ -36,6 +36,8 @@ require("navigator").setup({
 	end,
 	lsp = {
 		format_on_save = false,
+		disable_format_cap = { "pyright", "sumneko_lua", "tsserver" },
+		disable_lsp = { "flow" },
 		efm = {
 			on_attach = function(client, _)
 				client.resolved_capabilities.document_formatting = true
@@ -43,7 +45,7 @@ require("navigator").setup({
 			init_options = { documenFormatting = true, codeAction = true, document_formatting = true },
 			root_dir = lspconfig.util.root_pattern(".git", "yarn.lock", "package.json", "pyproject.toml"),
 			filetypes = vim.tbl_keys(languages),
-			settings = { log_level = 3, log_file = "~/efm.log", languages = languages },
+			settings = { log_level = 1, log_file = "~/efm.log", languages = languages },
 		},
 	},
 })
