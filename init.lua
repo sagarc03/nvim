@@ -16,8 +16,6 @@ require("scope")
 require("git")
 require("wilder")
 
-vim.notify = require("notify")
-
 -- Lua
 require("onedark").setup({
 	style = "darker", -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
@@ -43,11 +41,4 @@ require("sad").setup({
 	diff = "delta", -- you can use `diff`, `diff-so-fancy`
 	ls_file = "fd", -- also git ls_file
 	exact = true, -- exact match
-})
-
-require("sniprun").setup({
-	--# you can combo different display modes as desired
-	display = {
-		"NvimNotify", --# display with the nvim-notify plugin
-	},
 })
