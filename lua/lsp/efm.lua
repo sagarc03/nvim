@@ -6,7 +6,15 @@ local eslint = {
 	lintIgnoreExitCode = true,
 }
 
-local js_prettier = { formatCommand = "prettier --stdin-filepath ${INPUT}", formatStdin = true }
+local js_prettier = {
+	formatCommand = "prettier --stdin-filepath ${INPUT}",
+	formatStdin = true,
+}
+
+local scss_prettier = {
+	formatCommand = "prettier --parser scss",
+	formatStdin = true,
+}
 
 local pylint = {
 	prefix = "pylint",
@@ -52,7 +60,7 @@ local json_prettier = {
 
 local html_prettier = {
 	prefix = "prettier",
-	formatCommand = "prettier --parser html",
+	formatCommand = "prettier ${--tab-width:tabWidth} ${--single-quote:singleQuote} --parser html",
 	formatStdin = true,
 }
 
@@ -60,6 +68,14 @@ local json_jq = {
 	prefix = "jq",
 	lintCommand = "jq .",
 	lintStdin = true,
+}
+
+local css_lang_server = {
+	prefix = "css_lang_server",
+	lintCommand = "css-languageserver --stdio",
+	-- lintStdin = true,
+	-- lintFormats = { "%f(%l,%c): %tarning %m", "%f(%l,%c): %rror %m" },
+	-- lintIgnoreExitCode = true,
 }
 
 return {
@@ -73,4 +89,6 @@ return {
 	typescriptreact = { eslint, js_prettier },
 	json = { json_prettier, json_jq },
 	html = { html_prettier },
+	css = { css_lang_server },
+	scss = { scss_prettier, css_lang_server },
 }

@@ -22,7 +22,7 @@ return packer.startup(function()
 	use("wbthomason/packer.nvim")
 
 	-- Themes
-	use("ray-x/aurora")
+	use("navarasu/onedark.nvim")
 	use("rebelot/kanagawa.nvim")
 
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
@@ -82,7 +82,7 @@ return packer.startup(function()
 			"edolphin-ydf/goimpl.nvim",
 		},
 	})
-
+	use({ "nvim-telescope/telescope-packer.nvim" })
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 
 	use({

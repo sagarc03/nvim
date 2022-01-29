@@ -18,24 +18,20 @@ require("wilder")
 
 vim.notify = require("notify")
 
--- Theme
-require("kanagawa").setup({
-	undercurl = true, -- enable undercurls
-	commentStyle = "italic",
-	functionStyle = "bold",
-	keywordStyle = "italic",
-	statementStyle = "bold",
-	typeStyle = "NONE",
-	variablebuiltinStyle = "italic",
-	specialReturn = true, -- special highlight for the return keyword
-	specialException = true, -- special highlight for exception handling keywords
-	transparent = false, -- do not set background color
-	colors = {},
-	overrides = {},
+-- Lua
+require("onedark").setup({
+	style = "darker", -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
+	code_style = {
+		comments = "italic",
+		keywords = "bold",
+		functions = "bold",
+		strings = "italic",
+		variables = "italic",
+	},
 })
 
 -- setup must be called before loading
-vim.cmd("colorscheme kanagawa")
+vim.cmd("colorscheme onedark")
 
 -- Auto Activate poetry virtual env
 vim.g.poetv_auto_activate = "1"

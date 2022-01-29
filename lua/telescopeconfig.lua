@@ -11,6 +11,7 @@ require("telescope").load_extension("fzf")
 require("telescope").load_extension("projects")
 require("telescope").load_extension("emoji")
 require("telescope").load_extension("goimpl")
+require("telescope").load_extension("packer")
 
 require("telescope").setup({
 	defaults = {
