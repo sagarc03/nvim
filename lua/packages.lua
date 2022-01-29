@@ -104,8 +104,6 @@ return packer.startup(function()
 	})
 
 	-- Text Navigation and Jumping
-	use("unblevable/quick-scope")
-
 	use({ "phaazon/hop.nvim", as = "hop" })
 
 	-- Surround
