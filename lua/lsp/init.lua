@@ -24,6 +24,7 @@ local languages = require("lsp.efm")
 lsp_status.register_progress()
 
 require("navigator").setup({
+	keymaps = { { key = "gs", func = "signature_help()" } },
 	lsp_installer = false, -- set to true if you would like use the lsp installed by lspinstall
 	on_attach = function(client, bufnr)
 		lsp_status.on_attach(client, bufnr)
