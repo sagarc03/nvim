@@ -60,4 +60,10 @@ require("telescope").setup({
 			override_file_sorter = true, -- override the file sorter
 		},
 	},
+	pickers = {
+		find_files = {
+			hidden = true,
+			find_command = { "rg", "--files", "--iglob", "!.git", "--hidden" },
+		},
+	},
 })

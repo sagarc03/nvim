@@ -69,5 +69,10 @@ require("nvim-tree").setup({
 			list = {},
 		},
 	},
+	git = {
+		enable = true,
+		ignore = false,
+		timeout = 500,
+	},
 	nvim_tree_ignore = { ".git", "node_modules", ".cache" },
 })
