@@ -1,18 +1,23 @@
 local eslint = {
 	prefix = "eslint",
-	lintCommand = "eslint -f unix --stdin --stdin-filename ${INPUT}",
+	lintCommand = "./node_modules/.bin/eslint -f unix --stdin --stdin-filename ${INPUT}",
 	lintStdin = true,
 	lintFormats = { "%f(%l,%c): %tarning %m", "%f(%l,%c): %rror %m" },
 	lintIgnoreExitCode = true,
 }
 
 local js_prettier = {
-	formatCommand = "prettier --stdin-filepath ${INPUT}",
+	formatCommand = "./node_modules/.bin/prettier --stdin-filepath ${INPUT}",
+	formatStdin = true,
+}
+
+local vue_prettier = {
+	formatCommand = "./node_modules/.bin/prettier --stdin-filepath ${INPUT}",
 	formatStdin = true,
 }
 
 local scss_prettier = {
-	formatCommand = "prettier --parser scss",
+	formatCommand = "./node_modules/.bin/prettier --parser scss",
 	formatStdin = true,
 }
 
@@ -30,7 +35,6 @@ local mypy = {
 	prefix = "mypy",
 	lintCommand = "mypy --show-column-numbers",
 	lintIgnoreExitCode = true,
-	lintStdin = true,
 	lintFormats = { "%f:%l:%c: %trror:%m", "%f:%l:%c: %tarning:%m", "%f:%l:%c: %tote:%m" },
 }
 
@@ -53,14 +57,12 @@ local stylua = {
 }
 
 local json_prettier = {
-	prefix = "prettier",
-	formatCommand = "prettier ${--tab-width:tabWidth} --parser json",
+	formatCommand = "./node_modules/.bin/prettier ${--tab-width:tabWidth} --parser json",
 	formatStdin = true,
 }
 
 local html_prettier = {
-	prefix = "prettier",
-	formatCommand = "prettier ${--tab-width:tabWidth} ${--single-quote:singleQuote} --parser html",
+	formatCommand = "./node_modules/.bin/prettier ${--tab-width:tabWidth} ${--single-quote:singleQuote} --parser html",
 	formatStdin = true,
 }
 
@@ -91,4 +93,5 @@ return {
 	html = { html_prettier },
 	css = { css_lang_server },
 	scss = { scss_prettier, css_lang_server },
+	vue = { vue_prettier, eslint },
 }
