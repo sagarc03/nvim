@@ -14,22 +14,27 @@ require("dashboard")
 require("term")
 require("scope")
 require("git")
-require("wilder")
+-- require("wilder")
 
--- Lua
-require("onedark").setup({
-	style = "darker", -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
-	code_style = {
-		comments = "italic",
-		keywords = "bold",
-		functions = "bold",
-		strings = "italic",
-		variables = "italic",
-	},
+-- Default options:
+require('kanagawa').setup({
+    undercurl = true,           -- enable undercurls
+    commentStyle = "italic",
+    functionStyle = "bold",
+    keywordStyle = "bold",
+    statementStyle = "bold",
+    typeStyle = "bold",
+    variablebuiltinStyle = "italic",
+    specialReturn = true,       -- special highlight for the return keyword
+    specialException = true,    -- special highlight for exception handling keywords
+    transparent = false,        -- do not set background color
+    dimInactive = false,        -- dim inactive window `:h hl-NormalNC`
+    colors = {},
+    overrides = {},
 })
 
 -- setup must be called before loading
-vim.cmd("colorscheme onedark")
+vim.cmd("colorscheme kanagawa")
 
 -- Auto Activate poetry virtual env
 vim.g.poetv_auto_activate = "1"

@@ -1,16 +1,3 @@
---                   /\__\         /\  \                            /\  \
---                  /:/ _/_       /::\  \              ___          \:\  \       ___           ___
---                 /:/ /\  \     /:/\:\__\            /\__\          \:\  \     /\__\         /\__\
---  ___     ___   /:/ /::\  \   /:/ /:/  /           /:/__/      _____\:\  \   /:/__/        /:/  /
--- /\  \   /\__\ /:/_/:/\:\__\ /:/_/:/  /           /::\  \     /::::::::\__\ /::\  \       /:/__/
--- \:\  \ /:/  / \:\/:/ /:/  / \:\/:/  /            \/\:\  \__  \:\~~\~~\/__/ \/\:\  \__   /::\  \
---  \:\  /:/  /   \::/ /:/  /   \::/__/              ~~\:\/\__\  \:\  \        ~~\:\/\__\ /:/\:\  \
---   \:\/:/  /     \/_/:/  /     \:\  \                 \::/  /   \:\  \          \::/  / \/__\:\  \
---    \::/  /        /:/  /       \:\__\                /:/  /     \:\__\         /:/  /       \:\__\
---     \/__/         \/__/         \/__/                \/__/       \/__/         \/__/         \/__/
---
---
---
 require("lsp.formatting")
 require("lsp.extra")
 require("lsp.completion")
@@ -18,8 +5,6 @@ require("lsp_signature").setup()
 
 local lsp_status = require("lsp-status")
 local lspconfig = require("lspconfig")
-
-local languages = require("lsp.efm")
 
 lsp_status.register_progress()
 
@@ -38,21 +23,44 @@ require("navigator").setup({
 	lsp = {
 		servers = { "volar" },
 		format_on_save = false,
-		disable_format_cap = { "pyright", "sumneko_lua", "tsserver", "volar"},
+		disable_format_cap = { "pyright", "sumneko_lua", "tsserver", "volar" },
 		disable_lsp = { "flow", "vuels" },
-		efm = {
-			on_attach = function(client, _)
-				client.resolved_capabilities.document_formatting = true
-			end,
-			init_options = { documenFormatting = true, codeAction = true, document_formatting = true },
-			root_dir = lspconfig.util.root_pattern(".git", "yarn.lock", "package.json", "pyproject.toml"),
-			filetypes = vim.tbl_keys(languages),
-			settings = { log_level = 1, log_file = "~/efm.log", languages = languages },
-		},
 		volar = {
 			cmd = { "volar-server", "--stdio" },
 			filetypes = { "vue" },
 			root_dir = lspconfig.util.root_pattern(".git", "yarn.lock", "package.json"),
 		},
+	},
+})
+
+require("null-ls").setup({
+	on_attach = function(client)
+		if client.resolved_capabilities.document_formatting then
+			vim.cmd([[
+          augroup LspFormatting
+              autocmd! * <buffer>
+              autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
+          augroup END
+          ]])
+		end
+	end,
+	sources = {
+		-- Formating
+		require("null-ls").builtins.formatting.stylua,
+		require("null-ls").builtins.formatting.black,
+		require("null-ls").builtins.formatting.isort,
+		require("null-ls").builtins.formatting.prettier,
+
+		-- Diagnostics
+		require("null-ls").builtins.diagnostics.pylint,
+		require("null-ls").builtins.diagnostics.mypy,
+		require("null-ls").builtins.diagnostics.eslint,
+
+		-- Code Actions
+		require("null-ls").builtins.code_actions.gitsigns,
+		require("null-ls").builtins.code_actions.refactoring,
+
+		-- Completion
+		require("null-ls").builtins.completion.spell,
 	},
 })

@@ -122,7 +122,6 @@ return packer.startup(function()
 	use({ "ray-x/go.nvim" })
 
 	-- Lua
-	use({ "gelguy/wilder.nvim", run = ":UpdateRemotePlugins" })
 	use({
 		"ray-x/sad.nvim",
 		requires = { "ray-x/guihua.lua", run = "cd lua/fzy && make" },
@@ -136,5 +135,13 @@ return packer.startup(function()
 	use({
 		"romgrk/barbar.nvim",
 		requires = { "kyazdani42/nvim-web-devicons" },
+	})
+	use({ "jose-elias-alvarez/null-ls.nvim" })
+	use({
+		"ThePrimeagen/refactoring.nvim",
+		requires = {
+			{ "nvim-lua/plenary.nvim" },
+			{ "nvim-treesitter/nvim-treesitter" },
+		},
 	})
 end)
