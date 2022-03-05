@@ -144,4 +144,5 @@ return packer.startup(function()
 			{ "nvim-treesitter/nvim-treesitter" },
 		},
 	})
+	use("EdenEast/nightfox.nvim")
 end)

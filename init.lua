@@ -16,27 +16,28 @@ require("scope")
 require("git")
 -- require("wilder")
 
--- Default options:
-require('kanagawa').setup({
-    undercurl = true,           -- enable undercurls
-    commentStyle = "italic",
-    functionStyle = "bold",
-    keywordStyle = "bold",
-    statementStyle = "bold",
-    typeStyle = "bold",
-    variablebuiltinStyle = "italic",
-    specialReturn = true,       -- special highlight for the return keyword
-    specialException = true,    -- special highlight for exception handling keywords
-    transparent = false,        -- do not set background color
-    dimInactive = false,        -- dim inactive window `:h hl-NormalNC`
-    colors = {},
-    overrides = {},
+require("nightfox").setup({
+	fox = "nightfox", -- Which fox style should be applied
+	transparent = false, -- Disable setting the background color
+	alt_nc = false, -- Non current window bg to alt color see `hl-NormalNC`
+	terminal_colors = true, -- Configure the colors used when opening :terminal
+	styles = {
+		comments = "italic", -- Style that is applied to comments: see `highlight-args` for options
+		functions = "bold", -- Style that is applied to functions: see `highlight-args` for options
+		keywords = "bold", -- Style that is applied to keywords: see `highlight-args` for options
+		strings = "NONE", -- Style that is applied to strings: see `highlight-args` for options
+		variables = "italic,bold", -- Style that is applied to variables: see `highlight-args` for options
+	},
+	inverse = {
+		match_paren = false, -- Enable/Disable inverse highlighting for match parens
+		visual = false, -- Enable/Disable inverse highlighting for visual selection
+		search = false, -- Enable/Disable inverse highlights for search highlights
+	},
+	colors = {}, -- Override default colors
+	hlgroups = {}, -- Override highlight groups
 })
+vim.cmd("colorscheme nightfox")
 
--- setup must be called before loading
-vim.cmd("colorscheme kanagawa")
-
--- Auto Activate poetry virtual env
 vim.g.poetv_auto_activate = "1"
 
 require("Comment").setup()
