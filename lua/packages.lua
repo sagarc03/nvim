@@ -69,6 +69,9 @@ return packer.startup(function()
 	})
 	use({ "honza/vim-snippets" })
 	use({ "rafamadriz/friendly-snippets" })
+	use({
+		"mlaursen/vim-react-snippets",
+	})
 
 	-- Lua
 	use("ahmedkhalf/project.nvim")
@@ -112,7 +115,7 @@ return packer.startup(function()
 	-- Better Comments
 	use("numToStr/Comment.nvim")
 
-	use("akinsho/toggleterm.nvim")
+	use("akinsho/nvim-toggleterm.lua")
 	use("beauwilliams/focus.nvim")
 
 	use("p00f/nvim-ts-rainbow")

@@ -6,7 +6,7 @@ o.wrap = false
 
 -- Clipboard
 vim.cmd("set clipboard+=unnamedplus")
-vim.cmd("set signcolumn=auto:2")
+vim.cmd("set signcolumn=yes:1")
 
 -- fold settings
 vim.wo.foldmethod = "expr"
@@ -18,7 +18,7 @@ vim.wo.foldminlines = 1
 
 -- Line numbers
 o.number = true
-o.relativenumber = true
+-- o.relativenumber = true
 
 -- Splits
 o.splitbelow = true
