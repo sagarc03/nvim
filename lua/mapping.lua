@@ -16,6 +16,7 @@ key_mapper("i", "jj", "<ESC>", { silent = true })
 require("focus").setup({
 	excluded_filetypes = { "toggleterm", "SidebarNvim", "DiffviewFiles", "NvimTree" },
 	excluded_bufftypes = { "help", "nofile", "prompt" },
+	signcolumn = false,
 })
 
 -- Normal Mode
