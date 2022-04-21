@@ -6,7 +6,7 @@ o.wrap = false
 
 -- Clipboard
 vim.cmd("set clipboard+=unnamedplus")
-vim.cmd("set signcolumn=yes:1")
+vim.cmd("set signcolumn=no")
 
 -- fold settings
 vim.wo.foldmethod = "expr"

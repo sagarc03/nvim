@@ -22,9 +22,7 @@ return packer.startup(function()
 	use("wbthomason/packer.nvim")
 
 	-- Themes
-	use("navarasu/onedark.nvim")
-	use("rebelot/kanagawa.nvim")
-
+	use("olimorris/onedarkpro.nvim")
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 	use("nvim-treesitter/nvim-treesitter-refactor")
 	use({
@@ -147,5 +145,4 @@ return packer.startup(function()
 			{ "nvim-treesitter/nvim-treesitter" },
 		},
 	})
-	use("EdenEast/nightfox.nvim")
 end)

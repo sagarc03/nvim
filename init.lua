@@ -14,34 +14,26 @@ require("dashboard")
 require("term")
 require("scope")
 require("git")
--- require("wilder")
 
-require("nightfox").setup({
-	options = {
-		transparent = false, -- Disable setting the background color
-		terminal_colors = true, -- Configure the colors used when opening :terminal
-		styles = {
-			comments = "italic", -- Style that is applied to comments: see `highlight-args` for options
-			functions = "bold", -- Style that is applied to functions: see `highlight-args` for options
-			keywords = "bold", -- Style that is applied to keywords: see `highlight-args` for options
-			strings = "NONE", -- Style that is applied to strings: see `highlight-args` for options
-			variables = "italic,bold", -- Style that is applied to variables: see `highlight-args` for options
-		},
-		inverse = {
-			match_paren = false, -- Enable/Disable inverse highlighting for match parens
-			visual = false, -- Enable/Disable inverse highlighting for visual selection
-			search = false, -- Enable/Disable inverse highlights for search highlights
-		},
-		colors = {}, -- Override default colors
-		hlgroups = {}, -- Override highlight groups
+-- Theme
+require("onedarkpro").setup({
+	-- Theme can be overwritten with 'onedark' or 'onelight' as a string
+	theme = "onedark",
+	styles = {
+		strings = "NONE", -- Style that is applied to strings
+		comments = "italic", -- Style that is applied to comments
+		keywords = "bold", -- Style that is applied to keywords
+		functions = "bold", -- Style that is applied to functions
+		variables = "italic,bold", -- Style that is applied to variables
+		virtual_text = "NONE", -- Style that is applied to virtual text
 	},
 })
-vim.cmd([[colorscheme nightfox]])
+require("onedarkpro").load()
+vim.cmd([[colorscheme onedarkpro]])
 
 vim.g.poetv_auto_activate = "1"
 
 require("Comment").setup()
-require("gitsigns").setup()
 require("surround").setup({ mappings_style = "sandwich" })
 require("sad").setup({
 	diff = "delta", -- you can use `diff`, `diff-so-fancy`
