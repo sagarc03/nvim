@@ -82,6 +82,7 @@ require("null-ls").setup({
 		require("null-ls").builtins.diagnostics.flake8.with({ command = "pflake8" }),
 		require("null-ls").builtins.diagnostics.mypy,
 		require("null-ls").builtins.diagnostics.eslint,
+		require("null-ls").builtins.diagnostics.stylelint,
 
 		-- Code Actions
 		require("null-ls").builtins.code_actions.gitsigns,
