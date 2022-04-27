@@ -1,8 +1,8 @@
 vim.g.mapleader = " "
 
+require("packages")
 require("general")
 require("treesitter")
-require("packages")
 require("lsp")
 require("statusline")
 require("root")
