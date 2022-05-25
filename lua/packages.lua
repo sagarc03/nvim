@@ -108,7 +108,7 @@ return packer.startup(function()
 	use({ "phaazon/hop.nvim", as = "hop" })
 
 	-- Surround
-	use("blackCauldron7/surround.nvim")
+	use({ "echasnovski/mini.nvim", branch = "stable" })
 
 	-- Better Comments
 	use("numToStr/Comment.nvim")
