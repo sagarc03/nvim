@@ -39,7 +39,7 @@ lualine.setup({
 					return table.concat(list_of_lsp, ",")
 				end,
 				icon = "LSP:",
-				color = { fg = "#ffffff", gui = "bold" },
+				color = { gui = "bold" },
 			},
 			"encoding",
 			"fileformat",

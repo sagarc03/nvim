@@ -23,6 +23,10 @@ return packer.startup(function()
 
 	-- Themes
 	use("olimorris/onedarkpro.nvim")
+	use({
+		"catppuccin/nvim",
+		as = "catppuccin",
+	})
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 	use("nvim-treesitter/nvim-treesitter-refactor")
 	use({

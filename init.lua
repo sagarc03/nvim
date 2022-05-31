@@ -16,20 +16,66 @@ require("scope")
 require("git")
 
 -- Theme
-require("onedarkpro").setup({
-	-- Theme can be overwritten with 'onedark' or 'onelight' as a string
-	theme = "onedark",
+require("catppuccin").setup({
+	transparent_background = false,
+	term_colors = false,
 	styles = {
-		strings = "NONE", -- Style that is applied to strings
-		comments = "italic", -- Style that is applied to comments
-		keywords = "bold", -- Style that is applied to keywords
-		functions = "bold", -- Style that is applied to functions
-		variables = "italic,bold", -- Style that is applied to variables
-		virtual_text = "NONE", -- Style that is applied to virtual text
+		comments = "italic",
+		conditionals = "italic",
+		loops = "NONE",
+		functions = "bold",
+		keywords = "bold",
+		strings = "NONE",
+		variables = "italic,bold",
+		numbers = "NONE",
+		booleans = "NONE",
+		properties = "NONE",
+		types = "NONE",
+		operators = "NONE",
+	},
+	integrations = {
+		treesitter = true,
+		native_lsp = {
+			enabled = true,
+			virtual_text = {
+				errors = "italic",
+				hints = "italic",
+				warnings = "italic",
+				information = "italic",
+			},
+			underlines = {
+				errors = "underline",
+				hints = "underline",
+				warnings = "underline",
+				information = "underline",
+			},
+		},
+		lsp_trouble = false,
+		cmp = true,
+		gitgutter = true,
+		gitsigns = true,
+		telescope = true,
+		nvimtree = {
+			enabled = true,
+			show_root = true,
+			transparent_panel = false,
+		},
+		indent_blankline = {
+			enabled = true,
+			colored_indent_levels = false,
+		},
+		dashboard = true,
+		vim_sneak = true,
+		barbar = true,
+		markdown = true,
+		ts_rainbow = true,
+		hop = true,
+		notify = true,
+		symbols_outline = true,
 	},
 })
-require("onedarkpro").load()
-vim.cmd([[colorscheme onedarkpro]])
+vim.g.catppuccin_flavour = "latte" -- latte, frappe, macchiato, mocha
+vim.cmd([[colorscheme catppuccin]])
 
 vim.g.poetv_auto_activate = "1"
 
