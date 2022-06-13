@@ -74,7 +74,7 @@ require("catppuccin").setup({
 		symbols_outline = true,
 	},
 })
-vim.g.catppuccin_flavour = "latte" -- latte, frappe, macchiato, mocha
+vim.g.catppuccin_flavour = "macchiato" -- latte, frappe, macchiato, mocha
 vim.cmd([[colorscheme catppuccin]])
 
 vim.g.poetv_auto_activate = "1"
