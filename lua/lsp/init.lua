@@ -9,9 +9,9 @@ lsp_status.register_progress()
 
 require("navigator").setup({
 	keymaps = {
-		{ key = "gs", func = vim.lsp.buf.signature_help, doc = "signature_help" },
-		{ key = ",ff", func = vim.lsp.buf.format, mode = "n", doc = "format" },
-		{ key = ",ff", func = vim.lsp.buf.range_formatting, mode = "v", doc = "range format" },
+		{ key = "gs", func = vim.lsp.buf.signature_help, desc = "signature_help" },
+		{ key = ",ff", func = vim.lsp.buf.format, mode = "n", desc = "format" },
+		{ key = ",ff", func = vim.lsp.buf.range_formatting, mode = "v", desc = "range format" },
 	},
 	lsp_installer = false, -- set to true if you would like use the lsp installed by lspinstall
 	debug = true,
