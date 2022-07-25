@@ -20,7 +20,6 @@ require("navigator").setup({
 		disable_format_cap = { "pyright", "sumneko_lua", "tsserver", "yamlls", "html" },
 		disable_lsp = {
 			"angularls",
-			"gopls",
 			"flow",
 			"bashls",
 			"dockerls",
