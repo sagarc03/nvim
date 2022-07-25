@@ -40,6 +40,6 @@ o.showtabline = 2
 o.termguicolors = true
 
 g.loaded_python_provider = 0
-g.python3_host_prog = vim.env.HOME .. "/.pyenv/versions/py3nvim/bin/python"
+g.python3_host_prog = vim.env.HOME .. "/.config/nvim/.venv/bin/python"
 
 vim.cmd([[au BufWinEnter * checktime]])
