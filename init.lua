@@ -1,5 +1,8 @@
 vim.g.mapleader = " "
+vim.g.poetv_executables = { "poetry" }
+vim.g.poetv_auto_activate = "1"
 
+require("neovide")
 require("packages")
 require("general")
 require("treesitter")
@@ -76,8 +79,6 @@ require("catppuccin").setup({
 })
 vim.g.catppuccin_flavour = "macchiato" -- latte, frappe, macchiato, mocha
 vim.cmd([[colorscheme catppuccin]])
-
-vim.g.poetv_auto_activate = "1"
 
 require("Comment").setup()
 require("mini.surround").setup({

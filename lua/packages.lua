@@ -99,7 +99,7 @@ return packer.startup(function()
 	use("windwp/nvim-autopairs")
 	use("alvan/vim-closetag")
 
-	use({ "petobens/poet-v", ft = "python" })
+	use({ "petobens/poet-v" })
 
 	use({
 		"lewis6991/gitsigns.nvim",
