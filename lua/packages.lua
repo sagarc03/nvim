@@ -62,6 +62,8 @@ return packer.startup(function()
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
 			"hrsh7th/cmp-emoji",
+			"hrsh7th/cmp-nvim-lua",
+			"onsails/lspkind.nvim",
 		},
 	})
 
@@ -117,7 +119,7 @@ return packer.startup(function()
 	-- Better Comments
 	use("numToStr/Comment.nvim")
 
-	use("akinsho/nvim-toggleterm.lua")
+	use({ "akinsho/nvim-toggleterm.lua", tag = "v2.*" })
 	use("beauwilliams/focus.nvim")
 
 	use("p00f/nvim-ts-rainbow")

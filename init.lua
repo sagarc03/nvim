@@ -34,7 +34,7 @@ require("catppuccin").setup({
 		booleans = {},
 		properties = {},
 		types = {},
-		operators = {},
+		operators = { "bold" },
 	},
 	integrations = {
 		treesitter = true,
