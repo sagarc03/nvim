@@ -17,68 +17,12 @@ require("dashboard")
 require("term")
 require("scope")
 require("git")
+require("zen")
 
 -- Theme
-require("catppuccin").setup({
-	transparent_background = false,
-	term_colors = false,
-	styles = {
-		comments = { "italic" },
-		conditionals = { "italic" },
-		loops = {},
-		functions = { "bold" },
-		keywords = { "bold" },
-		strings = {},
-		variables = { "bold", "italic" },
-		numbers = {},
-		booleans = {},
-		properties = {},
-		types = {},
-		operators = { "bold" },
-	},
-	integrations = {
-		treesitter = true,
-		native_lsp = {
-			enabled = true,
-			virtual_text = {
-				errors = { "italic" },
-				hints = { "italic" },
-				warnings = { "italic" },
-				information = { "italic" },
-			},
-			underlines = {
-				errors = { "underline" },
-				hints = { "underline" },
-				warnings = { "underline" },
-				information = { "underline" },
-			},
-		},
-		lsp_trouble = false,
-		cmp = true,
-		gitgutter = true,
-		gitsigns = true,
-		telescope = true,
-		nvimtree = {
-			enabled = true,
-			show_root = true,
-			transparent_panel = false,
-		},
-		indent_blankline = {
-			enabled = true,
-			colored_indent_levels = false,
-		},
-		dashboard = true,
-		vim_sneak = true,
-		barbar = true,
-		markdown = true,
-		ts_rainbow = true,
-		hop = true,
-		notify = true,
-		symbols_outline = true,
-	},
-})
-vim.g.catppuccin_flavour = "macchiato" -- latte, frappe, macchiato, mocha
-vim.cmd([[colorscheme catppuccin]])
+vim.g.sonokai_style = "andromeda"
+vim.g.sonokai_better_performance = 1
+vim.cmd("colorscheme sonokai")
 
 require("Comment").setup()
 require("mini.surround").setup({
@@ -113,3 +57,11 @@ require("sad").setup({
 	ls_file = "fd", -- also git ls_file
 	exact = true, -- exact match
 })
+require("indent_blankline").setup({
+	-- for example, context is off by default, use this to turn it on
+	show_current_context = true,
+	show_current_context_start = true,
+})
+
+-- Lua
+require("lsp-colors").setup({})

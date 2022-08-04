@@ -1,11 +1,7 @@
-require("lsp.formatting")
 require("lsp.extra")
 require("lsp.completion")
 require("lsp_signature").setup()
-
-local lsp_status = require("lsp-status")
-
-lsp_status.register_progress()
+require("lsp-status").register_progress()
 
 require("navigator").setup({
 	keymaps = {
@@ -95,16 +91,16 @@ require("null-ls").setup({
 		require("null-ls").builtins.formatting.djhtml.with({
 			extra_args = { "-t", "2" },
 		}),
+		require("null-ls").builtins.formatting.gofmt,
 
 		-- Diagnostics
 		require("null-ls").builtins.diagnostics.pylint,
 		require("null-ls").builtins.diagnostics.flake8.with({ command = "pflake8" }),
 		require("null-ls").builtins.diagnostics.mypy,
 		require("null-ls").builtins.diagnostics.eslint,
-		require("null-ls").builtins.diagnostics.stylelint,
+		require("null-ls").builtins.diagnostics.golangci_lint,
 
 		-- Code Actions
 		require("null-ls").builtins.code_actions.gitsigns,
-		require("null-ls").builtins.code_actions.refactoring,
 	},
 })

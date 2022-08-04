@@ -22,11 +22,8 @@ return packer.startup(function()
 	use("wbthomason/packer.nvim")
 
 	-- Themes
-	use("olimorris/onedarkpro.nvim")
-	use({
-		"catppuccin/nvim",
-		as = "catppuccin",
-	})
+	use({ "sainnhe/sonokai" })
+
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 	use("nvim-treesitter/nvim-treesitter-refactor")
 	use({
@@ -40,15 +37,6 @@ return packer.startup(function()
 	-- LSP and similar functions
 	use({ "neovim/nvim-lspconfig" })
 	use("nvim-lua/lsp-status.nvim")
-	use({
-		"folke/trouble.nvim",
-		requires = "kyazdani42/nvim-web-devicons",
-	})
-	use({
-		"folke/todo-comments.nvim",
-		requires = "nvim-lua/plenary.nvim",
-	})
-
 	use("ray-x/lsp_signature.nvim")
 	use({
 		"ray-x/navigator.lua",
@@ -63,6 +51,7 @@ return packer.startup(function()
 			"hrsh7th/cmp-path",
 			"hrsh7th/cmp-emoji",
 			"hrsh7th/cmp-nvim-lua",
+			"hrsh7th/cmp-cmdline",
 			"onsails/lspkind.nvim",
 		},
 	})
@@ -150,5 +139,15 @@ return packer.startup(function()
 			{ "nvim-lua/plenary.nvim" },
 			{ "nvim-treesitter/nvim-treesitter" },
 		},
+	})
+	use({ "Pocco81/true-zen.nvim" })
+	use({ "lukas-reineke/indent-blankline.nvim" })
+	use({ "folke/lsp-colors.nvim" })
+	use({ "kevinhwang91/nvim-bqf", ft = "qf" })
+	use({
+		"junegunn/fzf",
+		run = function()
+			vim.fn["fzf#install"]()
+		end,
 	})
 end)
