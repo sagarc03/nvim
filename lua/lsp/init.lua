@@ -10,8 +10,16 @@ require("navigator").setup({
 		{ key = ",ff", func = vim.lsp.buf.range_formatting, mode = "v", desc = "range format" },
 	},
 	lsp_installer = false, -- set to true if you would like use the lsp installed by lspinstall
-	debug = true,
+	debug = false,
 	lsp = {
+		diagnostic = {
+			underline = true,
+			virtual_text = false, -- show virtual for diagnostic message
+			update_in_insert = false, -- update diagnostic message in insert mode
+		},
+		diagnostic_virtual_text = false, -- show virtual for diagnostic message
+		diagnostic_update_in_insert = false, -- update diagnostic message in insert mode
+		disply_diagnostic_qf = false,
 		format_on_save = false,
 		disable_format_cap = { "pyright", "sumneko_lua", "tsserver", "yamlls", "html" },
 		disable_lsp = {
@@ -104,3 +112,6 @@ require("null-ls").setup({
 		require("null-ls").builtins.code_actions.gitsigns,
 	},
 })
+
+require("lsp_lines").setup({})
+vim.api.nvim_create_user_command("LspLinesToggle", ":lua require('lsp_lines').toggle()<CR>", {})

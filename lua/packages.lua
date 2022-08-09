@@ -150,4 +150,5 @@ return packer.startup(function()
 			vim.fn["fzf#install"]()
 		end,
 	})
+	use({ "https://git.sr.ht/~whynothugo/lsp_lines.nvim" })
 end)

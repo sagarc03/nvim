@@ -4,6 +4,9 @@ end
 
 local opts = { noremap = true, silent = true }
 
+local someNumber = 123
+print(someNumber)
+
 key_mapper("i", "jk", "<ESC>", { silent = true })
 key_mapper("i", "kj", "<ESC>", { silent = true })
 key_mapper("i", "jj", "<ESC>", { silent = true })
@@ -14,8 +17,8 @@ key_mapper("i", "jj", "<ESC>", { silent = true })
 -- Default[filetypes]: none
 -- Default[buftypes]: 'nofile', 'prompt', 'help'
 require("focus").setup({
-	excluded_filetypes = { "toggleterm", "SidebarNvim", "DiffviewFiles", "NvimTree" },
-	excluded_bufftypes = { "help", "nofile", "prompt" },
+	excluded_filetypes = { "toggleterm", "SidebarNvim", "DiffviewFiles", "NvimTree", "qf" },
+	excluded_bufftypes = { "help", "nofile", "prompt", "quickfix" },
 	signcolumn = false,
 })
 
