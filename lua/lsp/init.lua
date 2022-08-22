@@ -103,7 +103,7 @@ require("null-ls").setup({
 
 		-- Diagnostics
 		require("null-ls").builtins.diagnostics.pylint,
-		require("null-ls").builtins.diagnostics.flake8.with({ command = "pflake8" }),
+		require("null-ls").builtins.diagnostics.flake8,
 		require("null-ls").builtins.diagnostics.mypy,
 		require("null-ls").builtins.diagnostics.eslint,
 		require("null-ls").builtins.diagnostics.golangci_lint,

@@ -15,9 +15,14 @@ vim.api.nvim_exec(
 )
 
 local packer = require("packer")
-local use = packer.use
+packer.init({
+	luarocks = {
+		python_cmd = vim.env.HOME .. "/.config/nvim/.venv/bin/python",
+	},
+})
 
-return packer.startup(function()
+-- local use = packer.use
+return packer.startup(function(use)
 	-- Packer can manage itself
 	use("wbthomason/packer.nvim")
 
@@ -151,4 +156,11 @@ return packer.startup(function()
 		end,
 	})
 	use({ "https://git.sr.ht/~whynothugo/lsp_lines.nvim" })
+	use({
+		"charludo/projectmgr.nvim",
+		rocks = { "lsqlite3complete" },
+	})
+	use({ "nvim-treesitter/nvim-treesitter-context" })
+
+	use({ "TimUntersberger/neogit", requires = "nvim-lua/plenary.nvim" })
 end)
