@@ -163,4 +163,5 @@ return packer.startup(function(use)
 	use({ "nvim-treesitter/nvim-treesitter-context" })
 
 	use({ "TimUntersberger/neogit", requires = "nvim-lua/plenary.nvim" })
+	use({ "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async" })
 end)

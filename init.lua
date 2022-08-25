@@ -79,5 +79,25 @@ require("indent_blankline").setup({
 	show_current_context_start = true,
 })
 
+local ufo_disable_filetypes = {
+	startup = "",
+	packer = "",
+	toggleterm = "",
+	SidebarNvim = "",
+	DiffviewFiles = "",
+	NvimTree = "",
+	qf = "",
+}
 -- Lua
-require("lsp-colors").setup({})
+require("ufo").setup({
+	provider_selector = function(_, ft, _)
+		return ufo_disable_filetypes[ft] or { "treesitter", "indent" }
+	end,
+})
+
+-- Using ufo provider need remap `zR` and `zM`. If Neovim is 0.6.1, remap yourself
+vim.keymap.set("n", "zR", require("ufo").openAllFolds)
+vim.keymap.set("n", "zM", require("ufo").closeAllFolds)
+vim.keymap.set("n", "gK", function()
+	require("ufo").peekFoldedLinesUnderCursor()
+end)
