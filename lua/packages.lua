@@ -133,6 +133,8 @@ return packer.startup(function(use)
 		config = function() end,
 	})
 
+	use({ "kyazdani42/nvim-web-devicons" })
+
 	use({
 		"romgrk/barbar.nvim",
 		requires = { "kyazdani42/nvim-web-devicons" },
