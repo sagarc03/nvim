@@ -96,6 +96,7 @@ require("null-ls").setup({
 		require("null-ls").builtins.formatting.black,
 		require("null-ls").builtins.formatting.isort,
 		require("null-ls").builtins.formatting.prettier,
+		require("null-ls").builtins.formatting.eslint,
 		require("null-ls").builtins.formatting.djhtml.with({
 			extra_args = { "-t", "2" },
 		}),
