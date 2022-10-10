@@ -20,25 +20,16 @@ require("git")
 require("zen")
 
 -- Theme
-require("kanagawa").setup({
-	undercurl = true, -- enable undercurls
-	commentStyle = { italic = true },
-	functionStyle = { bold = true },
-	keywordStyle = { italic = true, bold = true },
-	statementStyle = { bold = true },
-	typeStyle = {},
-	variablebuiltinStyle = { italic = true },
-	specialReturn = true, -- special highlight for the return keyword
-	specialException = true, -- special highlight for exception handling keywords
-	transparent = false, -- do not set background color
-	dimInactive = false, -- dim inactive window `:h hl-NormalNC`
-	globalStatus = false, -- adjust window separators highlight for laststatus=3
-	terminalColors = true, -- define vim.g.terminal_color_{0,17}
-	colors = {},
-	overrides = {},
-	theme = "default", -- Load "default" theme or the experimental "light" theme
+require("tokyonight").setup({
+	style = "night", -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
+	styles = {
+		comments = { italic = true },
+		keywords = { italic = true, bold = true },
+		functions = { bold = true },
+		variables = {},
+	},
 })
-vim.cmd("colorscheme kanagawa")
+vim.cmd("colorscheme tokyonight")
 
 require("Comment").setup()
 require("mini.surround").setup({

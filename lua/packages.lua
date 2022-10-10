@@ -27,7 +27,7 @@ return packer.startup(function(use)
 	use("wbthomason/packer.nvim")
 
 	-- Themes
-	use("rebelot/kanagawa.nvim")
+	use("folke/tokyonight.nvim")
 
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 	use("nvim-treesitter/nvim-treesitter-refactor")
