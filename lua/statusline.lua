@@ -1,5 +1,4 @@
 local lualine = require("lualine")
-
 lualine.setup({
 	options = {
 		icons_enabled = true,
@@ -13,7 +12,9 @@ lualine.setup({
 	sections = {
 		lualine_a = { "mode" },
 		lualine_b = { "branch", "diff", "diagnostics" },
-		lualine_c = { "filename" },
+		lualine_c = {
+			"filename",
+		},
 		lualine_x = {
 			{
 				-- Lsp server name .

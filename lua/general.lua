@@ -30,9 +30,9 @@ o.splitbelow = true
 o.splitright = true
 
 -- TABS and Indents
-o.tabstop = 4
-o.shiftwidth = 4
-o.softtabstop = 4
+o.tabstop = 2
+o.shiftwidth = 2
+o.softtabstop = 2
 o.shiftround = true
 o.smarttab = true
 o.expandtab = true

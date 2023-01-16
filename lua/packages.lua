@@ -40,13 +40,16 @@ return packer.startup(function(use)
 	})
 
 	-- LSP and similar functions
+	use({ "williamboman/mason.nvim" })
+	use({ "williamboman/mason-lspconfig.nvim" })
 	use({ "neovim/nvim-lspconfig" })
 	use("nvim-lua/lsp-status.nvim")
-	use("ray-x/lsp_signature.nvim")
-	use({
-		"ray-x/navigator.lua",
-		requires = { "ray-x/guihua.lua", run = "cd lua/fzy && make" },
-	})
+	use({ "j-hui/fidget.nvim" })
+	-- use("ray-x/lsp_signature.nvim")
+	-- use({
+	-- 	"ray-x/navigator.lua",
+	-- 	requires = { "ray-x/guihua.lua", run = "cd lua/fzy && make" },
+	-- })
 
 	use({
 		"hrsh7th/nvim-cmp",
@@ -70,6 +73,11 @@ return packer.startup(function(use)
 	use({
 		"mlaursen/vim-react-snippets",
 	})
+
+	use("jose-elias-alvarez/typescript.nvim")
+	use("crispgm/nvim-go")
+	use("simrat39/rust-tools.nvim")
+	use("mfussenegger/nvim-dap")
 
 	-- Lua
 	use("ahmedkhalf/project.nvim")
@@ -119,9 +127,6 @@ return packer.startup(function(use)
 	use("p00f/nvim-ts-rainbow")
 	use("sindrets/diffview.nvim")
 
-	-- Language Specific
-	use({ "ray-x/go.nvim" })
-
 	-- Lua
 	use({
 		"ray-x/sad.nvim",
@@ -157,7 +162,6 @@ return packer.startup(function(use)
 			vim.fn["fzf#install"]()
 		end,
 	})
-	use({ "https://git.sr.ht/~whynothugo/lsp_lines.nvim" })
 	use({
 		"charludo/projectmgr.nvim",
 		rocks = { "lsqlite3complete" },
