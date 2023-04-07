@@ -1,94 +1,66 @@
-vim.g.mapleader = " "
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+
+if not vim.loop.fs_stat(lazypath) then
+	vim.fn.system({
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"https://github.com/folke/lazy.nvim.git",
+		"--branch=stable", -- latest stable release
+		lazypath,
+	})
+end
+vim.opt.rtp:prepend(lazypath)
+
+-- Example using a list of specs with the default options
+vim.g.mapleader = " " -- Make sure to set `mapleader` before lazy so your mappings are correct
+vim.g.maplocalleader = " " -- Make sure to set `mapleader` before lazy so your mappings are correct
+vim.opt.termguicolors = true -- True color support
+
+local opt = vim.opt
+
+opt.clipboard = "unnamedplus" -- Sync with system clipboard
+
+opt.expandtab = true -- Use spaces instead of tabs
+opt.number = true -- Print line number
+opt.scrolloff = 4 -- Lines of context
+opt.shiftround = true -- Round indent
+opt.shiftwidth = 2 -- Size of an indent
+opt.signcolumn = "no" -- Always show the signcolumn, otherwise it would shift the text each time
+opt.smartcase = true -- Don't ignore case with capitals
+opt.smartindent = true -- Insert indents automatically
+opt.spelllang = { "en" }
+opt.splitbelow = true -- Put new windows below current
+opt.splitright = true -- Put new windows right of current
+opt.tabstop = 2 -- Number of spaces tabs count for
+opt.termguicolors = true -- True color support
+opt.timeoutlen = 300
+opt.undofile = true
+opt.undolevels = 10000
+opt.updatetime = 200 -- Save swap file and trigger CursorHold
+opt.wrap = false -- Disable line wrap
+opt.foldcolumn = "1"
+opt.foldlevel = 99
+opt.foldlevelstart = 99
+opt.foldenable = true
+opt.completeopt = "menu,menuone,noselect"
+
+vim.g.loaded_python_provider = 0
+vim.g.python3_host_prog = vim.env.HOME .. "/.config/nvim/.venv/bin/python"
+
+if vim.g.neovide then
+	vim.g.gui_font_default_size = 23
+	vim.g.gui_font_size = vim.g.gui_font_default_size
+	vim.g.gui_font_face = "JetBrainsMono Nerd Font Mono"
+	vim.opt.guifont = string.format("%s:h%s", vim.g.gui_font_face, vim.g.gui_font_size)
+
+	vim.g.neovide_refresh_rate = 144
+	vim.g.neovide_profiler = false
+	vim.g.neovide_cursor_vfx_mode = "torpedo"
+end
+
 vim.g.poetv_executables = { "poetry" }
-vim.g.poetv_auto_activate = "1"
+vim.g.poetv_auto_activate = 1
+vim.g.poetv_set_environment = 1
 
-require("neovide")
-require("packages")
-require("general")
-require("treesitter")
-require("lsp")
-require("statusline")
-require("root")
-require("telescopeconfig")
-require("tabbar")
-require("mapping")
-require("file_explorer")
-require("dashboard")
-require("term")
-require("scope")
-require("git")
-require("zen")
-
--- Theme
-require("tokyonight").setup({
-	style = "night", -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
-	styles = {
-		comments = { italic = true },
-		keywords = { italic = true, bold = true },
-		functions = { bold = true },
-		variables = {},
-	},
-})
-vim.cmd("colorscheme tokyonight")
-
-require("Comment").setup()
-require("mini.surround").setup({
-	-- Add custom surroundings to be used on top of builtin ones. For more
-	-- information with examples, see `:h MiniSurround.config`.
-	custom_surroundings = nil,
-
-	-- Duration (in ms) of highlight when calling `MiniSurround.highlight()`
-	highlight_duration = 500,
-
-	-- Module mappings. Use `''` (empty string) to disable one.
-	mappings = {
-		add = "sa", -- Add surrounding in Normal and Visual modes
-		delete = "sd", -- Delete surrounding
-		find = "sf", -- Find surrounding (to the right)
-		find_left = "sF", -- Find surrounding (to the left)
-		highlight = "sh", -- Highlight surrounding
-		replace = "sr", -- Replace surrounding
-		update_n_lines = "sn", -- Update `n_lines`
-	},
-
-	-- Number of lines within which surrounding is searched
-	n_lines = 50,
-
-	-- How to search for surrounding (first inside current line, then inside
-	-- neighborhood). One of 'cover', 'cover_or_next', 'cover_or_prev',
-	-- 'cover_or_nearest'. For more details, see `:h MiniSurround.config`.
-	search_method = "cover",
-})
-require("sad").setup({
-	diff = "delta", -- you can use `diff`, `diff-so-fancy`
-	ls_file = "fd", -- also git ls_file
-	exact = true, -- exact match
-})
-require("indent_blankline").setup({
-	-- for example, context is off by default, use this to turn it on
-	show_current_context = true,
-	show_current_context_start = true,
-})
-
-local ufo_disable_filetypes = {
-	startup = "",
-	packer = "",
-	toggleterm = "",
-	SidebarNvim = "",
-	DiffviewFiles = "",
-	NvimTree = "",
-	qf = "",
-}
--- Lua
-require("ufo").setup({
-	provider_selector = function(_, ft, _)
-		return ufo_disable_filetypes[ft] or { "treesitter", "indent" }
-	end,
-})
-
--- Using ufo provider need remap `zR` and `zM`. If Neovim is 0.6.1, remap yourself
-vim.keymap.set("n", "zR", require("ufo").openAllFolds)
-vim.keymap.set("n", "zM", require("ufo").closeAllFolds)
-vim.keymap.set("n", "gK", function()
-	require("ufo").peekFoldedLinesUnderCursor()
-end)
+require("lazy").setup("plugins")
