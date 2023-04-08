@@ -7,9 +7,9 @@ return {
 		config = require("plugins.conf.treesitter"),
 		opts = {
 			ensure_installed = "all",
-			ignore_install = {}, 
+			ignore_install = {},
 			highlight = {
-				enable = true, 
+				enable = true,
 			},
 			rainbow = {
 				enable = true,

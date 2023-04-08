@@ -1,9 +1,8 @@
-return function(config, opts) 
-  local telescope = require("telescope")
-  
-  telescope.setup(opts)
+return function(config, opts)
+	local telescope = require("telescope")
 
-  telescope.load_extension("fzf")
-  telescope.load_extension("notify")
+	telescope.setup(opts)
 
-end 
+	telescope.load_extension("fzf")
+	telescope.load_extension("notify")
+end

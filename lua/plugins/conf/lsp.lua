@@ -1,5 +1,4 @@
-local on_attach = function(client, bufnr)
-	-- client.server_capabilities.documentFormattingProvider = false
+local on_attach = function(_, bufnr)
 	local bufopts = { noremap = true, silent = true, buffer = bufnr }
 	vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
 	vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
@@ -10,6 +9,7 @@ local on_attach = function(client, bufnr)
 	vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, bufopts)
 	vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
 end
+
 return function()
 	local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
@@ -30,11 +30,11 @@ return function()
 					-- globals = { "vim" },
 					globals = { "vim", "describe", "it", "before_each", "after_each", "teardown", "pending" },
 				},
-				workspace = {
-					-- Make the server aware of Neovim runtime files
-					library = vim.api.nvim_get_runtime_file("", true),
-					checkThirdParty = false, -- THIS IS THE IMPORTANT LINE TO ADD
-				},
+				-- workspace = {
+				-- 	-- Make the server aware of Neovim runtime files
+				-- 	library = vim.api.nvim_get_runtime_file("", true),
+				-- 	checkThirdParty = false, -- THIS IS THE IMPORTANT LINE TO ADD
+				-- },
 				-- Do not send telemetry data containing a randomized but unique identifier
 				telemetry = {
 					enable = false,
