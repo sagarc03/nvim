@@ -1,5 +1,16 @@
 local is_lsp_attached = function()
-	return next(vim.lsp.get_active_clients({ bufnr = 0 })) ~= nil
+	if next(vim.lsp.get_active_clients({ bufnr = 0 })) == nil then
+		return false
+	end
+
+	if
+		#vim.lsp.get_active_clients({ bufnr = 0 }) == 1
+		and vim.lsp.get_active_clients({ bufnr = 0 })[1].name == "null-ls"
+	then
+		return false
+	end
+
+	return true
 end
 
 local is_null_ls_attached = function()
@@ -54,7 +65,9 @@ return {
 						function()
 							local names = {}
 							for _, server in pairs(vim.lsp.get_active_clients({ bufnr = 0 })) do
-								table.insert(names, server.name)
+								if server.name ~= "null-ls" then
+									table.insert(names, server.name)
+								end
 							end
 							return " [" .. table.concat(names, " ") .. "]"
 						end,
@@ -81,7 +94,7 @@ return {
 				lualine_z = { "location" },
 			},
 			tabline = {},
-			extensions = { "nvim-tree", "toggleterm", "fzf" },
+			extensions = { "neo-tree", "toggleterm", "trouble", "fzf" },
 		},
 	},
 }

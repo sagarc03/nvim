@@ -1,77 +1,27 @@
-return {
-	{
-		"ThePrimeagen/refactoring.nvim",
-		event = "BufRead",
-		dependencies = {
-			{ "nvim-lua/plenary.nvim" },
-			{ "nvim-treesitter/nvim-treesitter" },
-		},
-		keys = {
-			{
-				"<leader>re",
-				[[<ESC><CMD>lua require("refactoring").refactor("Extract Function")<CR>]],
-				desc = "Extract last highlited block to a function",
-				mode = "v",
-				noremap = true,
-				silent = true,
-				expr = false,
-			},
-			{
-				"<leader>rf",
-				[[<ESC><CMD>lua require("refactoring").refactor("Extract Function To File")<CR>]],
-				desc = "Extract last highlited block to a function in a new file",
-				mode = "v",
-				noremap = true,
-				silent = true,
-				expr = false,
-			},
-			{
-				"<leader>rv",
-				[[<ESC><CMD>lua require("refactoring").refactor("Extract Variable")<CR>]],
-				desc = "Extract last highlited expression to it's own variable and replace occurence",
-				mode = "v",
-				noremap = true,
-				silent = true,
-				expr = false,
-			},
-			{
-				"<leader>ri",
-				[[<ESC><CMD>lua require("refactoring").refactor("Inline Variable")<CR>]],
-				desc = "Extract last highlited variable with the expression",
-				mode = "v",
-				noremap = true,
-				silent = true,
-				expr = false,
-			},
-			{
-				"<leader>ri",
-				[[<CMD>lua require("refactoring").refactor("Inline Variable")<CR>]],
-				desc = "Extract last highlited variable with the expression",
-				mode = "n",
-				noremap = true,
-				silent = true,
-				expr = false,
-			},
+return { -- Common dependencies for all
+	"ellisonleao/gruvbox.nvim",
 
-			{
-				"<leader>rb",
-				[[<CMD>lua require("refactoring").refactor("Extract Block")<CR>]],
-				desc = "Extract last highlited block to a function",
-				mode = "n",
-				noremap = true,
-				silent = true,
-				expr = false,
-			},
-			{
-				"<leader>rbf",
-				[[<CMD>lua require("refactoring").refactor("Extract Block To File")<CR>]],
-				desc = "Extract last highlited block to a function in a new file",
-				mode = "n",
-				noremap = true,
-				silent = true,
-				expr = false,
-			},
-		},
+	"nvim-lua/plenary.nvim",
+
+	{ "s1n7ax/nvim-window-picker", opts = { use_winbar = "smart" } },
+
+	{
+		"mrjones2014/smart-splits.nvim",
+		opts = { ignored_filetypes = { "nofile", "quickfix", "qf", "prompt" }, ignored_buftypes = { "nofile" } },
+		build = "./kitty/install-kittens.bash",
+	},
+
+	{
+		"famiu/bufdelete.nvim",
+		cmd = { "Bdelete", "Bwipeout" },
+	},
+
+	{
+		"phaazon/hop.nvim",
+		event = "BufRead",
+		config = function(_, opts)
+			require("hop").setup(opts)
+		end,
 	},
 
 	{
@@ -84,70 +34,21 @@ return {
 		},
 		dependencies = "kevinhwang91/promise-async",
 	},
-	{
-		"kevinhwang91/nvim-bqf",
-		ft = "qf",
-		dependencies = {
-			{
-				"junegunn/fzf",
-				build = function()
-					vim.fn["fzf#install"]()
-				end,
-			},
-			"nvim-treesitter/nvim-treesitter",
-		},
-	},
+
 	{
 		"numToStr/Comment.nvim",
 		event = "BufRead",
-		config = function(_, opts)
+		config = function(config, opts)
 			require("Comment").setup(opts)
 		end,
 	},
-	{
-		"phaazon/hop.nvim",
-		keys = {
-			{ "$", "<CMD>lua require'hop'.hint_words()<CR>", mode = "n", noremap = true, silent = true },
-			{ "<leader>s", "<CMD>lua require'hop'.hint_char1()<CR>", mode = "n", noremap = true, silent = true },
-			{ "<leader>/", "<CMD>lua require'hop'.hint_patterns()<CR>", mode = "n", noremap = true, silent = true },
-			{ "<leader>l", "<CMD>lua require'hop'.hint_lines()<CR>", mode = "n", noremap = true, silent = true },
-			{
-				"f",
-				"<CMD>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<CR>",
-				mode = "n",
-				noremap = true,
-				silent = true,
-			},
-			{
-				"F",
-				"<CMD>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<CR>",
-				mode = "n",
-				noremap = true,
-				silent = true,
-			},
-			{
-				"f",
-				"<CMD>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<CR>",
-				mode = "o",
-				noremap = true,
-				silent = true,
-			},
-			{
-				"F",
-				"<CMD>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<CR>",
-				mode = "o",
-				noremap = true,
-				silent = true,
-			},
-		},
-		event = "BufRead",
-		opts = { keys = "etovxqpdygfblzhckisuran" },
-	},
+
 	{
 		"ur4ltz/surround.nvim",
 		event = "BufRead",
 		opts = { mappings_style = "sandwich" },
 	},
+
 	{
 		"windwp/nvim-autopairs",
 		event = "BufRead",
@@ -157,4 +58,35 @@ return {
 	},
 
 	{ "lukas-reineke/indent-blankline.nvim", event = "BufRead" },
+
+	{
+		"akinsho/toggleterm.nvim",
+		cmd = {
+			"ToggleTerm",
+			"TermExec",
+		},
+		opts = {
+			-- size can be a number or function which is passed the current terminal
+			-- based on the direction of the float set the height
+			size = function(term)
+				if term.direction == "horizontal" then
+					return 10
+				elseif term.direction == "vertical" then
+					return vim.o.columns * 0.4
+				end
+			end,
+			open_mapping = false,
+			start_in_insert = true,
+			hide_numbers = true, -- hide the number column in toggleterm buffers
+			shade_terminals = true, -- NOTE: this option takes priority over highlights specified so if you specify Normal highlights you should set this to false
+			shading_factor = "1", -- the degree by which to darken to terminal colour, default: 1 for dark backgrounds, 3 for light
+			insert_mappings = false, -- whether or not the open mapping applies in insert mode
+			terminal_mappings = true, -- whether or not the open mapping applies in the opened terminals
+			persist_size = true,
+			persist_mode = true, -- if set to true (default) the previous terminal mode will be remembered
+			direction = "horizontal", -- 'vertical' | 'horizontal' | 'tab' | 'float',
+			close_on_exit = true, -- close the terminal window when the process exits
+			shell = vim.o.shell, -- change the default shell
+		},
+	},
 }
