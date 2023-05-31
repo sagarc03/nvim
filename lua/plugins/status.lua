@@ -2,7 +2,6 @@ local is_lsp_attached = function()
 	if next(vim.lsp.get_active_clients({ bufnr = 0 })) == nil then
 		return false
 	end
-
 	if
 		#vim.lsp.get_active_clients({ bufnr = 0 }) == 1
 		and vim.lsp.get_active_clients({ bufnr = 0 })[1].name == "null-ls"
@@ -26,6 +25,17 @@ local is_null_ls_attached = function()
 	return is_attached
 end
 
+local function diff_source()
+	local gitsigns = vim.b.gitsigns_status_dict
+	if gitsigns then
+		return {
+			added = gitsigns.added,
+			modified = gitsigns.changed,
+			removed = gitsigns.removed,
+		}
+	end
+end
+
 return {
 	{
 		"nvim-lualine/lualine.nvim",
@@ -35,15 +45,22 @@ return {
 				theme = "auto",
 				component_separators = "|",
 				section_separators = "",
-				disabled_filetypes = {},
+				disabled_filetypes = { winbar = { "toggleterm", "alpha" } },
 				always_divide_middle = true,
-				globalstatus = false,
+				globalstatus = true,
 			},
 			sections = {
 				lualine_a = { "mode" },
-				lualine_b = { "branch", "diff", "diagnostics" },
+				lualine_b = { { "b:gitsigns_head", icon = "" } },
 				lualine_c = {
-					"filename",
+					{
+						"buffers",
+						symbols = {
+							modified = " [+]", -- Text to show when the buffer is modified
+							alternate_file = "", -- Text to show to identify the alternate file
+							directory = "", -- Text to show when the buffer is a directory
+						},
+					},
 				},
 				lualine_x = {
 					{
@@ -83,7 +100,7 @@ return {
 			},
 			inactive_sections = {
 				lualine_a = {},
-				lualine_b = { "branch", "diff", "diagnostics" },
+				lualine_b = { "branch", { "diff", source = diff_source }, "diagnostics" },
 				lualine_c = { "filename" },
 				lualine_x = {
 					"encoding",
@@ -94,7 +111,14 @@ return {
 				lualine_z = { "location" },
 			},
 			tabline = {},
-			extensions = { "neo-tree", "toggleterm", "trouble", "fzf" },
+			winbar = {
+				lualine_a = { "filename" },
+				lualine_b = { { "diff", source = diff_source }, "diagnostics" },
+			},
+			inactive_winbar = {
+				lualine_c = { "filename" },
+			},
+			extensions = { "neo-tree", "toggleterm", "trouble", "fzf", "lazy" },
 		},
 	},
 }

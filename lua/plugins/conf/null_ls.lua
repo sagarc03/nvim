@@ -8,15 +8,19 @@ return function(_, opts)
 			nls.builtins.formatting.djhtml.with({
 				extra_args = { "-t", "2" },
 			}),
-			-- nls.builtins.diagnostics.pylint,
-			-- nls.builtins.diagnostics.flake8,
+			nls.builtins.diagnostics.pylint,
+			nls.builtins.diagnostics.flake8,
 			nls.builtins.diagnostics.mypy,
 			nls.builtins.formatting.black,
 			nls.builtins.formatting.isort,
 			nls.builtins.diagnostics.ruff,
-			nls.builtins.formatting.prettier.with({ filetypes = { "astro" } }),
-			nls.builtins.diagnostics.eslint.with({ filetypes = { "astro" } }),
+			nls.builtins.formatting.prettier.with({ extra_filetypes = { "astro" } }),
+			nls.builtins.diagnostics.eslint.with({ extra_filetypes = { "astro" } }),
 			nls.builtins.code_actions.gitsigns,
+			nls.builtins.formatting.sqlfluff.with({
+				extra_args = { "--dialect", "postgres" }, -- change to your dialect
+			}),
+			nls.builtins.formatting.clang_format,
 		},
 		on_attach = function(client, bufnr)
 			if client.supports_method("textDocument/formatting") then
@@ -34,4 +38,5 @@ return function(_, opts)
 	}
 	local final_opts = vim.tbl_extend("force", default_opts, opts)
 	nls.setup(final_opts)
+	vim.lsp.buf.format({ timeout_ms = 2000 })
 end

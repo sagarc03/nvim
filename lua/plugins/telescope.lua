@@ -45,4 +45,5 @@ return {
 		config = require("plugins.conf.telescope"),
 		opts = opts,
 	},
+	"nvim-telescope/telescope-file-browser.nvim",
 }

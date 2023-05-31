@@ -1,14 +1,21 @@
 return { -- Common dependencies for all
 	"ellisonleao/gruvbox.nvim",
+	"folke/tokyonight.nvim",
+	"rebelot/kanagawa.nvim",
+	{ "catppuccin/nvim", name = "catppuccin" },
+	{ "akinsho/horizon.nvim", version = "*" },
+	{
+		"nvim-lua/plenary.nvim",
+		lazy = true,
+	},
 
-	"nvim-lua/plenary.nvim",
-
-	{ "s1n7ax/nvim-window-picker", opts = { use_winbar = "smart" } },
+	{ "s1n7ax/nvim-window-picker", opts = { use_winbar = "smart" }, lazy = true },
 
 	{
 		"mrjones2014/smart-splits.nvim",
 		opts = { ignored_filetypes = { "nofile", "quickfix", "qf", "prompt" }, ignored_buftypes = { "nofile" } },
 		build = "./kitty/install-kittens.bash",
+		lazy = true,
 	},
 
 	{
@@ -87,6 +94,25 @@ return { -- Common dependencies for all
 			direction = "horizontal", -- 'vertical' | 'horizontal' | 'tab' | 'float',
 			close_on_exit = true, -- close the terminal window when the process exits
 			shell = vim.o.shell, -- change the default shell
+		},
+	},
+	{
+		"cameron-wags/rainbow_csv.nvim",
+		config = true,
+		ft = {
+			"csv",
+			"tsv",
+			"csv_semicolon",
+			"csv_whitespace",
+			"csv_pipe",
+			"rfc_csv",
+			"rfc_semicolon",
+		},
+		cmd = {
+			"RainbowDelim",
+			"RainbowDelimSimple",
+			"RainbowDelimQuoted",
+			"RainbowMultiDelim",
 		},
 	},
 }

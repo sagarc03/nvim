@@ -10,3 +10,4 @@ session
 wiki/
 plugin/
 .venv
+.luarc.json
