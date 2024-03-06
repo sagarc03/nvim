@@ -11,3 +11,4 @@ wiki/
 plugin/
 .venv
 .luarc.json
+.DS_Store

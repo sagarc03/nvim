@@ -1,21 +1,32 @@
 return { -- Common dependencies for all
-	"ellisonleao/gruvbox.nvim",
-	"folke/tokyonight.nvim",
-	"rebelot/kanagawa.nvim",
-	{ "catppuccin/nvim", name = "catppuccin" },
-	{ "akinsho/horizon.nvim", version = "*" },
+	{ "sainnhe/edge", lazy = false, priority = 1000 },
+	{ "ellisonleao/gruvbox.nvim", lazy = false, priority = 1000 },
+	{ "folke/tokyonight.nvim", lazy = false, priority = 1000 },
+	{ "rebelot/kanagawa.nvim", lazy = false, priority = 1000 },
+	{ "catppuccin/nvim", lazy = false, name = "catppuccin", priority = 1000 },
+	{ "rose-pine/neovim", lazy = false, name = "rose-pine", priority = 1000 },
+	{ "akinsho/horizon.nvim", lazy = false, version = "*", priority = 1000 },
+	{ url = "https://gitlab.com/sxwpb/halfspace.nvim", lazy = false, priority = 1000 },
+	{ "miikanissi/modus-themes.nvim", priority = 1000 },
+	{
+		"Verf/deepwhite.nvim",
+		lazy = false,
+		priority = 1000,
+	},
 	{
 		"nvim-lua/plenary.nvim",
 		lazy = true,
 	},
 
-	{ "s1n7ax/nvim-window-picker", opts = { use_winbar = "smart" }, lazy = true },
-
 	{
 		"mrjones2014/smart-splits.nvim",
-		opts = { ignored_filetypes = { "nofile", "quickfix", "qf", "prompt" }, ignored_buftypes = { "nofile" } },
-		build = "./kitty/install-kittens.bash",
-		lazy = true,
+		opts = {
+			ignored_filetypes = { "nofile", "quickfix", "qf", "prompt" },
+			ignored_buftypes = { "nofile" },
+			default_amount = 3,
+			at_edge = "split",
+		},
+		lazy = false,
 	},
 
 	{
@@ -45,7 +56,7 @@ return { -- Common dependencies for all
 	{
 		"numToStr/Comment.nvim",
 		event = "BufRead",
-		config = function(config, opts)
+		config = function(_, opts)
 			require("Comment").setup(opts)
 		end,
 	},
@@ -96,6 +107,7 @@ return { -- Common dependencies for all
 			shell = vim.o.shell, -- change the default shell
 		},
 	},
+
 	{
 		"cameron-wags/rainbow_csv.nvim",
 		config = true,

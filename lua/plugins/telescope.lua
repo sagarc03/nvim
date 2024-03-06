@@ -35,15 +35,15 @@ local opts = function()
 	}
 end
 return {
-	{
-		"nvim-telescope/telescope.nvim",
-		branch = "0.1.x",
-		cmd = "Telescope",
-		dependencies = {
-			{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-		},
-		config = require("plugins.conf.telescope"),
-		opts = opts,
-	},
-	"nvim-telescope/telescope-file-browser.nvim",
+	-- {
+	-- 	"nvim-telescope/telescope.nvim",
+	-- 	branch = "0.1.x",
+	-- 	cmd = "Telescope",
+	-- 	dependencies = {
+	-- 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+	-- 	},
+	-- 	config = require("plugins.conf.telescope"),
+	-- 	opts = opts,
+	-- },
+	-- { "nvim-telescope/telescope-file-browser.nvim", lazy = true },
 }

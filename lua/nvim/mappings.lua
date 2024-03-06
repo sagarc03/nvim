@@ -8,7 +8,7 @@ end
 local mapping_options = { silent = true, noremap = true }
 
 if loaded_plugins["neo-tree.nvim"] then
-	vim.keymap.set("n", "<leader>nn", "<CMD>NeoTreeShowToggle<CR>", mapping_options)
+	vim.keymap.set("n", "<leader>nn", "<CMD>Neotree toggle<CR>", mapping_options)
 end
 
 if loaded_plugins["toggleterm.nvim"] then
@@ -24,37 +24,32 @@ if loaded_plugins["hop.nvim"] then
 	vim.keymap.set("n", "$", function()
 		require("hop").hint_words()
 	end, mapping_options)
-	vim.keymap.set("n", "<leader>s", function()
-		require("hop").hop.hint_char1()
-	end, mapping_options)
 	vim.keymap.set("n", "<leader>/", function()
-		require("hop").hop.hint_patterns()
+		require("hop").hint_patterns()
 	end, mapping_options)
-	vim.keymap.set("n", "<leader>l", function()
-		require("hop").hop.hint_lines()
-	end, mapping_options)
-	vim.keymap.set("n", "f", function()
+	vim.keymap.set("", "f", function()
 		local hint = require("hop.hint")
 		require("hop").hint_char1({ direction = hint.HintDirection.AFTER_CURSOR, current_line_only = true })
 	end, mapping_options)
-	vim.keymap.set("n", "F", function()
+	vim.keymap.set("", "F", function()
 		local hint = require("hop.hint")
 		require("hop").hint_char1({ direction = hint.HintDirection.BEFORE_CURSOR, current_line_only = true })
 	end, mapping_options)
-	vim.keymap.set("o", "f", function()
+	vim.keymap.set("", "t", function()
 		local hint = require("hop.hint")
-		require("hop").hint_char1({ direction = hint.HintDirection.AFTER_CURSOR, current_line_only = true })
+		require("hop").hint_char1({
+			direction = hint.HintDirection.AFTER_CURSOR,
+			current_line_only = true,
+			hint_offset = -1,
+		})
 	end, mapping_options)
-	vim.keymap.set("o", "F", function()
+	vim.keymap.set("", "T", function()
 		local hint = require("hop.hint")
-		require("hop").hint_char1({ direction = hint.HintDirection.BEFORE_CURSOR, current_line_only = true })
-	end, mapping_options)
-end
-
-if loaded_plugins["nvim-window-picker"] then
-	vim.keymap.set("n", "<leader>wp", function()
-		local picked_window_id = require("window-picker").pick_window() or vim.api.nvim_get_current_win()
-		vim.api.nvim_set_current_win(picked_window_id)
+		require("hop").hint_char1({
+			direction = hint.HintDirection.BEFORE_CURSOR,
+			current_line_only = true,
+			hint_offset = 1,
+		})
 	end, mapping_options)
 end
 
@@ -112,21 +107,40 @@ if loaded_plugins["nvim-notify"] then
 	end, mapping_options)
 end
 
-if loaded_plugins["telescope.nvim"] then
+if loaded_plugins["fzf-lua"] then
 	vim.keymap.set("n", "<leader>ff", function()
-		require("telescope.builtin").find_files()
+		require("fzf-lua").files()
 	end, mapping_options)
 	vim.keymap.set("n", "<leader>fg", function()
-		require("telescope.builtin").live_grep()
+		require("fzf-lua").live_grep()
 	end, mapping_options)
-	vim.keymap.set("n", "<leader>fw", function()
-		require("telescope.builtin").current_buffer_fuzzy_find()
+	vim.keymap.set("n", "<leader>s", function()
+		require("fzf-lua").lgrep_curbuf()
 	end, mapping_options)
 	vim.keymap.set("n", "<leader>fb", function()
-		require("telescope.builtin").buffers()
+		require("fzf-lua").buffers()
 	end, mapping_options)
-	vim.keymap.set("n", "<leader>fn", function()
-		require("telescope").extensions.notify.notify()
+	vim.keymap.set("n", "<leader>fr", function()
+		require("fzf-lua").resume()
+	end, mapping_options)
+	-- lsp
+	vim.keymap.set("n", "gD", function()
+		require("fzf-lua").lsp_declarations()
+	end, mapping_options)
+	vim.keymap.set("n", "gd", function()
+		require("fzf-lua").lsp_definitions()
+	end, mapping_options)
+	vim.keymap.set("n", "gt", function()
+		require("fzf-lua").lsp_typedefs()
+	end, mapping_options)
+	vim.keymap.set("n", "<leader>ca", function()
+		require("fzf-lua").lsp_code_actions()
+	end, mapping_options)
+	vim.keymap.set("n", "gr", function()
+		require("fzf-lua").lsp_references()
+	end, mapping_options)
+	vim.keymap.set("n", "gi", function()
+		require("fzf-lua").lsp_implementations()
 	end, mapping_options)
 end
 
@@ -143,6 +157,6 @@ end
 
 if loaded_plugins["neogen"] then
 	vim.keymap.set("n", "ga", function()
-		require("neogen").generate()
+		require("neogen").generate({})
 	end, mapping_options)
 end
