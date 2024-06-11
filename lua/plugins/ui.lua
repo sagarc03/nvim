@@ -13,7 +13,7 @@ return {
 		init = function()
 			vim.notify = require("notify")
 		end,
-		lazy = true,
+		lazy = false,
 	},
 
 	-- icons

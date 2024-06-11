@@ -7,8 +7,13 @@ end
 -- Common mapping options
 local mapping_options = { silent = true, noremap = true }
 
-if loaded_plugins["neo-tree.nvim"] then
-	vim.keymap.set("n", "<leader>nn", "<CMD>Neotree toggle<CR>", mapping_options)
+-- if loaded_plugins["neo-tree.nvim"] then
+-- 	vim.keymap.set("n", "<leader>nn", "<CMD>Neotree toggle<CR>", mapping_options)
+-- end
+if loaded_plugins["oil.nvim"] then
+	vim.keymap.set("n", "<leader>nn", function()
+		require("oil").toggle_float()
+	end, mapping_options)
 end
 
 if loaded_plugins["toggleterm.nvim"] then
@@ -108,40 +113,46 @@ if loaded_plugins["nvim-notify"] then
 end
 
 if loaded_plugins["fzf-lua"] then
-	vim.keymap.set("n", "<leader>ff", function()
-		require("fzf-lua").files()
-	end, mapping_options)
-	vim.keymap.set("n", "<leader>fg", function()
-		require("fzf-lua").live_grep()
-	end, mapping_options)
-	vim.keymap.set("n", "<leader>s", function()
-		require("fzf-lua").lgrep_curbuf()
-	end, mapping_options)
-	vim.keymap.set("n", "<leader>fb", function()
-		require("fzf-lua").buffers()
-	end, mapping_options)
-	vim.keymap.set("n", "<leader>fr", function()
-		require("fzf-lua").resume()
-	end, mapping_options)
+	vim.keymap.set("n", "<leader>ff", "<CMD>FzfLua files<CR>", mapping_options)
+	vim.keymap.set("n", "<leader>fg", "<CMD>FzfLua live_grep<CR>", mapping_options)
+	vim.keymap.set("n", "<leader>s", "<CMD>FzfLua lgrep_curbuf<CR>", mapping_options)
+	vim.keymap.set("n", "<leader>fb", "<CMD>FzfLua buffers<CR>", mapping_options)
+	vim.keymap.set("n", "<leader>fr", "<CMD>FzfLua resume<CR>", mapping_options)
+
 	-- lsp
-	vim.keymap.set("n", "gD", function()
-		require("fzf-lua").lsp_declarations()
-	end, mapping_options)
-	vim.keymap.set("n", "gd", function()
-		require("fzf-lua").lsp_definitions()
-	end, mapping_options)
-	vim.keymap.set("n", "gt", function()
-		require("fzf-lua").lsp_typedefs()
-	end, mapping_options)
-	vim.keymap.set("n", "<leader>ca", function()
-		require("fzf-lua").lsp_code_actions()
-	end, mapping_options)
-	vim.keymap.set("n", "gr", function()
-		require("fzf-lua").lsp_references()
-	end, mapping_options)
-	vim.keymap.set("n", "gi", function()
-		require("fzf-lua").lsp_implementations()
-	end, mapping_options)
+	vim.keymap.set("n", "gD", "<CMD>FzfLua lsp_declarations<CR>", mapping_options)
+	vim.keymap.set("n", "gd", "<CMD>FzfLua lsp_definitions<CR>", mapping_options)
+	vim.keymap.set("n", "gt", "<CMD>FzfLua lsp_typedefs<CR>", mapping_options)
+	vim.keymap.set("n", "<leader>ca", "<CMD>FzfLua lsp_code_actions<CR>", mapping_options)
+	vim.keymap.set("n", "gr", "<CMD>FzfLua lsp_references<CR>", mapping_options)
+	vim.keymap.set("n", "gi", "<CMD>FzfLua lsp_implementations<CR>", mapping_options)
+
+	-- project
+	vim.keymap.set("n", "<leader>fp", function()
+		local history = require("project_nvim.utils.history")
+		local fzf_lua = require("fzf-lua")
+		fzf_lua.fzf_exec(function(cb)
+			local results = history.get_recent_projects()
+			for _, e in ipairs(results) do
+				cb(e)
+			end
+			cb()
+		end, {
+			actions = {
+				["default"] = {
+					function(selected)
+						fzf_lua.files({ cwd = selected[1] })
+					end,
+				},
+				["ctrl-d"] = {
+					function(selected)
+						history.delete_project({ value = selected[1] })
+					end,
+					fzf_lua.actions.resume,
+				},
+			},
+		})
+	end, { silent = true, desc = "Switch project" })
 end
 
 vim.keymap.set("n", "<space>el", vim.diagnostic.open_float, mapping_options)

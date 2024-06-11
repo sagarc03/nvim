@@ -2,10 +2,10 @@ local on_attach = function(_, bufnr)
 	local bufopts = { noremap = true, silent = true, buffer = bufnr }
 	-- vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
 	-- vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
-	-- vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
+	-- vim.keymap.set("n", "K", "<CMD>LspUI hover<CR>", bufopts)
 	-- vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
 	-- vim.keymap.set("n", "gs", vim.lsp.buf.signature_help, bufopts)
-	vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, bufopts)
+	-- vim.keymap.set("n", "<space>rn", "<CMD>LspUI rename<CR>", bufopts)
 	-- vim.keymap.set({ "n", "v" }, "<space>ca", vim.lsp.buf.code_action, bufopts)
 	-- vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
 	vim.keymap.set("n", "gf", vim.lsp.buf.format, bufopts)
@@ -44,16 +44,21 @@ return function()
 		},
 	})
 
+	require("lspconfig").ruff.setup({
+		on_attach = on_attach,
+	})
+
 	require("lspconfig").pyright.setup({
 		capabilities = capabilities,
-		on_attach = on_attach,
-		flags = { allow_incremental_sync = true, debounce_text_changes = 500 },
 		settings = {
+			pyright = {
+				-- Using Ruff's import organizer
+				disableOrganizeImports = true,
+			},
 			python = {
 				analysis = {
-					autoSearchPaths = true,
-					useLibraryCodeForTypes = true,
-					diagnosticMode = "workspace",
+					-- Ignore all files for analysis to exclusively use Ruff for linting
+					ignore = { "*" },
 				},
 			},
 		},
@@ -62,8 +67,15 @@ return function()
 	-- require("lspconfig").pylsp.setup({
 	-- 	capabilities = capabilities,
 	-- 	on_attach = on_attach,
+	-- 	pylsp = {
+	-- 		plugins = {
+	-- 			ruff = {
+	-- 				enabled = true,
+	-- 			},
+	-- 		},
+	-- 	},
 	-- })
-	--
+
 	-- require("lspconfig").ruff_lsp.setup({
 	-- 	server = {
 	-- 		capabilities = capabilities,
@@ -110,7 +122,10 @@ return function()
 	require("lspconfig").taplo.setup({ capabilities = capabilities, on_attach = on_attach })
 	require("lspconfig").sqls.setup({
 		capabilities = capabilities,
-		on_attach = on_attach,
+		on_attach = function(client, bufnr)
+			require("sqls").on_attach(client, bufnr)
+			on_attach(client, bufnr)
+		end,
 		root_dir = require("lspconfig.util").root_pattern(".git"),
 	})
 
@@ -135,6 +150,12 @@ return function()
 			},
 		},
 	})
+	require("lspconfig").terraformls.setup({
+		capabilities = capabilities,
+		on_attach = on_attach,
+		filetypes = { "terraform", "terraform-vars", "tf" },
+	})
+	require("lspconfig").dockerls.setup({ capabilities = capabilities, on_attach = on_attach })
 
 	require("rust-tools").setup({
 		server = {
@@ -143,6 +164,9 @@ return function()
 		},
 	})
 
-	require("lspconfig").typos_lsp.setup({ capabilities = capabilities, on_attach = on_attach })
+	require("lspconfig").typos_lsp.setup({
+		capabilities = capabilities,
+		on_attach = on_attach,
+	})
 	require("fidget").setup()
 end

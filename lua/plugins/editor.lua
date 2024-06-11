@@ -1,18 +1,18 @@
 return { -- Common dependencies for all
-	{ "sainnhe/edge", lazy = false, priority = 1000 },
+	-- { "sainnhe/edge", lazy = false, priority = 1000 },
 	{ "ellisonleao/gruvbox.nvim", lazy = false, priority = 1000 },
 	{ "folke/tokyonight.nvim", lazy = false, priority = 1000 },
-	{ "rebelot/kanagawa.nvim", lazy = false, priority = 1000 },
-	{ "catppuccin/nvim", lazy = false, name = "catppuccin", priority = 1000 },
-	{ "rose-pine/neovim", lazy = false, name = "rose-pine", priority = 1000 },
-	{ "akinsho/horizon.nvim", lazy = false, version = "*", priority = 1000 },
-	{ url = "https://gitlab.com/sxwpb/halfspace.nvim", lazy = false, priority = 1000 },
-	{ "miikanissi/modus-themes.nvim", priority = 1000 },
-	{
-		"Verf/deepwhite.nvim",
-		lazy = false,
-		priority = 1000,
-	},
+	-- { "rebelot/kanagawa.nvim", lazy = false, priority = 1000 },
+	-- { "catppuccin/nvim", lazy = false, name = "catppuccin", priority = 1000 },
+	-- { "rose-pine/neovim", lazy = false, name = "rose-pine", priority = 1000 },
+	-- { "akinsho/horizon.nvim", lazy = false, version = "*", priority = 1000 },
+	-- { url = "https://gitlab.com/sxwpb/halfspace.nvim", lazy = false, priority = 1000 },
+	-- { "miikanissi/modus-themes.nvim", priority = 1000 },
+	-- {
+	-- 	"Verf/deepwhite.nvim",
+	-- 	lazy = false,
+	-- 	priority = 1000,
+	-- },
 	{
 		"nvim-lua/plenary.nvim",
 		lazy = true,
@@ -126,5 +126,11 @@ return { -- Common dependencies for all
 			"RainbowDelimQuoted",
 			"RainbowMultiDelim",
 		},
+	},
+	{
+		"karb94/neoscroll.nvim",
+		config = function()
+			require("neoscroll").setup({})
+		end,
 	},
 }

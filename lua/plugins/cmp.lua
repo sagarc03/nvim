@@ -12,14 +12,16 @@ local cmp_opts = function()
 		formatting = {
 			format = require("lspkind").cmp_format({
 				mode = "symbol_text",
-				menu = {
-					buffer = "[Buffer ✏️]",
-					nvim_lsp = "[LSP ⚙️]",
-					luasnip = "[LuaSnip 🏭]",
-					nvim_lua = "[NvimLua 🌍]",
-					path = "[Path 📁]",
-					emoji = "[Emoji 😄]",
-				},
+				symbol_map = { Supermaven = "" },
+				-- menu = {
+				-- 	buffer = "[Buffer ✏️]",
+				-- 	nvim_lsp = "[LSP ⚙️]",
+				-- 	luasnip = "[LuaSnip 🏭]",
+				-- 	nvim_lua = "[NvimLua 🌍]",
+				-- 	path = "[Path 📁]",
+				-- 	emoji = "[Emoji 😄]",
+				-- 	supermaven = "[AI 🧠]",
+				-- },
 			}),
 		},
 		snippet = {
@@ -46,11 +48,12 @@ local cmp_opts = function()
 			{ name = "luasnip", max_item_count = 5 },
 			{
 				name = "nvim_lsp",
-				max_item_count = 5,
+				max_item_count = 10,
 				entry_filter = function(entry)
 					return cmp.lsp.CompletionItemKind.Snippet ~= entry:get_kind()
 				end,
 			},
+			{ name = "supermaven", max_item_count = 5 },
 			{ name = "nvim_lua", max_item_count = 5 },
 			{ name = "buffer", max_item_count = 5 },
 			{ name = "path", max_item_count = 5 },
@@ -62,13 +65,13 @@ end
 return {
 	{
 		"L3MON4D3/LuaSnip",
+		build = "make install_jsregexp",
 		event = "InsertEnter",
 		dependencies = {
 			"rafamadriz/friendly-snippets",
 		},
 		config = require("plugins.conf.luasnip_conf"),
 	},
-
 	{
 		"hrsh7th/nvim-cmp",
 		event = "InsertEnter",
@@ -85,5 +88,12 @@ return {
 		},
 		opts = cmp_opts,
 		config = require("plugins.conf.cmp_conf"),
+	},
+	{
+		"supermaven-inc/supermaven-nvim",
+		opts = {
+			disable_inline_completion = true, -- disables inline completion for use with cmp
+			disable_keymaps = true, -- disables built in keymaps for more manual control
+		},
 	},
 }

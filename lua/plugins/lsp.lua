@@ -75,11 +75,6 @@ return {
 	},
 
 	{
-		"petobens/poet-v",
-		ft = "python",
-	},
-
-	{
 		"folke/neodev.nvim",
 		lazy = true,
 	},
@@ -122,15 +117,18 @@ return {
 				lua = { "stylua" },
 				-- Conform will run multiple formatters sequentially
 				-- python = { "isort", "black" },
-				python = { "isort", "ruff_format" },
+				python = { "ruff_organize_imports", "ruff_format" },
 				-- Use a sub-list to run only the first available formatter
-				javascript = { { "prettierd", "prettier" } },
-				typescript = { { "prettierd", "prettier" } },
-				javascriptreact = { { "prettierd", "prettier" } },
-				typescriptreact = { { "prettierd", "prettier" } },
+				javascript = { "prettier" },
+				typescript = { "prettier" },
+				javascriptreact = { "prettier" },
+				typescriptreact = { "prettier" },
 				sql = { "pg_format" },
-				astro = { { "prettierd", "prettier" } },
+				astro = { "prettier" },
 				go = { "goimports", "golines", "gofmt" },
+				terraform = { "terraform_fmt" },
+				tf = { "terraform_fmt" },
+				yaml = { "yamlfmt" },
 				-- Use the "*" filetype to run formatters on all filetypes.
 				["*"] = {},
 				-- Use the "_" filetype to run formatters on filetypes that don't
@@ -140,14 +138,32 @@ return {
 			format_on_save = {
 				-- I recommend these options. See :help conform.format for details.
 				lsp_fallback = true,
-				timeout_ms = 500,
+				timeout_ms = 1000,
+			},
+			formatters = {
+				-- p_format = {
+				-- 	inherit = true,
+				-- 	prepend_args = { "--keyword-case", "2", "--type-case", "2" },
+				-- },
 			},
 		},
 	},
 
 	{
 		"folke/trouble.nvim",
-		cmd = { "TroubleToggle" },
+		keys = {
+			{
+				"gs",
+				"<cmd>Trouble symbols toggle focus=false<cr>",
+				desc = "Symbols (Trouble)",
+			},
+			{
+				"ge",
+				"<cmd>Trouble diagnostics toggle focus=true<cr>",
+				desc = "Diagnostic (Trouble)",
+			},
+		},
+		opts = {}, -- for default options, refer to the configuration section for custom setup.
 	},
 
 	{
@@ -177,16 +193,34 @@ return {
 			},
 		},
 	},
-	{ "mfussenegger/nvim-lint", config = require("plugins.conf.lint") },
 	{
-		"Wansmer/symbol-usage.nvim",
-		event = "BufReadPre", -- need run before LspAttach if you use nvim 0.9. On 0.10 use 'LspAttach'
-		config = function()
-			require("symbol-usage").setup()
-		end,
+		"stevearc/overseer.nvim",
+		lazy = true,
+		cmd = { "OverseerToggle", "OverseerInfo", "OverseerRun", "OverseerBuild" },
+		opts = {
+			-- strategy = "toggleterm",
+		},
 	},
-
+	{ "mfussenegger/nvim-lint", config = require("plugins.conf.lint") },
+	{ "nanotee/sqls.nvim", ft = { "sql" } },
 	{
-		"AckslD/swenv.nvim",
+		"jinzhongjia/LspUI.nvim",
+		branch = "main",
+		event = "VeryLazy",
+		config = function()
+			require("LspUI").setup()
+		end,
+		keys = {
+			{
+				"K",
+				"<cmd>LspUI hover<CR>",
+				desc = "LSP Hover",
+			},
+			{
+				"<leader>rn",
+				"<cmd>LspUI rename<CR>",
+				desc = "LSP Rename",
+			},
+		},
 	},
 }

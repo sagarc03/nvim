@@ -24,10 +24,9 @@ return {
 			lualine_a = { "mode" },
 			lualine_b = { "branch", "diff" },
 			lualine_c = {
-				require("arrow.statusline").text_for_statusline_with_icons,
 				{ "filename", path = 1 },
 			},
-			lualine_x = { "encoding", "filetype" },
+			lualine_x = { "overseer", "encoding", "filetype" },
 			lualine_y = { "progress" },
 			lualine_z = { "location" },
 		},
