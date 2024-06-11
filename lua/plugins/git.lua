@@ -14,6 +14,8 @@ return {
 		opts = {
 			width = 70,
 			libgit2_path = "/usr/local/lib/libgit2.1.7.2.dylib",
+			-- "/usr/local/Cellar/gpgme/1.23.2_1/lib/libgpgme.11.dylib"
+			-- external_diff = true,
 		},
 		dependencies = {
 			"MunifTanjim/nui.nvim",
