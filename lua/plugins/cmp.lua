@@ -12,7 +12,6 @@ local cmp_opts = function()
 		formatting = {
 			format = require("lspkind").cmp_format({
 				mode = "symbol_text",
-				symbol_map = { Supermaven = "" },
 				-- menu = {
 				-- 	buffer = "[Buffer ✏️]",
 				-- 	nvim_lsp = "[LSP ⚙️]",
@@ -20,7 +19,6 @@ local cmp_opts = function()
 				-- 	nvim_lua = "[NvimLua 🌍]",
 				-- 	path = "[Path 📁]",
 				-- 	emoji = "[Emoji 😄]",
-				-- 	supermaven = "[AI 🧠]",
 				-- },
 			}),
 		},
@@ -53,7 +51,6 @@ local cmp_opts = function()
 					return cmp.lsp.CompletionItemKind.Snippet ~= entry:get_kind()
 				end,
 			},
-			{ name = "supermaven", max_item_count = 5 },
 			{ name = "nvim_lua", max_item_count = 5 },
 			{ name = "buffer", max_item_count = 5 },
 			{ name = "path", max_item_count = 5 },
@@ -88,12 +85,5 @@ return {
 		},
 		opts = cmp_opts,
 		config = require("plugins.conf.cmp_conf"),
-	},
-	{
-		"supermaven-inc/supermaven-nvim",
-		opts = {
-			disable_inline_completion = true, -- disables inline completion for use with cmp
-			disable_keymaps = true, -- disables built in keymaps for more manual control
-		},
 	},
 }
