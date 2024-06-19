@@ -13,8 +13,9 @@ return {
 		"SuperBo/fugit2.nvim",
 		opts = {
 			width = 70,
-			libgit2_path = "/usr/local/lib/libgit2.1.7.2.dylib",
-			gpgme_path = "/usr/local/Cellar/gpgme/1.23.2_1/lib/libgpgme.11.dylib",
+			libgit2_path = "/opt/homebrew/Cellar/libgit2/1.7.2/lib/libgit2.dylib",
+			gpgme_path = "/opt/homebrew/Cellar/gpgme/1.23.2_1/lib/libgpgme.dylib",
+			external_diffview = true,
 		},
 		dependencies = {
 			"MunifTanjim/nui.nvim",
@@ -30,16 +31,16 @@ return {
 			{ "<leader>g", mode = "n", "<cmd>Fugit2<cr>" },
 		},
 	},
-	-- {
-	-- 	"sindrets/diffview.nvim",
-	-- 	dependencies = { "nvim-tree/nvim-web-devicons" },
-	-- 	-- lazy, only load diffview by these commands
-	-- 	cmd = {
-	-- 		"DiffviewFileHistory",
-	-- 		"DiffviewOpen",
-	-- 		"DiffviewToggleFiles",
-	-- 		"DiffviewFocusFiles",
-	-- 		"DiffviewRefresh",
-	-- 	},
-	-- },
+	{
+		"sindrets/diffview.nvim",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		-- lazy, only load diffview by these commands
+		cmd = {
+			"DiffviewFileHistory",
+			"DiffviewOpen",
+			"DiffviewToggleFiles",
+			"DiffviewFocusFiles",
+			"DiffviewRefresh",
+		},
+	},
 }
