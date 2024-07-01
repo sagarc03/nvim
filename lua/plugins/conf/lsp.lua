@@ -153,7 +153,7 @@ return function()
 	require("lspconfig").terraformls.setup({
 		capabilities = capabilities,
 		on_attach = on_attach,
-		filetypes = { "terraform", "terraform-vars", "tf" },
+		filetypes = { "terraform", "terraform-vars", "tf", "hcl" },
 	})
 	require("lspconfig").dockerls.setup({ capabilities = capabilities, on_attach = on_attach })
 

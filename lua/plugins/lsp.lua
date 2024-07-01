@@ -128,6 +128,7 @@ return {
 				go = { "goimports", "golines", "gofmt" },
 				terraform = { "terraform_fmt" },
 				tf = { "terraform_fmt" },
+				hcl = { "terraform_fmt" },
 				yaml = { "yamlfmt" },
 				-- Use the "*" filetype to run formatters on all filetypes.
 				["*"] = {},

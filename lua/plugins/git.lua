@@ -12,7 +12,8 @@ return {
 	{
 		"SuperBo/fugit2.nvim",
 		opts = {
-			width = 70,
+			max_width = "90%",
+			height = "85%",
 			libgit2_path = "/opt/homebrew/Cellar/libgit2/1.7.2/lib/libgit2.dylib",
 			gpgme_path = "/opt/homebrew/Cellar/gpgme/1.23.2_1/lib/libgpgme.dylib",
 			external_diffview = true,
