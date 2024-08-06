@@ -10,12 +10,6 @@ local mapping_options = { silent = true, noremap = true }
 -- if loaded_plugins["neo-tree.nvim"] then
 -- 	vim.keymap.set("n", "<leader>nn", "<CMD>Neotree toggle<CR>", mapping_options)
 -- end
-if loaded_plugins["oil.nvim"] then
-	vim.keymap.set("n", "<leader>nn", function()
-		require("oil").toggle_float()
-	end, mapping_options)
-end
-
 if loaded_plugins["toggleterm.nvim"] then
 	vim.keymap.set("t", "<ESC>", [[<C-\><C-n>]], mapping_options)
 	vim.keymap.set({ "n", "i", "t" }, "<C-,>", '<CMD>execute v:count . "ToggleTerm"<CR>', mapping_options)

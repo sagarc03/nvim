@@ -1,21 +1,22 @@
 return {
-	-- {
-	-- 	"nvim-neo-tree/neo-tree.nvim",
-	-- 	branch = "v3.x",
-	-- 	cmd = { "Neotree" },
-	-- },
-	-- { "echasnovski/mini.files", version = "*" },
 	{
 		"stevearc/oil.nvim",
+		keys = {
+			{
+				"<leader>nn",
+				function()
+					require("oil").toggle_float()
+				end,
+				desc = "Oil Explore",
+			},
+		},
+		cmd = { "Oil" },
 		-- Optional dependencies
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		lazy = true,
 		opts = {
 			columns = {
 				"icon",
-				"permissions",
-				"size",
-				"mtime",
 			},
 			-- Configuration for the actions floating preview window
 			preview = {

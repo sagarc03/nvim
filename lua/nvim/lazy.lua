@@ -18,7 +18,7 @@ require("lazy").setup("plugins")
 -- vim.cmd([[colorscheme modus_operandi]]) -- modus_operandi, modus_vivendi
 --vim.cmd([[colorscheme halfspace]])
 -- vim.cmd([[colorscheme gruvbox]])
-vim.cmd([[colorscheme tokyonight-night]])
+vim.cmd([[colorscheme tokyonight]])
 -- vim.cmd([[colorscheme catppuccin-macchiato]])
 -- vim.cmd([[colorscheme kanagawa-wave]])
 -- vim.cmd([[colorscheme kanagawa-dragon]])

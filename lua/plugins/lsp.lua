@@ -17,63 +17,58 @@ return {
 		cmd = { "Neogen" },
 	},
 
-	{
-		"ThePrimeagen/refactoring.nvim",
-		lazy = true,
-		dependencies = {
-			{ "nvim-lua/plenary.nvim" },
-			{ "nvim-treesitter/nvim-treesitter" },
-		},
-		opts = {
-			prompt_func_return_type = {
-				go = true,
-				java = true,
-				cpp = true,
-				c = true,
-				h = true,
-				hpp = true,
-				cxx = true,
-			},
-			prompt_func_param_type = {
-				go = true,
-				java = true,
-
-				cpp = true,
-				c = true,
-				h = true,
-				hpp = true,
-				cxx = true,
-			},
-			printf_statements = {},
-			print_var_statements = {},
-		},
-	},
-
 	-- {
-	-- 	"ray-x/go.nvim",
-	-- 	dependencies = { -- optional packages
-	-- 		"ray-x/guihua.lua",
+	-- 	"ThePrimeagen/refactoring.nvim",
+	-- 	lazy = true,
+	-- 	dependencies = {
+	-- 		{ "nvim-lua/plenary.nvim" },
+	-- 		{ "nvim-treesitter/nvim-treesitter" },
 	-- 	},
-	-- 	config = require("plugins.conf.go"),
-	-- 	event = { "BufReadPre", "BufNewFile" },
-	-- 	ft = { "go", "gomod" },
-	-- 	build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
+	-- 	opts = {
+	-- 		prompt_func_return_type = {
+	-- 			go = true,
+	-- 			java = true,
+	-- 			cpp = true,
+	-- 			c = true,
+	-- 			h = true,
+	-- 			hpp = true,
+	-- 			cxx = true,
+	-- 		},
+	-- 		prompt_func_param_type = {
+	-- 			go = true,
+	-- 			java = true,
+	--
+	-- 			cpp = true,
+	-- 			c = true,
+	-- 			h = true,
+	-- 			hpp = true,
+	-- 			cxx = true,
+	-- 		},
+	-- 		printf_statements = {},
+	-- 		print_var_statements = {},
+	-- 	},
 	-- },
-	-- {
-	--   "fatih/vim-go",
-	--   --	ft = { "go", "gomod" },
-	--   build = "GoInstallBinaries",
-	-- },
+	--
 	{
-		"olexsmir/gopher.nvim",
-		ft = { "go", "gomod", "gowork" },
-		build = "GoInstallDeps",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
+		"ray-x/go.nvim",
+		dependencies = { -- optional packages
+			"ray-x/guihua.lua",
+			"neovim/nvim-lspconfig",
 			"nvim-treesitter/nvim-treesitter",
 		},
+		config = function()
+			local capabilities =
+				require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+			require("go").setup({
+				lsp_cfg = {
+					capabilities = capabilities,
+				},
+			})
+		end,
+		event = { "CmdlineEnter" },
+		ft = { "go", "gomod" },
+		build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
 	},
-
 	{
 		"folke/neodev.nvim",
 		lazy = true,
@@ -92,21 +87,6 @@ return {
 		config = require("plugins.conf.lsp"),
 	},
 
-	-- {
-	--   "jose-elias-alvarez/null-ls.nvim",
-	--   event = { "BufReadPre", "BufNewFile" },
-	--   config = require("plugins.conf.null_ls"),
-	-- },
-
-	-- {
-	--   "nvimdev/guard.nvim",
-	--   event = { "BufReadPre", "BufNewFile" },
-	--   config = require("plugins.conf.guard"),
-	--   dependencies = {
-	--     "nvimdev/guard-collection",
-	--   },
-	-- },
-
 	{
 		"stevearc/conform.nvim",
 		opts = {
@@ -123,6 +103,8 @@ return {
 				typescript = { "prettier" },
 				javascriptreact = { "prettier" },
 				typescriptreact = { "prettier" },
+				html = { "prettier" },
+				css = { "prettier" },
 				sql = { "pg_format" },
 				astro = { "prettier" },
 				go = { "goimports", "golines", "gofmt" },
@@ -173,37 +155,25 @@ return {
 	},
 
 	{
-		"google/executor.nvim",
-		cmd = { "ExecutorRun" },
-		opts = {
-			use_split = true,
-			split = {
-				position = "right",
-				size = math.floor(vim.o.columns * 1 / 4),
-			},
-			popup = {
-				width = math.floor(vim.o.columns * 3 / 5),
-				height = vim.o.lines - 20,
-			},
-			output_filter = function(_, lines)
-				return lines
-			end,
-			notifications = {
-				task_started = true,
-				task_completed = true,
-			},
-		},
-	},
-	{
 		"stevearc/overseer.nvim",
-		lazy = true,
-		cmd = { "OverseerToggle", "OverseerInfo", "OverseerRun", "OverseerBuild" },
 		opts = {
 			-- strategy = "toggleterm",
+			task_list = {
+				-- Default detail level for tasks. Can be 1-3.
+				direction = "bottom",
+			},
 		},
+		keys = {
+			{ "<leader>r", mode = "n", "<cmd>OverseerRun<cr>" },
+			{ "<leader>o", mode = "n", "<cmd>OverseerToggle<cr>" },
+		},
+		dependencies = { "stevearc/dressing.nvim" },
 	},
+
 	{ "mfussenegger/nvim-lint", config = require("plugins.conf.lint") },
+
 	{ "nanotee/sqls.nvim", ft = { "sql" } },
+
 	{
 		"jinzhongjia/LspUI.nvim",
 		branch = "main",

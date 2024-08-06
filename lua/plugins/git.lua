@@ -10,28 +10,21 @@ return {
 		},
 	},
 	{
-		"SuperBo/fugit2.nvim",
-		opts = {
-			max_width = "90%",
-			height = "85%",
-			libgit2_path = "/opt/homebrew/Cellar/libgit2/1.7.2/lib/libgit2.dylib",
-			gpgme_path = "/opt/homebrew/Cellar/gpgme/1.23.2_1/lib/libgpgme.dylib",
-			external_diffview = true,
-		},
+		"NeogitOrg/neogit",
 		dependencies = {
-			"MunifTanjim/nui.nvim",
-			"nvim-tree/nvim-web-devicons",
-			"nvim-lua/plenary.nvim",
-			{
-				"chrisgrieser/nvim-tinygit", -- optional: for Github PR view
-				dependencies = { "stevearc/dressing.nvim" },
-			},
+			"nvim-lua/plenary.nvim", -- required
+			"sindrets/diffview.nvim", -- optional - Diff integration
+
+			-- Only one of these is needed, not both.
+			"ibhagwan/fzf-lua", -- optional
 		},
-		cmd = { "Fugit2", "Fugit2Diff", "Fugit2Graph" },
-		keys = {
-			{ "<leader>g", mode = "n", "<cmd>Fugit2<cr>" },
-		},
+		config = true,
 	},
+	cmd = { "Neogit" },
+	keys = {
+		{ "<leader>g", mode = "n", "<cmd>Neogit<cr>" },
+	},
+
 	{
 		"sindrets/diffview.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },

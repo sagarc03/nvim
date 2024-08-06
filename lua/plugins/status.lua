@@ -41,6 +41,6 @@ return {
 		tabline = {},
 		winbar = {},
 		inactive_winbar = {},
-		extensions = { "neo-tree", "toggleterm", "quickfix", "trouble", "fzf", "lazy" },
+		extensions = { "oil", "toggleterm", "quickfix", "trouble", "fzf", "lazy", "overseer" },
 	},
 }

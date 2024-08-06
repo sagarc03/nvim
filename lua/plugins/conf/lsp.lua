@@ -44,12 +44,11 @@ return function()
 		},
 	})
 
-	require("lspconfig").ruff.setup({
-		on_attach = on_attach,
-	})
+	require("lspconfig").ruff.setup({})
 
-	require("lspconfig").pyright.setup({
+	require("lspconfig").basedpyright.setup({
 		capabilities = capabilities,
+		on_attach = on_attach,
 		settings = {
 			pyright = {
 				-- Using Ruff's import organizer
@@ -109,7 +108,7 @@ return function()
 	})
 	require("lspconfig").cmake.setup({ capabilities = capabilities, on_attach = on_attach })
 
-	require("lspconfig").gopls.setup({ capabilities = capabilities, on_attach = on_attach })
+	-- require("lspconfig").gopls.setup({ capabilities = capabilities, on_attach = on_attach })
 
 	require("lspconfig").astro.setup({
 		capabilities = capabilities,
@@ -117,8 +116,85 @@ return function()
 		typescript = "/opt/homebrew/bin/tsserver",
 	})
 
-	require("lspconfig").tailwindcss.setup({ capabilities = capabilities, on_attach = on_attach })
-	require("lspconfig").emmet_ls.setup({ capabilities = capabilities, on_attach = on_attach })
+	require("lspconfig").tailwindcss.setup({
+		capabilities = capabilities,
+		on_attach = on_attach,
+		filetypes = {
+			"aspnetcorerazor",
+			"astro",
+			"astro-markdown",
+			"blade",
+			"clojure",
+			"django-html",
+			"htmldjango",
+			"edge",
+			"eelixir",
+			"elixir",
+			"ejs",
+			"erb",
+			"eruby",
+			"gohtml",
+			"gohtmltmpl",
+			"gotmpl",
+			"haml",
+			"handlebars",
+			"hbs",
+			"html",
+			"html-eex",
+			"heex",
+			"jade",
+			"leaf",
+			"liquid",
+			"markdown",
+			"mdx",
+			"mustache",
+			"njk",
+			"nunjucks",
+			"php",
+			"razor",
+			"slim",
+			"twig",
+			"css",
+			"less",
+			"postcss",
+			"sass",
+			"scss",
+			"stylus",
+			"sugarss",
+			"javascript",
+			"javascriptreact",
+			"reason",
+			"rescript",
+			"typescript",
+			"typescriptreact",
+			"vue",
+			"svelte",
+			"templ",
+		},
+	})
+
+	require("lspconfig").emmet_language_server.setup({
+
+		capabilities = capabilities,
+		on_attach = on_attach,
+		filetypes = {
+			"astro",
+			"css",
+			"eruby",
+			"html",
+			"htmldjango",
+			"javascriptreact",
+			"less",
+			"pug",
+			"sass",
+			"scss",
+			"svelte",
+			"typescriptreact",
+			"vue",
+			"gotmpl",
+		},
+	})
+
 	require("lspconfig").taplo.setup({ capabilities = capabilities, on_attach = on_attach })
 	require("lspconfig").sqls.setup({
 		capabilities = capabilities,

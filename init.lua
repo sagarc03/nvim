@@ -1,3 +1,9 @@
+vim.filetype.add({
+	extension = {
+		gotmpl = "gotmpl",
+	},
+})
+
 for _, source in ipairs({
 	"nvim.options",
 	"nvim.lazy",
