@@ -1,4 +1,5 @@
 return {
+
 	{
 		"danymat/neogen",
 		config = function(_, opts)
@@ -15,6 +16,9 @@ return {
 			},
 		},
 		cmd = { "Neogen" },
+		keys = {
+			{ "ga", "<CMD>Neogen<CR>" },
+		},
 	},
 
 	-- {
@@ -49,26 +53,45 @@ return {
 	-- 	},
 	-- },
 	--
+	-- {
+	-- 	"ray-x/go.nvim",
+	-- 	dependencies = { -- optional packages
+	-- 		"ray-x/guihua.lua",
+	-- 		"neovim/nvim-lspconfig",
+	-- 		"nvim-treesitter/nvim-treesitter",
+	-- 	},
+	-- 	config = function()
+	-- 		local capabilities =
+	-- 			require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+	-- 		require("go").setup({
+	-- 			lsp_cfg = {
+	-- 				capabilities = capabilities,
+	-- 			},
+	-- 		})
+	-- 	end,
+	-- 	event = { "CmdlineEnter" },
+	-- 	ft = { "go", "gomod" },
+	-- 	build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
+	-- },
+
 	{
-		"ray-x/go.nvim",
-		dependencies = { -- optional packages
-			"ray-x/guihua.lua",
-			"neovim/nvim-lspconfig",
+		"olexsmir/gopher.nvim",
+		ft = "go",
+		-- branch = "develop", -- if you want develop branch
+		-- keep in mind, it might break everything
+		dependencies = {
+			"nvim-lua/plenary.nvim",
 			"nvim-treesitter/nvim-treesitter",
+			-- "mfussenegger/nvim-dap", -- (optional) only if you use `gopher.dap`
 		},
-		config = function()
-			local capabilities =
-				require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
-			require("go").setup({
-				lsp_cfg = {
-					capabilities = capabilities,
-				},
-			})
+		-- (optional) will update plugin's deps on every update
+		build = function()
+			vim.cmd.GoInstallDeps()
 		end,
-		event = { "CmdlineEnter" },
-		ft = { "go", "gomod" },
-		build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
+		-- @type gopher.Config
+		opts = {},
 	},
+
 	{
 		"folke/neodev.nvim",
 		lazy = true,
@@ -79,12 +102,13 @@ return {
 		dependencies = {
 			"hrsh7th/cmp-nvim-lsp",
 			"b0o/SchemaStore.nvim",
-			"jose-elias-alvarez/typescript.nvim",
 			"simrat39/rust-tools.nvim",
 			{ "j-hui/fidget.nvim", branch = "legacy" },
+			"pmizio/typescript-tools.nvim",
 		},
-		event = { "BufReadPre", "BufNewFile" },
 		config = require("plugins.conf.lsp"),
+		lazy = true,
+		event = "BufRead",
 	},
 
 	{
@@ -105,6 +129,8 @@ return {
 				typescriptreact = { "prettier" },
 				html = { "prettier" },
 				css = { "prettier" },
+				json = { "prettier" },
+				jsonc = { "prettier" },
 				sql = { "pg_format" },
 				astro = { "prettier" },
 				go = { "goimports", "golines", "gofmt" },
@@ -130,6 +156,8 @@ return {
 				-- },
 			},
 		},
+		lazy = true,
+		event = "BufRead",
 	},
 
 	{
@@ -150,11 +178,6 @@ return {
 	},
 
 	{
-		"lewis6991/hover.nvim",
-		config = require("plugins.conf.hover"),
-	},
-
-	{
 		"stevearc/overseer.nvim",
 		opts = {
 			-- strategy = "toggleterm",
@@ -168,29 +191,64 @@ return {
 			{ "<leader>o", mode = "n", "<cmd>OverseerToggle<cr>" },
 		},
 		dependencies = { "stevearc/dressing.nvim" },
+		lazy = true,
 	},
 
-	{ "mfussenegger/nvim-lint", config = require("plugins.conf.lint") },
+	{ "mfussenegger/nvim-lint", config = require("plugins.conf.lint"), lazy = true },
 
 	{ "nanotee/sqls.nvim", ft = { "sql" } },
 
 	{
 		"jinzhongjia/LspUI.nvim",
 		branch = "main",
-		event = "VeryLazy",
 		config = function()
 			require("LspUI").setup()
+		end,
+		cmd = { "LspUI" },
+		keys = {
+			{
+				"<leader>rn",
+				"<cmd>LspUI rename<CR><cmd>wa!<CR>",
+				desc = "LSP Rename",
+			},
+		},
+	},
+
+	{
+		"lewis6991/hover.nvim",
+		config = function()
+			require("hover").setup({
+				init = function()
+					-- Require providers
+					require("hover.providers.lsp")
+					-- require('hover.providers.gh')
+					-- require('hover.providers.gh_user')
+					-- require('hover.providers.jira')
+					-- require('hover.providers.dap')
+					-- require('hover.providers.fold_preview')
+					-- require('hover.providers.diagnostic')
+					-- require('hover.providers.man')
+					-- require('hover.providers.dictionary')
+				end,
+				preview_opts = {
+					border = "single",
+				},
+				-- Whether the contents of a currently open hover window should be moved
+				-- to a :h preview-window when pressing the hover keymap.
+				preview_window = false,
+				title = true,
+				mouse_providers = {
+					"LSP",
+				},
+				mouse_delay = 1000,
+			})
 		end,
 		keys = {
 			{
 				"K",
-				"<cmd>LspUI hover<CR>",
-				desc = "LSP Hover",
-			},
-			{
-				"<leader>rn",
-				"<cmd>LspUI rename<CR>",
-				desc = "LSP Rename",
+				function()
+					require("hover").hover()
+				end,
 			},
 		},
 	},

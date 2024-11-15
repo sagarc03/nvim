@@ -1,7 +1,14 @@
 return { -- Common dependencies for all
 	-- { "sainnhe/edge", lazy = false, priority = 1000 },
 	-- { "ellisonleao/gruvbox.nvim", lazy = false, priority = 1000 },
-	{ "folke/tokyonight.nvim", lazy = false, priority = 1000 },
+	{
+		"folke/tokyonight.nvim",
+		lazy = false,
+		priority = 1000,
+		config = function()
+			vim.cmd([[colorscheme tokyonight]])
+		end,
+	},
 	-- { "rebelot/kanagawa.nvim", lazy = false, priority = 1000 },
 	-- { "catppuccin/nvim", lazy = false, name = "catppuccin", priority = 1000 },
 	-- { "rose-pine/neovim", lazy = false, name = "rose-pine", priority = 1000 },
@@ -26,12 +33,75 @@ return { -- Common dependencies for all
 			default_amount = 3,
 			at_edge = "split",
 		},
-		lazy = false,
+		lazy = true,
+		keys = {
+			-- Move direction
+			{
+				"<C-h>",
+				function()
+					require("smart-splits").move_cursor_left()
+				end,
+				mode = { "n", "i", "v" },
+			},
+			{
+				"<C-j>",
+				function()
+					require("smart-splits").move_cursor_down()
+				end,
+				mode = { "n", "i", "v" },
+			},
+			{
+				"<C-k>",
+				function()
+					require("smart-splits").move_cursor_up()
+				end,
+				mode = { "n", "i", "v" },
+			},
+			{
+				"<C-l>",
+				function()
+					require("smart-splits").move_cursor_right()
+				end,
+				mode = { "n", "i", "v" },
+			},
+			-- Resize buffer
+			{
+				"<A-h>",
+				function()
+					require("smart-splits").resize_left()
+				end,
+				mode = { "n", "i", "v" },
+			},
+			{
+				"<A-j>",
+				function()
+					require("smart-splits").resize_down()
+				end,
+				mode = { "n", "i", "v" },
+			},
+			{
+				"<A-k>",
+				function()
+					require("smart-splits").resize_up()
+				end,
+				mode = { "n", "i", "v" },
+			},
+			{
+				"<A-l>",
+				function()
+					require("smart-splits").resize_right()
+				end,
+				mode = { "n", "i", "v" },
+			},
+		},
 	},
 
 	{
 		"famiu/bufdelete.nvim",
-		cmd = { "Bdelete", "Bwipeout" },
+		lazy = true,
+		keys = {
+			{ "bd", [[<CMD>Bdelete "%"<CR>]] },
+		},
 	},
 
 	{
@@ -40,6 +110,56 @@ return { -- Common dependencies for all
 		config = function(_, opts)
 			require("hop").setup(opts)
 		end,
+		keys = {
+			{
+				"$",
+				function()
+					require("hop").hint_words()
+				end,
+			},
+			{
+				"<leader>/",
+				function()
+					require("hop").hint_patterns()
+				end,
+			},
+			{
+				"f",
+				function()
+					local hint = require("hop.hint")
+					require("hop").hint_char1({ direction = hint.HintDirection.AFTER_CURSOR, current_line_only = true })
+				end,
+			},
+			{
+				"F",
+				function()
+					local hint = require("hop.hint")
+					require("hop").hint_char1({ direction = hint.HintDirection.BEFORE_CURSOR, current_line_only = true })
+				end,
+			},
+			{
+				"t",
+				function()
+					local hint = require("hop.hint")
+					require("hop").hint_char1({
+						direction = hint.HintDirection.AFTER_CURSOR,
+						current_line_only = true,
+						hint_offset = -1,
+					})
+				end,
+			},
+			{
+				"T",
+				function()
+					local hint = require("hop.hint")
+					require("hop").hint_char1({
+						direction = hint.HintDirection.BEFORE_CURSOR,
+						current_line_only = true,
+						hint_offset = 1,
+					})
+				end,
+			},
+		},
 	},
 
 	{
@@ -62,9 +182,13 @@ return { -- Common dependencies for all
 	},
 
 	{
-		"ur4ltz/surround.nvim",
-		event = "BufRead",
-		opts = { mappings_style = "sandwich" },
+		"kylechui/nvim-surround",
+		lazy = true,
+		config = function()
+			require("nvim-surround").setup({
+				-- Configuration here, or leave empty to use defaults
+			})
+		end,
 	},
 
 	{
@@ -95,6 +219,10 @@ return { -- Common dependencies for all
 			close_on_exit = true, -- close the terminal window when the process exits
 			shell = vim.o.shell, -- change the default shell
 		},
+		keys = {
+			{ "<ESC>", "[[<C-><C-n>]]", mode = "t" },
+			{ "<C-,>", [[<CMD>execute v:count . "ToggleTerm"<CR>]], mode = { "n", "i", "t" } },
+		},
 	},
 
 	{
@@ -116,8 +244,10 @@ return { -- Common dependencies for all
 			"RainbowMultiDelim",
 		},
 	},
+
 	{
 		"karb94/neoscroll.nvim",
+		lazy = true,
 		config = function()
 			require("neoscroll").setup({})
 		end,

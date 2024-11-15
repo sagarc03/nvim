@@ -9,6 +9,7 @@ return {
 			word_diff = false,
 		},
 	},
+
 	{
 		"NeogitOrg/neogit",
 		dependencies = {
@@ -19,10 +20,11 @@ return {
 			"ibhagwan/fzf-lua", -- optional
 		},
 		config = true,
-	},
-	cmd = { "Neogit" },
-	keys = {
-		{ "<leader>g", mode = "n", "<cmd>Neogit<cr>" },
+		cmd = { "Neogit" },
+		lazy = true,
+		keys = {
+			{ "<leader>g", mode = "n", "<cmd>Neogit<cr>" },
+		},
 	},
 
 	{

@@ -14,6 +14,15 @@ return {
 			vim.notify = require("notify")
 		end,
 		lazy = false,
+		keys = {
+			{
+				"<leader>un",
+				function()
+					local notify = require("notify")
+					notify.dismiss({ silent = true, pending = true })
+				end,
+			},
+		},
 	},
 
 	-- icons

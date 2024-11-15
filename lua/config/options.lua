@@ -3,9 +3,9 @@ This file contains the global options.
 --]]
 local options = {
 	g = {
+		mapleader = " ",
+		maplocalleader = "\\",
 		-- Leader settings
-		mapleader = " ", -- Make sure to set `mapleader` before lazy so your mappings are correct
-		maplocalleader = " ", -- Make sure to set `mapleader` before lazy so your mappings are correct
 		-- Python provider
 		python3_host_prog = vim.env.HOME .. "/.config/nvim/.venv/bin/python",
 		-- Plugin config for poet-v added here as its need before anything loads

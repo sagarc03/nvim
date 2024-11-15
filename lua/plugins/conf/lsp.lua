@@ -46,8 +46,33 @@ return function()
 
 	require("lspconfig").ruff.setup({})
 
-	require("lspconfig").basedpyright.setup({
+	-- local once = false
+
+	require("lspconfig").pyright.setup({
 		capabilities = capabilities,
+		-- on_init = function()
+		-- 	if not once then
+		-- 		local loaded, project_nvim = pcall(require, "project_nvim.project")
+		-- 		if not loaded then
+		-- 			vim.notify_once("Error: failed to load the project_nvim.project module")
+		-- 			return
+		-- 		end
+		-- 		local project_dir, _ = project_nvim.get_project_root()
+		-- 		if project_dir then
+		-- 			local venv = project_dir .. "/.venv"
+		-- 			if vim.fn.isdirectory(venv) ~= 0 then
+		-- 				local ORIGINAL_PATH = vim.fn.getenv("PATH")
+		-- 				vim.fn.setenv("PATH", venv .. "/bin" .. ":" .. ORIGINAL_PATH)
+		-- 				vim.notify_once("Info: using virtualenv at " .. project_dir)
+		-- 			end
+		-- 		end
+		-- 		vim.schedule(function()
+		-- 			vim.cmd("LspRestart basedpyright")
+		-- 			print("Pyright restarted with new venv settings")
+		-- 		end)
+		-- 		once = true
+		-- 	end
+		-- end,
 		on_attach = on_attach,
 		settings = {
 			pyright = {
@@ -81,13 +106,21 @@ return function()
 	-- 		on_attach = on_attach,
 	-- 	},
 	-- })
-
-	require("typescript").setup({
-		server = {
-			capabilities = capabilities,
-			on_attach = on_attach,
-		},
+	require("lspconfig").denols.setup({
+		on_attach = on_attach,
+		capabilities = capabilities,
+		root_dir = require("lspconfig").util.root_pattern("deno.json", "deno.jsonc"),
 	})
+
+	require("lspconfig").ts_ls.setup({
+		on_attach = on_attach,
+		root_dir = require("lspconfig").util.root_pattern("package.json"),
+		capabilities = capabilities,
+	})
+
+	-- require("typescript-tools").setup({
+	-- 	on_attach = on_attach,
+	-- })
 
 	-- require("lspconfig").eslint.setup({
 	-- 	capabilities = capabilities,
@@ -108,73 +141,19 @@ return function()
 	})
 	require("lspconfig").cmake.setup({ capabilities = capabilities, on_attach = on_attach })
 
-	-- require("lspconfig").gopls.setup({ capabilities = capabilities, on_attach = on_attach })
+	require("lspconfig").gopls.setup({ capabilities = capabilities, on_attach = on_attach })
 
 	require("lspconfig").astro.setup({
 		capabilities = capabilities,
 		on_attach = on_attach,
-		typescript = "/opt/homebrew/bin/tsserver",
 	})
 
 	require("lspconfig").tailwindcss.setup({
 		capabilities = capabilities,
 		on_attach = on_attach,
-		filetypes = {
-			"aspnetcorerazor",
-			"astro",
-			"astro-markdown",
-			"blade",
-			"clojure",
-			"django-html",
-			"htmldjango",
-			"edge",
-			"eelixir",
-			"elixir",
-			"ejs",
-			"erb",
-			"eruby",
-			"gohtml",
-			"gohtmltmpl",
-			"gotmpl",
-			"haml",
-			"handlebars",
-			"hbs",
-			"html",
-			"html-eex",
-			"heex",
-			"jade",
-			"leaf",
-			"liquid",
-			"markdown",
-			"mdx",
-			"mustache",
-			"njk",
-			"nunjucks",
-			"php",
-			"razor",
-			"slim",
-			"twig",
-			"css",
-			"less",
-			"postcss",
-			"sass",
-			"scss",
-			"stylus",
-			"sugarss",
-			"javascript",
-			"javascriptreact",
-			"reason",
-			"rescript",
-			"typescript",
-			"typescriptreact",
-			"vue",
-			"svelte",
-			"templ",
-		},
 	})
 
 	require("lspconfig").emmet_language_server.setup({
-
 		capabilities = capabilities,
 		on_attach = on_attach,
 		filetypes = {
@@ -191,7 +170,7 @@ return function()
 			"svelte",
 			"typescriptreact",
 			"vue",
-			"gotmpl",
+			"htmlangular",
 		},
 	})
 
@@ -220,10 +199,7 @@ return function()
 		capabilities = capabilities,
 		on_attach = on_attach,
 		settings = {
-			yaml = {
-				schemas = require("schemastore").yaml.schemas(),
-				validate = { enable = true },
-			},
+			yaml = { schemaStore = { enable = false, url = "" }, schemas = require("schemastore").yaml.schemas() },
 		},
 	})
 	require("lspconfig").terraformls.setup({
@@ -244,5 +220,22 @@ return function()
 		capabilities = capabilities,
 		on_attach = on_attach,
 	})
+	require("lspconfig").jdtls.setup({
+		capabilities = capabilities,
+		on_attach = on_attach,
+	})
+	require("lspconfig").erlangls.setup({
+		capabilities = capabilities,
+		on_attach = on_attach,
+	})
+	require("lspconfig").phpactor.setup({
+		capabilities = capabilities,
+		on_attach = on_attach,
+	})
+	require("lspconfig").zls.setup({
+		capabilities = capabilities,
+		on_attach = on_attach,
+	})
+
 	require("fidget").setup()
 end

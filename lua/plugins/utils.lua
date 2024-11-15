@@ -1,1 +1,1 @@
-return { "nanotee/zoxide.vim" }
+return { "nanotee/zoxide.vim" , lazy=true}
