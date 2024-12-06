@@ -3,6 +3,8 @@ require("config.autocmd")
 require("config.lazy")
 require("config.mappings")
 
+-- TODO: something
+
 -- vim.filetype.add({
 -- 	extension = {
 -- 		gotmpl = "gotmpl",

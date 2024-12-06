@@ -135,7 +135,9 @@ return function()
 	require("lspconfig").svelte.setup({ capabilities = capabilities, on_attach = on_attach })
 
 	require("lspconfig").clangd.setup({
-		cmd = { "/usr/bin/clangd" },
+		cmd = {
+			"/opt/homebrew/opt/llvm/bin/clangd",
+		},
 		capabilities = capabilities,
 		on_attach = on_attach,
 	})

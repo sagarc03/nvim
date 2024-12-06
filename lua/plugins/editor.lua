@@ -1,6 +1,7 @@
 return { -- Common dependencies for all
 	-- { "sainnhe/edge", lazy = false, priority = 1000 },
 	-- { "ellisonleao/gruvbox.nvim", lazy = false, priority = 1000 },
+	--
 	{
 		"folke/tokyonight.nvim",
 		lazy = false,
@@ -66,32 +67,28 @@ return { -- Common dependencies for all
 			},
 			-- Resize buffer
 			{
-				"<A-h>",
+				"<leader>brh>",
 				function()
 					require("smart-splits").resize_left()
 				end,
-				mode = { "n", "i", "v" },
 			},
 			{
-				"<A-j>",
+				"<leader>brj",
 				function()
 					require("smart-splits").resize_down()
 				end,
-				mode = { "n", "i", "v" },
 			},
 			{
-				"<A-k>",
+				"<leader>brk",
 				function()
 					require("smart-splits").resize_up()
 				end,
-				mode = { "n", "i", "v" },
 			},
 			{
-				"<A-l>",
+				"<leader>brl",
 				function()
 					require("smart-splits").resize_right()
 				end,
-				mode = { "n", "i", "v" },
 			},
 		},
 	},
@@ -99,9 +96,7 @@ return { -- Common dependencies for all
 	{
 		"famiu/bufdelete.nvim",
 		lazy = true,
-		keys = {
-			{ "bd", [[<CMD>Bdelete "%"<CR>]] },
-		},
+		cmd = "Bdelete",
 	},
 
 	{
@@ -129,6 +124,7 @@ return { -- Common dependencies for all
 					local hint = require("hop.hint")
 					require("hop").hint_char1({ direction = hint.HintDirection.AFTER_CURSOR, current_line_only = true })
 				end,
+				mode = "",
 			},
 			{
 				"F",
@@ -136,6 +132,7 @@ return { -- Common dependencies for all
 					local hint = require("hop.hint")
 					require("hop").hint_char1({ direction = hint.HintDirection.BEFORE_CURSOR, current_line_only = true })
 				end,
+				mode = "",
 			},
 			{
 				"t",
@@ -147,6 +144,7 @@ return { -- Common dependencies for all
 						hint_offset = -1,
 					})
 				end,
+				mode = "",
 			},
 			{
 				"T",
@@ -158,6 +156,7 @@ return { -- Common dependencies for all
 						hint_offset = 1,
 					})
 				end,
+				mode = "",
 			},
 		},
 	},
@@ -184,6 +183,7 @@ return { -- Common dependencies for all
 	{
 		"kylechui/nvim-surround",
 		lazy = true,
+		event = "BufRead",
 		config = function()
 			require("nvim-surround").setup({
 				-- Configuration here, or leave empty to use defaults
@@ -251,5 +251,23 @@ return { -- Common dependencies for all
 		config = function()
 			require("neoscroll").setup({})
 		end,
+	},
+	{
+		"echasnovski/mini.ai",
+		version = "*",
+		lazy = true,
+		config = function()
+			require("mini.ai").setup({})
+		end,
+		event = "BufRead",
+	},
+	{
+		"folke/todo-comments.nvim",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		opts = {
+			-- your configuration comes here
+			-- or leave it empty to use the default settings
+			-- refer to the configuration section below
+		},
 	},
 }

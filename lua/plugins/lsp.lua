@@ -21,59 +21,6 @@ return {
 		},
 	},
 
-	-- {
-	-- 	"ThePrimeagen/refactoring.nvim",
-	-- 	lazy = true,
-	-- 	dependencies = {
-	-- 		{ "nvim-lua/plenary.nvim" },
-	-- 		{ "nvim-treesitter/nvim-treesitter" },
-	-- 	},
-	-- 	opts = {
-	-- 		prompt_func_return_type = {
-	-- 			go = true,
-	-- 			java = true,
-	-- 			cpp = true,
-	-- 			c = true,
-	-- 			h = true,
-	-- 			hpp = true,
-	-- 			cxx = true,
-	-- 		},
-	-- 		prompt_func_param_type = {
-	-- 			go = true,
-	-- 			java = true,
-	--
-	-- 			cpp = true,
-	-- 			c = true,
-	-- 			h = true,
-	-- 			hpp = true,
-	-- 			cxx = true,
-	-- 		},
-	-- 		printf_statements = {},
-	-- 		print_var_statements = {},
-	-- 	},
-	-- },
-	--
-	-- {
-	-- 	"ray-x/go.nvim",
-	-- 	dependencies = { -- optional packages
-	-- 		"ray-x/guihua.lua",
-	-- 		"neovim/nvim-lspconfig",
-	-- 		"nvim-treesitter/nvim-treesitter",
-	-- 	},
-	-- 	config = function()
-	-- 		local capabilities =
-	-- 			require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
-	-- 		require("go").setup({
-	-- 			lsp_cfg = {
-	-- 				capabilities = capabilities,
-	-- 			},
-	-- 		})
-	-- 	end,
-	-- 	event = { "CmdlineEnter" },
-	-- 	ft = { "go", "gomod" },
-	-- 	build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
-	-- },
-
 	{
 		"olexsmir/gopher.nvim",
 		ft = "go",
@@ -199,17 +146,15 @@ return {
 	{ "nanotee/sqls.nvim", ft = { "sql" } },
 
 	{
-		"jinzhongjia/LspUI.nvim",
-		branch = "main",
+		"filipdutescu/renamer.nvim",
+		dependencies = { "nvim-lua/plenary.nvim" },
 		config = function()
-			require("LspUI").setup()
+			require("renamer").setup()
 		end,
-		cmd = { "LspUI" },
 		keys = {
 			{
 				"<leader>rn",
-				"<cmd>LspUI rename<CR><cmd>wa!<CR>",
-				desc = "LSP Rename",
+				[[<CMD>lua require("renamer").rename()<CR>]],
 			},
 		},
 	},
@@ -248,6 +193,24 @@ return {
 				"K",
 				function()
 					require("hover").hover()
+				end,
+			},
+			{
+				"gK",
+				function()
+					require("hover").hover_select()
+				end,
+			},
+			{
+				"<C-p>",
+				function()
+					require("hover").hover_switch("previous")
+				end,
+			},
+			{
+				"<C-n>",
+				function()
+					require("hover").hover_switch("next")
 				end,
 			},
 		},
